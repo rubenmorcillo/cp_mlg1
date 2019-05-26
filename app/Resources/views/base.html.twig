@@ -1,16 +1,25 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block links %} {% endblock %}
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}
-        {% block content %} {% endblock %}
-        {% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('main.css') }}">
+    <link rel="stylesheet" href="{{ asset('main.js') }}">
+
+    <title>{% block title %}¡Bienvenido!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+{% block body %}{% endblock %}
+{% block javascripts %}{% endblock %}
+
+<!-- Bootstrap JS y sus dependencias (jQuery y popper.js) -->
+<script src="{{ asset('jquery/jquery-3.3.1.min.js') }}"></script>
+<script src="{{ asset('popper/popper.min.js') }}"></script>
+<script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+</body>
 </html>

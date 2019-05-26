@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
@@ -5,11 +6,18 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('main.css') }}">
+
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="{{ asset('fontawesome-free-5.4.2-web/css/all.min.css') }}">
+
+    <!-- Estilos propios de la aplicación -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('main.js') }}">
+    <link rel="stylesheet" href="{{ asset('main.css') }}">
+
+    {% block stylesheets %}{% endblock %}
 
     <title>{% block title %}¡Bienvenido!{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
 
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>

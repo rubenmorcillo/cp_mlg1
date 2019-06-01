@@ -2,14 +2,14 @@
 
 {% block body %}
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="{{ path('portada') }}"><i class="fas fa-key"></i> PrestaKeys</a>
+        <a class="navbar-brand" href="{{ path('portada') }}"> CyberTrap TCG</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Mostrar secciones">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ path('portada') }}"><i class="fas fa-home"></i> Portada <span class="sr-only">(actual)</span></a>
+                    <a class="nav-link" href="{{ path('portada') }}"><i class="fas fa-vihara"></i> Portada <span class="sr-only">(actual)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Sección 1</a>
@@ -21,6 +21,7 @@
         </div>
     </nav>
     <div class="container">
-        {% block content %}{% endblock %}
+        {% block content %}
+        {% endblock %}
     </div>
 {% endblock %}

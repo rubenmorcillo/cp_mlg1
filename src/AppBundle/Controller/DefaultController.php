@@ -15,12 +15,6 @@ class DefaultController extends Controller
         // plantilla de la portada
         return $this->render('default/index.html.twig');
     }
-    /**
-     * @Route("/main", name="principal")
-     */
-    public function mainAction(Request $request)
-    {
 
-        return $this->render('default/main.html.twig', []);
-    }
+
 }

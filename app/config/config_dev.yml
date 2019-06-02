@@ -37,5 +37,14 @@ monolog:
         #    type: chromephp
         #    level: info
 
+nelmio_alice:
+    locale: 'es_ES'  # Generar valores para español del España con Faker Generator
+    seed: 1          # Valor usado para asegurar que se generan los mismos resultados aleatorios
+     #poner a null para desactivar
+    loading_limit: 5 # Alice puede necesitar usar recursividad para obtener ciertos valores
+     #Este parámetro pone una cota máxima a la recursividad, parando si se alcanza
+    max_unique_values_retry: 150 # Número máximo de intentos para que Alice genere un valor único antes de parar y dar un mensaje de error
+
+
 #swiftmailer:
 #    delivery_addresses: ['me@example.com']

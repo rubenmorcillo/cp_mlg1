@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  * @ORM\Table(name="User")
+ * @ORM\Embedded
  */
 class User
 {
@@ -57,6 +58,12 @@ class User
      * @var int
      */
     private $credits;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Card")
+     * @var Card
+     */
+    private $cards;
 
     /**
      * @return \DateTime

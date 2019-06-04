@@ -3,13 +3,15 @@
 
 namespace AppBundle\Entity;
 
+
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="card")
- */
-class Card
+
+    /**
+     * @ORM\Entity
+     * @ORM\Table(name="card")
+     */
+    class Card
 {
     /**
      * @ORM\Id
@@ -19,101 +21,19 @@ class Card
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="string")
-     * @var String
-     */
-    private $name;
 
     /**
-     * @ORM\Column(type="integer")
-     * @var int
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TypeCard")
+     * @var TypeCard
      */
-    private $power;
+    private $typeCard;
 
     /**
-     * @ORM\Column(type="integer")
-     * @var int
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @var User
      */
-    private $damage;
+    private $owner;
 
-    /**
-     * @ORM\Column(type="string")
-     * @var String
-     */
-    private $image;
-
-    /**
-     * @return String
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param String $name
-     * @return Card
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getPower()
-    {
-        return $this->power;
-    }
-
-    /**
-     * @param int $power
-     * @return Card
-     */
-    public function setPower($power)
-    {
-        $this->power = $power;
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getDamage()
-    {
-        return $this->damage;
-    }
-
-    /**
-     * @param int $damage
-     * @return Card
-     */
-    public function setDamage($damage)
-    {
-        $this->damage = $damage;
-        return $this;
-    }
-
-    /**
-     * @return String
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * @param String $image
-     * @return Card
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-        return $this;
-    }
 
     /**
      * @return int
@@ -122,5 +42,42 @@ class Card
     {
         return $this->id;
     }
+
+    /**
+     * @return User
+     */
+    public function getOwner()
+    {
+        return $this->owner;
+    }
+
+    /**
+     * @param User $owner
+     * @return Card
+     */
+    public function setOwner($owner)
+    {
+        $this->owner = $owner;
+        return $this;
+    }
+
+    /**
+     * @return TypeCard
+     */
+    public function getTypeCard()
+    {
+        return $this->typeCard;
+    }
+
+    /**
+     * @param TypeCard $typeCard
+     * @return Card
+     */
+    public function setTypeCard($typeCard)
+    {
+        $this->typeCard = $typeCard;
+        return $this;
+    }
+
 
 }

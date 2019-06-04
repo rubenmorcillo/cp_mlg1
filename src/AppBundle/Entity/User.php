@@ -21,6 +21,13 @@ class User
      */
     private $id;
 
+
+    /**
+     * @ORM\Column(type="date")
+     * @var \DateTime
+     */
+    private $signDate;
+
     /**
      * @ORM\Column(type="string")
      * @var String
@@ -47,9 +54,28 @@ class User
 
     /**
      * @ORM\Column(type="integer")
-     * @var String
+     * @var int
      */
     private $credits;
+
+    /**
+     * @return \DateTime
+     */
+    public function getSignDate()
+    {
+        return $this->signDate;
+    }
+
+    /**
+     * @param \DateTime $signDate
+     * @return User
+     */
+    public function setSignDate($signDate)
+    {
+        $this->signDate = $signDate;
+        return $this;
+    }
+
 
     /**
      * @return String
@@ -124,7 +150,7 @@ class User
     }
 
     /**
-     * @return String
+     * @return int
      */
     public function getCredits()
     {
@@ -132,7 +158,7 @@ class User
     }
 
     /**
-     * @param String $credits
+     * @param int $credits
      * @return User
      */
     public function setCredits($credits)

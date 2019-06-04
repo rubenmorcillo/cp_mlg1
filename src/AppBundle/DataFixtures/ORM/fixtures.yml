@@ -1,0 +1,7 @@
+AppBundle\Entity\User:
+  admin:
+    login:  cyberadmin
+    nickname: 'Mr. Fixer'
+    admin: true
+
+

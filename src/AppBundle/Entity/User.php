@@ -36,7 +36,7 @@ class User
     private $login;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", unique="true")
      * @var String
      */
     private $nickname;

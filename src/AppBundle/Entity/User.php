@@ -54,6 +54,12 @@ class User
     private $esAdmin;
 
     /**
+     * @ORM\Column(type="string",nullable=true)
+     * @var String
+     */
+    private $image;
+
+    /**
      * @ORM\Column(type="integer")
      * @var int
      */
@@ -205,12 +211,6 @@ class User
         $this->image = $image;
         return $this;
     }
-
-    /**
-     * @ORM\Column(type="string")
-     * @var String
-     */
-    private $image;
 
     /**
      * @return int

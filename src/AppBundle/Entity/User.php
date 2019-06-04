@@ -5,7 +5,6 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
 
 /**
@@ -62,13 +61,20 @@ class User
     private $credits;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Card")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Card", mappedBy="cardOwner")
      * @var Card[]
      */
     private $cards;
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Deck", mappedBy="deckOwner")
+     * @var Deck[]
+     */
+    private $decks;
+
     public function __construct()
     {
+        $this->decks=new ArrayCollection();
         $this->cards=new ArrayCollection();
     }
 
@@ -231,8 +237,23 @@ class User
         return $this;
     }
 
+    /**
+     * @return Deck[]
+     */
+    public function getDecks()
+    {
+        return $this->decks;
+    }
 
-
+    /**
+     * @param Deck[] $decks
+     * @return User
+     */
+    public function setDecks($decks)
+    {
+        $this->decks = $decks;
+        return $this;
+    }
 
 
 }

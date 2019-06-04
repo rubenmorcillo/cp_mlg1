@@ -21,6 +21,7 @@ class TypeCard
      */
     private $name;
 
+
     /**
      * @ORM\Column(type="string")
      * @var string

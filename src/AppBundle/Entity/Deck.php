@@ -23,13 +23,14 @@ class Deck
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="decks")
+     * @ORM\JoinColumn(unique=true)
      * @var User
      */
     private $deckOwner;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Card")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Card", mappedBy="deckContained")
      * @var Card[]
      */
     private $cardsContained;

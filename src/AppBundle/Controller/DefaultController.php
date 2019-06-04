@@ -16,5 +16,14 @@ class DefaultController extends Controller
         return $this->render('default/index.html.twig');
     }
 
+    /**
+     * @Route("/try", name="miMain")
+     */
+    public function pruebaAction()
+    {
+        // plantilla de la portada
+        return $this->render('miMainPrueba.html.twig');
+    }
+
 
 }

@@ -1,7 +1,27 @@
 AppBundle\Entity\User:
   admin:
+    #signDate: '<dateTimeBetween("-3 months", "now")> '
+    signDate: '<dateTime()>'
     login:  cyberadmin
-    nickname: 'Mr. Fixer'
-    admin: true
+    nickname: Mr. Fixer
+    password: cyberadmin
+    esAdmin: true
+    credits: 99999
+
+  jugador_{1..4}:
+    #signDate: '<dateTimeBetween("-3 months", "now")> '
+    signDate: '<dateTime()>'
+    login: jugador
+    nickname (unique): '<es_ES:word()>'
+    password: jugador
+    esAdmin: false
+    credits: '<numberBetween(0,9999)>'
+
+
+
+AppBundle\Entity\Card:
+  carta_{1_20}:
+    typeCard: '<numberBetween(1,8)>'
+    cardOwner: '@jugador_<numberBetween(1,4)>'
 
 

@@ -36,7 +36,7 @@ class User
     private $login;
 
     /**
-     * @ORM\Column(type="string", unique="true")
+     * @ORM\Column(type="string", unique=true)
      * @var String
      */
     private $nickname;
@@ -61,12 +61,14 @@ class User
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Card", mappedBy="cardOwner")
+     * @ORM\JoinColumn(nullable=true)
      * @var Card[]
      */
     private $cards;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Deck", mappedBy="deckOwner")
+     * @ORM\JoinColumn(nullable=true)
      * @var Deck[]
      */
     private $decks;

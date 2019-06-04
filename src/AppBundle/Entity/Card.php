@@ -32,7 +32,7 @@ use Doctrine\ORM\Mapping as ORM;
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      * @var User
      */
-    private $owner;
+    private $cardOwner;
 
 
     /**
@@ -43,41 +43,46 @@ use Doctrine\ORM\Mapping as ORM;
         return $this->id;
     }
 
-    /**
-     * @return User
-     */
-    public function getOwner()
-    {
-        return $this->owner;
-    }
+        /**
+         * @return TypeCard
+         */
+        public function getTypeCard()
+        {
+            return $this->typeCard;
+        }
 
-    /**
-     * @param User $owner
-     * @return Card
-     */
-    public function setOwner($owner)
-    {
-        $this->owner = $owner;
-        return $this;
-    }
+        /**
+         * @param TypeCard $typeCard
+         * @return Card
+         */
+        public function setTypeCard($typeCard)
+        {
+            $this->typeCard = $typeCard;
+            return $this;
+        }
 
-    /**
-     * @return TypeCard
-     */
-    public function getTypeCard()
-    {
-        return $this->typeCard;
-    }
+        /**
+         * @return User
+         */
+        public function getCardOwner()
+        {
+            return $this->cardOwner;
+        }
 
-    /**
-     * @param TypeCard $typeCard
-     * @return Card
-     */
-    public function setTypeCard($typeCard)
-    {
-        $this->typeCard = $typeCard;
-        return $this;
-    }
+        /**
+         * @param User $cardOwner
+         * @return Card
+         */
+        public function setCardOwner($cardOwner)
+        {
+            $this->cardOwner = $cardOwner;
+            return $this;
+        }
+
+
+
+
+
 
 
 }

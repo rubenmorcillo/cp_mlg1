@@ -3,7 +3,9 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
 
 /**
@@ -61,9 +63,14 @@ class User
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Card")
-     * @var Card
+     * @var Card[]
      */
     private $cards;
+
+    public function __construct()
+    {
+        $this->cards=new ArrayCollection();
+    }
 
     /**
      * @return \DateTime
@@ -205,4 +212,27 @@ class User
     {
         return $this->id;
     }
+
+    /**
+     * @return Card[]
+     */
+    public function getCards()
+    {
+        return $this->cards;
+    }
+
+    /**
+     * @param Card[] $cards
+     * @return User
+     */
+    public function setCards($cards)
+    {
+        $this->cards = $cards;
+        return $this;
+    }
+
+
+
+
+
 }

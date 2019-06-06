@@ -36,13 +36,27 @@ class TypeCard
      * @ORM\Column(type="integer")
      * @var int
      */
-    private $power;
+    private $atq_a;
 
     /**
      * @ORM\Column(type="integer")
      * @var int
      */
-    private $damage;
+    private $atq_b;
+
+    /**
+     * @ORM\Column(type="integer")
+     * @var int
+     */
+    private $atq_c;
+
+    /**
+     * @ORM\Column(type="integer")
+     * @var int
+     */
+    private $atq_d;
+
+
 
     /**
      * @return int
@@ -91,38 +105,75 @@ class TypeCard
     /**
      * @return int
      */
-    public function getPower()
+    public function getAtqA()
     {
-        return $this->power;
+        return $this->atq_a;
     }
 
     /**
-     * @param int $power
+     * @param int $atq_a
      * @return TypeCard
      */
-    public function setPower($power)
+    public function setAtqA($atq_a)
     {
-        $this->power = $power;
+        $this->atq_a = $atq_a;
         return $this;
     }
 
     /**
      * @return int
      */
-    public function getDamage()
+    public function getAtqB()
     {
-        return $this->damage;
+        return $this->atq_b;
     }
 
     /**
-     * @param int $damage
+     * @param int $atq_b
      * @return TypeCard
      */
-    public function setDamage($damage)
+    public function setAtqB($atq_b)
     {
-        $this->damage = $damage;
+        $this->atq_b = $atq_b;
         return $this;
     }
+
+    /**
+     * @return int
+     */
+    public function getAtqC()
+    {
+        return $this->atq_c;
+    }
+
+    /**
+     * @param int $atq_c
+     * @return TypeCard
+     */
+    public function setAtqC($atq_c)
+    {
+        $this->atq_c = $atq_c;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAtqD()
+    {
+        return $this->atq_d;
+    }
+
+    /**
+     * @param int $atq_d
+     * @return TypeCard
+     */
+    public function setAtqD($atq_d)
+    {
+        $this->atq_d = $atq_d;
+        return $this;
+    }
+
 
 
 

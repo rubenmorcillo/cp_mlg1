@@ -28,14 +28,14 @@ class Battle
 
 
     /**
-     * @ORM\Column(type="string")
-     * @var String
+     * @ORM\Column(type="integer")
+     * @var int
      */
     private $damagePlayerOne;
 
     /**
-     * @ORM\Column(type="string")
-     * @var String
+     * @ORM\Column(type="integer")
+     * @var int
      */
     private $damagePlayerTwo;
 
@@ -48,7 +48,7 @@ class Battle
     }
 
     /**
-     * @return String
+     * @return int
      */
     public function getDamagePlayerOne()
     {
@@ -56,7 +56,7 @@ class Battle
     }
 
     /**
-     * @param String $damagePlayerOne
+     * @param int $damagePlayerOne
      * @return Battle
      */
     public function setDamagePlayerOne($damagePlayerOne)
@@ -66,7 +66,7 @@ class Battle
     }
 
     /**
-     * @return String
+     * @return int
      */
     public function getDamagePlayerTwo()
     {
@@ -74,7 +74,7 @@ class Battle
     }
 
     /**
-     * @param String $damagePlayerTwo
+     * @param int $damagePlayerTwo
      * @return Battle
      */
     public function setDamagePlayerTwo($damagePlayerTwo)
@@ -82,6 +82,7 @@ class Battle
         $this->damagePlayerTwo = $damagePlayerTwo;
         return $this;
     }
+
 
     /**
      * @return \DateTime

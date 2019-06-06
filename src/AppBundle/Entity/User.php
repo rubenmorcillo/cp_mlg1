@@ -66,6 +66,12 @@ class User
     private $credits;
 
     /**
+     * @ORM\Column(type="integer")
+     * @var int
+     */
+    private $reputation;
+
+    /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Card", mappedBy="cardOwner")
      * @ORM\JoinColumn(nullable=true)
      * @var Card[]
@@ -97,7 +103,7 @@ class User
      * @param \DateTime $signDate
      * @return User
      */
-    public function setSignDate($signDate)
+    public function setSignDate(\DateTime $signDate)
     {
         $this->signDate = $signDate;
         return $this;
@@ -229,7 +235,7 @@ class User
     }
 
     /**
-     * @param Card[] $cards
+     * @param Card[]|null $cards
      * @return User
      */
     public function setCards($cards)
@@ -247,13 +253,21 @@ class User
     }
 
     /**
-     * @param Deck[] $decks
+     * @param Deck[]|null $decks
      * @return User
      */
     public function setDecks($decks)
     {
         $this->decks = $decks;
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getReputation()
+    {
+        return $this->reputation;
     }
 
 

@@ -85,6 +85,20 @@ class User
      */
     private $decks;
 
+    /**
+     * @ORM\Column(type="integer")
+     * @var int
+     */
+    private $battlePlayed;
+
+    /**
+     * @ORM\Column(type="integer")
+     * @var int
+     */
+    private $battleWin;
+
+
+
     public function __construct()
     {
         $this->decks=new ArrayCollection();
@@ -278,6 +292,42 @@ class User
     public function getReputation()
     {
         return $this->reputation;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBattlePlayed()
+    {
+        return $this->battlePlayed;
+    }
+
+    /**
+     * @param int $battlePlayed
+     * @return User
+     */
+    public function setBattlePlayed($battlePlayed)
+    {
+        $this->battlePlayed = $battlePlayed;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBattleWin()
+    {
+        return $this->battleWin;
+    }
+
+    /**
+     * @param int $battleWin
+     * @return User
+     */
+    public function setBattleWin($battleWin)
+    {
+        $this->battleWin = $battleWin;
+        return $this;
     }
 
 

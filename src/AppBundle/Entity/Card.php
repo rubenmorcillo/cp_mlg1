@@ -35,12 +35,6 @@ use Doctrine\ORM\Mapping as ORM;
     private $cardOwner;
 
 
-     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Deck", inversedBy="cardsContained")
-     * @ORM\JoinColumn(nullable=true, unique=true)
-     * @var Deck
-     */
-    private $deckContained;
 
 
     /**
@@ -87,23 +81,7 @@ use Doctrine\ORM\Mapping as ORM;
         return $this;
     }
 
-    /**
-     * @return Deck
-     */
-    public function getDeckContained()
-    {
-        return $this->deckContained;
-    }
 
-    /**
-     * @param Deck $deckContained
-     * @return Card
-     */
-    public function setDeckContained($deckContained)
-    {
-        $this->deckContained = $deckContained;
-        return $this;
-    }
 
 
 }

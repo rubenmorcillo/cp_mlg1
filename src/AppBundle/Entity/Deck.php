@@ -30,7 +30,8 @@ class Deck
     private $deckOwner;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Card", mappedBy="deckContained")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Card")
+     * @ORM\JoinTable(name="cardsInDeck")
      * @var Card[]
      */
     private $cardsContained;

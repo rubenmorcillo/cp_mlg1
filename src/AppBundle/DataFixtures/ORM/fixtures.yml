@@ -8,6 +8,8 @@ AppBundle\Entity\User:
     esAdmin: true
     credits: 99999
     reputation: 99999
+    battlePlayed: 10
+    battleWin: 9
 
   jugador_{1..4}:
     #signDate: '<dateTimeBetween("-3 months", "now")> '
@@ -18,30 +20,34 @@ AppBundle\Entity\User:
     esAdmin: false
     credits: '<numberBetween(0,9999)>'
     reputation: 0
+    battlePlayed: 0
+    battleWin: 0
 
 
 
 AppBundle\Entity\Card:
-  carta_{1..40}:
+  personaje_{1..40}:
     typeCard: '<numberBetween(1,4)>'
     cardOwner: '@jugador_<numberBetween(1,4)>'
 
 
 AppBundle\Entity\Deck:
-  baraja_{1..4}:
+  equipo_{1..4}:
     deckName: '<es_ES:word()>'
     deckOwner: '@jugador_<current()>'
-    cardsContained: '2x @carta_*'
+    cardsContained: '2x @personaje_*'
 
 AppBundle\Entity\TypeCard:
-  tipoCarta_{1..4}:
-    name: 'nombreCarta_<current()>'
-    imageRoute: 'fotoCarta_<current()>.jpg'
-    power: '<numberBetween(1,8)>'
-    damage: '<numberBetween(1,5)>'
+  tipoPersonaje_{1..4}:
+    name: 'nombrePersonaje_<current()>'
+    imageRoute: 'fotoPj_<current()>.jpg'
+    atq_a: '<numberBetween(500,9900)>'
+    atq_b: '<numberBetween(500,9900)>'
+    atq_c: '<numberBetween(500,9900)>'
+    atq_d: '<numberBetween(500,9900)>'
 
 AppBundle\Entity\Battle:
   partida_{1..16}:
     battleDate: <dateTime('now', 'cet')>
-    damagePlayerOne: '<numberBetween(1,10)>'
-    damagePlayerTwo: '<numberBetween(1,10)>'
+    killedPlayerOne: '<numberBetween(1,4)>'
+    killedPlayerTwo: '<numberBetween(1,4)>'

@@ -32,5 +32,49 @@ class Battle
      */
     private $damagePlayerTwo;
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return String
+     */
+    public function getDamagePlayerOne()
+    {
+        return $this->damagePlayerOne;
+    }
+
+    /**
+     * @param String $damagePlayerOne
+     * @return Battle
+     */
+    public function setDamagePlayerOne($damagePlayerOne)
+    {
+        $this->damagePlayerOne = $damagePlayerOne;
+        return $this;
+    }
+
+    /**
+     * @return String
+     */
+    public function getDamagePlayerTwo()
+    {
+        return $this->damagePlayerTwo;
+    }
+
+    /**
+     * @param String $damagePlayerTwo
+     * @return Battle
+     */
+    public function setDamagePlayerTwo($damagePlayerTwo)
+    {
+        $this->damagePlayerTwo = $damagePlayerTwo;
+        return $this;
+    }
+
 
 }

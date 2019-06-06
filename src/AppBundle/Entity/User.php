@@ -263,6 +263,16 @@ class User
     }
 
     /**
+     * @param int $reputation
+     * @return User
+     */
+    public function setReputation($reputation)
+    {
+        $this->reputation = $reputation;
+        return $this;
+    }
+
+    /**
      * @return int
      */
     public function getReputation()

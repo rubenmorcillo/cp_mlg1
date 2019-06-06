@@ -21,6 +21,13 @@ class Battle
     private $id;
 
     /**
+     * @ORM\Column(type="date")
+     * @var \DateTime
+     */
+    private $battleDate;
+
+
+    /**
      * @ORM\Column(type="string")
      * @var String
      */
@@ -75,6 +82,25 @@ class Battle
         $this->damagePlayerTwo = $damagePlayerTwo;
         return $this;
     }
+
+    /**
+     * @return \DateTime
+     */
+    public function getBattleDate()
+    {
+        return $this->battleDate;
+    }
+
+    /**
+     * @param \DateTime $battleDate
+     * @return Battle
+     */
+    public function setBattleDate(\DateTime $battleDate)
+    {
+        $this->battleDate = $battleDate;
+        return $this;
+    }
+
 
 
 }

@@ -23,6 +23,12 @@ class Deck
     private $id;
 
     /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
+    private $deckName;
+
+    /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="decks")
      * @ORM\JoinColumn(unique=true)
      * @var User
@@ -84,6 +90,24 @@ class Deck
     public function setCardsContained($cardsContained)
     {
         $this->cardsContained = $cardsContained;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDeckName()
+    {
+        return $this->deckName;
+    }
+
+    /**
+     * @param string $deckName
+     * @return Deck
+     */
+    public function setDeckName($deckName)
+    {
+        $this->deckName = $deckName;
         return $this;
     }
 

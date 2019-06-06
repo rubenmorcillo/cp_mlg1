@@ -10,6 +10,7 @@ class UserController extends Controller
      */
     public function usuarioListarAction(UserRepository $usuarioRepository)
     {
+
         $todosUsuarios = $usuarioRepository->findAll();
         return $this->render('user/list.html.twig', [
             'users' => $todosUsuarios

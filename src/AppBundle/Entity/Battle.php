@@ -31,13 +31,13 @@ class Battle
      * @ORM\Column(type="integer")
      * @var int
      */
-    private $damagePlayerOne;
+    private $killedPlayerOne;
 
     /**
      * @ORM\Column(type="integer")
      * @var int
      */
-    private $damagePlayerTwo;
+    private $killedPlayerTwo;
 
     /**
      * @return int
@@ -45,42 +45,6 @@ class Battle
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @return int
-     */
-    public function getDamagePlayerOne()
-    {
-        return $this->damagePlayerOne;
-    }
-
-    /**
-     * @param int $damagePlayerOne
-     * @return Battle
-     */
-    public function setDamagePlayerOne($damagePlayerOne)
-    {
-        $this->damagePlayerOne = $damagePlayerOne;
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getDamagePlayerTwo()
-    {
-        return $this->damagePlayerTwo;
-    }
-
-    /**
-     * @param int $damagePlayerTwo
-     * @return Battle
-     */
-    public function setDamagePlayerTwo($damagePlayerTwo)
-    {
-        $this->damagePlayerTwo = $damagePlayerTwo;
-        return $this;
     }
 
 
@@ -99,6 +63,42 @@ class Battle
     public function setBattleDate(\DateTime $battleDate)
     {
         $this->battleDate = $battleDate;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getKilledPlayerOne()
+    {
+        return $this->killedPlayerOne;
+    }
+
+    /**
+     * @param int $killedPlayerOne
+     * @return Battle
+     */
+    public function setKilledPlayerOne($killedPlayerOne)
+    {
+        $this->killedPlayerOne = $killedPlayerOne;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getKilledPlayerTwo()
+    {
+        return $this->killedPlayerTwo;
+    }
+
+    /**
+     * @param int $killedPlayerTwo
+     * @return Battle
+     */
+    public function setKilledPlayerTwo($killedPlayerTwo)
+    {
+        $this->killedPlayerTwo = $killedPlayerTwo;
         return $this;
     }
 

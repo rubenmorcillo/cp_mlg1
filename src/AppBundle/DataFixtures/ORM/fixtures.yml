@@ -46,7 +46,7 @@ AppBundle\Entity\TypeCard:
     atq_d: 88000
 
   tipoPersonaje_2:
-    name: akara shier
+    name: akara
     atq_a: 48000
     atq_b: 2
     atq_c: 4000
@@ -124,7 +124,7 @@ AppBundle\Entity\TypeCard:
     atq_d: 76000
 
   tipoPersonaje_13:
-    name: katya-732
+    name: katya
     atq_a: 16000
     atq_b: 18
     atq_c: 36000
@@ -138,14 +138,14 @@ AppBundle\Entity\TypeCard:
     atq_d: 52000
 
   tipoPersonaje_15:
-    name: micro murphy
+    name: murphy
     atq_a: 32000
     atq_b: 10
     atq_c: 20000
     atq_d: 64000
 
   tipoPersonaje_16:
-    name: neko-20
+    name: neko
     atq_a: 22000
     atq_b: 15
     atq_c: 30000
@@ -187,7 +187,7 @@ AppBundle\Entity\TypeCard:
     atq_d: 28000
 
   tipoPersonaje_22:
-    name: viktor-1
+    name: viktor
     atq_a: 12000
     atq_b: 20
     atq_c: 40000

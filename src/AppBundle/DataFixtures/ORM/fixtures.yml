@@ -200,7 +200,7 @@ AppBundle\Entity\TypeCard:
     atq_c: 44000
     atq_d: 16000
 
- tipoPersonaje_1:
+ tipoPersonaje_24:
     name: yukon
     atq_a: 50000
     atq_b: 22

@@ -45,21 +45,21 @@ AppBundle\Entity\TypeCard:
     atq_c: 8000
     atq_d: 88000
 
- tipoPersonaje_2:
+  tipoPersonaje_2:
     name: akara shier
     atq_a: 48000
     atq_b: 2
     atq_c: 4000
     atq_d: 96000
 
- tipoPersonaje_3:
+  tipoPersonaje_3:
     name: basic b
     atq_a: 42000
     atq_b: 5
     atq_c: 10000
     atq_d: 84000
 
- tipoPersonaje_4:
+  tipoPersonaje_4:
     name: cobra
     atq_a: 10000
     atq_b: 21
@@ -67,147 +67,147 @@ AppBundle\Entity\TypeCard:
     atq_d: 20000
 
 
- tipoPersonaje_5:
+  tipoPersonaje_5:
     name: dakotae
     atq_a: 30000
     atq_b: 11
     atq_c: 22000
     atq_d: 60000
 
- tipoPersonaje_6:
+  tipoPersonaje_6:
     name: exterminator
     atq_a: 40000
     atq_b: 6
     atq_c: 12000
     atq_d: 80000
 
- tipoPersonaje_7:
+  tipoPersonaje_7:
     name: falcon
     atq_a: 28000
     atq_b: 12
     atq_c: 24000
     atq_d: 56000
 
- tipoPersonaje_8:
+  tipoPersonaje_8:
     name: galaxy
     atq_a: 4000
     atq_b: 24
     atq_c: 48000
     atq_d: 8000
 
- tipoPersonaje_9:
+  tipoPersonaje_9:
     name: hybrid
     atq_a: 34000
     atq_b: 9
     atq_c: 18000
     atq_d: 68000
 
- tipoPersonaje_10:
+  tipoPersonaje_10:
     name: inferno
     atq_a: 20000
     atq_b: 16
     atq_c: 32000
     atq_d: 40000
 
- tipoPersonaje_11:
+  tipoPersonaje_11:
     name: jericho
     atq_a: 24000
     atq_b: 14
     atq_c: 28000
     atq_d: 48000
 
- tipoPersonaje_12:
+  tipoPersonaje_12:
     name: justice
     atq_a: 38000
     atq_b: 7
     atq_c: 14000
     atq_d: 76000
 
- tipoPersonaje_13:
+  tipoPersonaje_13:
     name: katya-732
     atq_a: 16000
     atq_b: 18
     atq_c: 36000
     atq_d: 32000
 
- tipoPersonaje_14:
+  tipoPersonaje_14:
     name: l2m
     atq_a: 26000
     atq_b: 13
     atq_c: 26000
     atq_d: 52000
 
- tipoPersonaje_15:
+  tipoPersonaje_15:
     name: micro murphy
     atq_a: 32000
     atq_b: 10
     atq_c: 20000
     atq_d: 64000
 
- tipoPersonaje_16:
+  tipoPersonaje_16:
     name: neko-20
     atq_a: 22000
     atq_b: 15
     atq_c: 30000
     atq_d: 44000
 
- tipoPersonaje_17:
+  tipoPersonaje_17:
     name: omega
     atq_a: 2000
     atq_b: 25
     atq_c: 50000
     atq_d: 4000
 
- tipoPersonaje_18:
+  tipoPersonaje_18:
     name: outsider
     atq_a: 36000
     atq_b: 8
     atq_c: 16000
     atq_d: 72000
 
- tipoPersonaje_19:
+  tipoPersonaje_19:
     name: rasek
     atq_a: 6000
     atq_b: 23
     atq_c: 46000
     atq_d: 12000
 
- tipoPersonaje_20:
+  tipoPersonaje_20:
     name: sarka
     atq_a: 18000
     atq_b: 17
     atq_c: 34000
     atq_d: 36000
 
- tipoPersonaje_21:
+  tipoPersonaje_21:
     name: thor
     atq_a: 14000
     atq_b: 19
     atq_c: 38000
     atq_d: 28000
 
- tipoPersonaje_22:
+  tipoPersonaje_22:
     name: viktor-1
     atq_a: 12000
     atq_b: 20
     atq_c: 40000
     atq_d: 24000
 
- tipoPersonaje_23:
+  tipoPersonaje_23:
     name: willow
     atq_a: 8000
     atq_b: 22
     atq_c: 44000
     atq_d: 16000
 
- tipoPersonaje_24:
+  tipoPersonaje_24:
     name: yukon
     atq_a: 50000
     atq_b: 22
     atq_c: 44000
     atq_d: 16000
 
- tipoPersonaje_25:
+  tipoPersonaje_25:
     name: zeus
     atq_a: 46000
     atq_b: 3

@@ -96,7 +96,7 @@ class TypeCard
      * @param string $imageRoute
      * @return TypeCard
      */
-    public function setImageRoute($imageRoute)
+    public function setImageRoute($imageRoute = null)
     {
         $this->imageRoute = $imageRoute;
         return $this;

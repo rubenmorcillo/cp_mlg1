@@ -1,0 +1,29 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Personajes</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th class="letra_listas_cabecera">Id.</th>
+            <th class="letra_listas_cabecera">Nombre</th>
+            <th class="letra_listas_cabecera">Ataque</th>
+            <th class="letra_listas_cabecera">Inteligencia</th>
+            <th class="letra_listas_cabecera">Armadura</th>
+            <th class="letra_listas_cabecera">Velocidad</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for card in cards %}
+            <tr>
+                <td class="letra_listas">{{ card.id }}</td>
+                <td class="letra_listas">{{ card.name }}</td>
+                <td class="letra_listas">{{ card.atqA }}</td>
+                <td class="letra_listas">{{ card.atqB }}</td>
+                <td class="letra_listas">{{ card.atqC }}</td>
+                <td class="letra_listas">{{ card.atqD }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

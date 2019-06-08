@@ -4,26 +4,18 @@ security:
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
-        manual:
-            memory:
-                users:
-                    usuario:
-                        password: principal
-                        roles: 'ROLE_PLAYER'
-                    editor:
-                        password: editor
-                        roles: 'ROLE_EDITOR'
-                    superAdmin:
-                        password: superAdmin
-                        roles: 'ROLE_SUPER'
+        base_de_datos:
+          entity:
+            class: AppBundle\Entity\Usuario
+            property: login
 
 
 
-    encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
+   encoders:
+     AppBundle\Entity\Usuario:
 
     role_hierarchy:
-        ROLE_SUPER: ['ROLE_PLAYER', 'ROLE_EDITOR']
+        ROLE_ADMIN: ['ROLE_PLAYER', 'ROLE_EDITOR']
         ROLE_EDITOR: ['ROLE_GESTOR_USUARIOS', 'ROLE_GESTOR_CARTAS']
         ROLE_PLAYER: 'ROLE_USER'
         ROLE_GESTOR_USUARIOS: 'ROLE_USER'

@@ -1,0 +1,32 @@
+{% extends './layout.html.twig' %}
+
+{% block content %}
+    <div id="marcoTrabajo">
+    <h1>Personajes</h1>
+
+    {% for card in cards %}
+
+        <div class="carta" id={{ card.id }}>
+            <img src="{{ asset('recursos/cardsImages/adonis.jpg') }}" class="carta_imagen">
+            <ul class="carta_ul_at">
+                <li class="carta_li_at">
+                    <p><i class="fas fa-atom"></i>X</p>
+                </li>
+                <li class="carta_li_at">
+                    <p><i class="fas fa-atom"></i>X</p>
+                </li>
+                <li class="carta_li_at">
+                    <p><i class="fas fa-atom"></i>X</p>
+                </li>
+                <li class="carta_li_at">
+                    <p><i class="fas fa-atom"></i>X</p>
+                </li>
+            </ul>
+        </div>
+
+
+
+    {% endfor %}
+    </div>
+
+{% endblock %}

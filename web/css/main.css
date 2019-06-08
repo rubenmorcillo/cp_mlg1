@@ -46,7 +46,7 @@ color:#17a2b8;
 
 /*FIN CLASES ESPECÍFICAS*/
 
-body { background: url(https://image.ibb.co/bG1hBS/image.png); background-color: #000000; background-attachment: fixed; padding: 0; margin: 0; }
+body { background:url(https://image.ibb.co/bG1hBS/image.png); background-color: #000000; background-attachment: fixed; padding: 0; margin: 0; }
 
 ::-webkit-scrollbar { width: 7px; }
 ::-webkit-scrollbar-track { background: black; }
@@ -76,7 +76,7 @@ a { color: #49576d; transition: all ease 0.5s; -moz-transition: all ease 0.5s; }
 
 
 /*ESTOS DOS ENVOLTORIOS LOS NECESITO PARA DARLE ESTRUCTURA AL ASUNTO, en realidad solo el segundo pero x si las moscas*/
-#wrapper {display: block; height: 100%;  margin: 0px auto; width: 1200px;background: rgba(9,9,10,0.5); }
+#wrapper {display: block; height: 100%;  margin: 0px auto; width: 100%; background:rgba(3,16,35,0.1); }
 #innerwrapper {width: 1000px; height: 100%; position: relative; /*left: 100px;*/  padding: 35px 100px; }
 
 /*PANEL DEL USUARIO*/

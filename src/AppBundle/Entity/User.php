@@ -128,7 +128,7 @@ class User implements UserInterface
     /**
      * @return String
      */
-    public function getUsername()
+    public function getLogin()
     {
         return $this->login;
     }
@@ -352,4 +352,10 @@ class User implements UserInterface
     {
         // TODO: Implement eraseCredentials() method.
     }
+
+    public function getUsername()
+    {
+        return $this->login;
+    }
+
 }

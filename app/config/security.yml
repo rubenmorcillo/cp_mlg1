@@ -6,11 +6,11 @@ security:
     providers:
         base_de_datos:
           entity:
-            class: AppBundle\Entity\Usuario
+            class: AppBundle\Entity\User
             property: login
 
     encoders:
-        AppBundle\Entity\Usuario: plaintext
+        AppBundle\Entity\User: plaintext
 
     role_hierarchy:
         ROLE_ADMIN: ['ROLE_PLAYER', 'ROLE_EDITOR']
@@ -35,4 +35,8 @@ security:
 
             # https://symfony.com/doc/current/security/form_login_setup.html
             form_login:
-                login_path:
+                login_path: usuario_entrar
+                check_path: usuario_entrar
+
+            logout:
+                path: usuario_salir

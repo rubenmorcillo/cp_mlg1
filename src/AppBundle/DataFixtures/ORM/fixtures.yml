@@ -11,7 +11,19 @@ AppBundle\Entity\User:
     battlePlayed: 10
     battleWin: 9
 
-  jugador_{1..4}:
+  jugador_test:
+    #signDate: '<dateTimeBetween("-3 months", "now")> '
+    signDate: '<dateTime()>'
+    login: test
+    nickname (unique): '<es_ES:firstName()>'
+    password: test
+    esAdmin: false
+    credits: '<numberBetween(0,9999)>'
+    reputation: 0
+    battlePlayed: 0
+    battleWin: 0
+
+  jugador_{1..10}:
     #signDate: '<dateTimeBetween("-3 months", "now")> '
     signDate: '<dateTime()>'
     login: jugador

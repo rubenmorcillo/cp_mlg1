@@ -4,8 +4,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\TypeCard;
 use AppBundle\Form\Type\TypeCardType;
 use AppBundle\Repository\TypeCardRepository;
-
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,6 +24,7 @@ class TypeCardController extends Controller
     }
     /**
      * @Route("/card/{id}", name="card_edit", requirements={"id":"\d+"})
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function formTypeCardAction(Request $request, TypeCard $typeCard){
         $form = $this->createForm(TypeCardType::class, $typeCard);

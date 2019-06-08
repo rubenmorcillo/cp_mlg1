@@ -17,7 +17,7 @@
         {% for card in cards %}
             <tr>
                 <td class="letra_listas">{{ card.id }}</td>
-                <td class="letra_listas">{{ card.name }}</td>
+                <td class="letra_listas"><a href="{{ path('card_edit', {'id':card.id}) }}">{{ card.name }}</a></td>
                 <td class="letra_listas">{{ card.atqA }}</td>
                 <td class="letra_listas">{{ card.atqB }}</td>
                 <td class="letra_listas">{{ card.atqC }}</td>

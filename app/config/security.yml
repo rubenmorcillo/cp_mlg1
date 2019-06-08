@@ -4,8 +4,30 @@ security:
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
-        in_memory:
-            memory: ~
+        manual:
+            memory:
+                users:
+                    usuario:
+                        password: principal
+                        roles: 'ROLE_PLAYER'
+                    editor:
+                        password: editor
+                        roles: 'ROLE_EDITOR'
+                    superAdmin:
+                        password: superAdmin
+                        roles: 'ROLE_SUPER'
+
+
+
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+
+    role_hierarchy:
+        ROLE_SUPER: ['ROLE_PLAYER', 'ROLE_EDITOR']
+        ROLE_EDITOR: ['ROLE_GESTOR_USUARIOS', 'ROLE_GESTOR_CARTAS']
+        ROLE_PLAYER: 'ROLE_USER'
+        ROLE_GESTOR_USUARIOS: 'ROLE_USER'
+        ROLE_GESTOR_CARTAS: 'ROLE_USER'
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -15,11 +37,11 @@ security:
 
         main:
             logout_on_user_change: true
-            anonymous: ~
+            #anonymous: ~
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-            #http_basic: ~
+            http_basic: ~
 
             # https://symfony.com/doc/current/security/form_login_setup.html
             #form_login: ~

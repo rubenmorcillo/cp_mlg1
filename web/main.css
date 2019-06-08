@@ -76,7 +76,7 @@ a { color: #49576d; transition: all ease 0.5s; -moz-transition: all ease 0.5s; }
 
 
 /*ESTOS DOS ENVOLTORIOS LOS NECESITO PARA DARLE ESTRUCTURA AL ASUNTO, en realidad solo el segundo pero x si las moscas*/
-#wrapper {display: block; height: 100%;  margin: 0px auto; width: 1200px; text-align: middle; background: rgba(9,9,10,0.5); }
+#wrapper {display: block; height: 100%;  margin: 0px auto; width: 1200px;background: rgba(9,9,10,0.5); }
 #innerwrapper {width: 1000px; height: 100%; position: relative; /*left: 100px;*/  padding: 35px 100px; }
 
 /*PANEL DEL USUARIO*/
@@ -171,7 +171,7 @@ a { color: #49576d; transition: all ease 0.5s; -moz-transition: all ease 0.5s; }
 
 
     #cont_updates { border: 20px solid #0d0f15; background: #0d0f15; height: 40px; overflow: hidden; }
-      #cont_updates_inner { font-family: "Roboto Mono"; font-size: 7pt; color: #bbb; height: 40px; text-align: justify;
+      #cont_updates_inner { font-family: "Roboto Mono"; font-size: 7pt; color: #bbb; height: 40px; text-align: justify;}
       #cont_updates_inner ul li b { color: #586c8e; }
       #cont_updates_inner ul li { border-bottom: 10px solid #111419; }
 

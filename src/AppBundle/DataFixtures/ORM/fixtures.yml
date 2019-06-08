@@ -53,8 +53,8 @@ AppBundle\Entity\TypeCard:
     atq_d: 96
 
   tipoPersonaje_3:
-    name: basic b
-    atq_a: 42000
+    name: basic
+    atq_a: 42
     atq_b: 5
     atq_c: 10
     atq_d: 84

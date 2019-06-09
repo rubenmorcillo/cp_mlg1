@@ -58,11 +58,11 @@ a { color: #49576d; transition: all ease 0.5s; -moz-transition: all ease 0.5s; }
 
 
 /*ESTOS DOS ENVOLTORIOS LOS NECESITO PARA DARLE ESTRUCTURA AL ASUNTO, en realidad solo el segundo pero x si las moscas*/
-#wrapper {display: block; height: 100%;  margin: 0px auto; width: 1000px; background:rgba(3,16,35,0.1); }
+#wrapper {display: block; height: 100%;  margin: 0px -1%; width: 1000px;background: #4f6a7d; /*background:rgba(3,16,35,0.1*/); }
 #innerwrapper {width: 1000px; height: 100%; position: relative; /*left: 100px;*/  padding: 35px 100px; }
 
 /*PANEL DEL USUARIO*/
-  #control { position: fixed;  width: 160px; height: 100%; background: rgba(19, 31, 40,0); padding: 20px; z-index: 90; }
+  #control { position: fixed;  width: 160px; min-height:600px; background: rgba(19, 31, 40,1); padding: 1em; z-index: 90; }
     /*panel intenior del usuario*/
     .control_inner { position: relative; top: 10%/*calc(50% - 150px)*/; font-family: "Roboto Mono"; color: #f3f3f3; font-size: 8pt }
     /*.control_inner .control-staff, .control-4 .control-logged { display: none; }*/

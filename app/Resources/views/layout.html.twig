@@ -9,24 +9,30 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             {% set ruta = app.request.get('_route') %}
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item{% if ruta == "portada" %} active{% endif %}">
-                    <a class="nav-link" href="{{ path('portada') }}"><i class="fas fa-vihara"></i> Portada <span class="sr-only">(actual)</span></a>
+
+                {% if is_granted('ROLE_PLAYER') %}
+                <li class="nav-item {% if ruta starts with "" %} active{% endif %}">
+                    <a class="nav-link" href="{{ path('coleccion', {'id':app.user.id}) }}"><i class="fas -solar-panel fa-solar-panel"></i>Colección</a>
                 </li>
+                {% endif %}
                 <li class="nav-item{% if ruta starts with "user_" %} active{% endif %}">
                     <a class="nav-link" href="{{ path('user_list') }}"><i class="fas -jedi fa-jedi"></i>CyberLords</a>
                 </li>
-                <li class="nav-item {% if ruta starts with "card_" %} active{% endif %}">
-                    <a class="nav-link" href="{{ path('card_list') }}"><i class="fas -solar-panel fa-solar-panel"></i>Cartas</a>
+                <li class="nav-item{% if ruta == "portada" %} active{% endif %}">
+                    <a class="nav-link" href="{{ path('portada') }}"><i class="fas fa-vihara"></i> Historia <span class="sr-only">(actual)</span></a>
                 </li>
+
+
+
                 {% if is_granted('ROLE_PLAYER') %}
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="fas fa-coins"></i>Mercado</a>
                 </li>
-                    {% if is_granted('ROLE_ADMIN') %}
+                    {% else %}
                         <li class="nav-item {% if ruta starts with "card_" %} active{% endif %}">
-                            <a class="nav-link" href="{{ path('card_list') }}">Cartas</a>
+                            <a class="nav-link" href="{{ path('card_list') }}"><i class="fas -solar-panel fa-solar-panel"></i>Cartas</a>
                         </li>
-                    {% endif %}
+
                 {% endif %}
 
             </ul>

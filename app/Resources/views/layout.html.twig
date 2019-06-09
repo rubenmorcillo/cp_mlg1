@@ -31,8 +31,8 @@
 
             </ul>
             {% if app.user %}
-            <span class="navbar-light">!Hola, {{ app.user.nickname }}!  </span>
-                <a href="#" class="btn btn-outline-primary"><i class="fas fa-times"></i>EXIT</a>
+            <span class="navbar-light">!Hola,<a href="{{ path('usuario_perfil') }}">{{ app.user.nickname }}</a>! </span>
+                <a href="{{ path('usuario_salir') }}" class="ml-3 btn btn-outline-primary"><i class="fas fa-times"></i> EXIT</a>
 
             {% else %}
                 <a href="{{ path('usuario_entrar') }}" class="btn btn-outline-primary"><i class="fas fa-sign-in-alt"></i> ENTRAR</a>

@@ -22,8 +22,12 @@ class SeguridadController extends Controller
             'ultimo_usuario' => $ultimoUsuario
         ]);
     }
-
+    /**
+     * @Route("/salir", name="usuario_salir")
+     */
     public function salirAction(){
 
     }
+
+
 }

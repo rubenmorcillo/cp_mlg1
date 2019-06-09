@@ -26,7 +26,7 @@ AppBundle\Entity\User:
   jugador_{1..10}:
     #signDate: '<dateTimeBetween("-3 months", "now")> '
     signDate: '<dateTime()>'
-    login: jugador
+    login (unique): '<es_ES:firstName()>'
     nickname (unique): '<es_ES:firstName()>'
     password: jugador
     esAdmin: false

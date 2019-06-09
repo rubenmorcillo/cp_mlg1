@@ -31,7 +31,7 @@ class User implements UserInterface
     private $signDate;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", unique=true)
      * @var String
      */
     private $login;

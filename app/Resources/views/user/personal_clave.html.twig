@@ -1,0 +1,12 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+   <h1>Cambiar Contraseña</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <a href="{{ path('usuario_perfil') }}" class="btn btn-info"><i class="fas fa-arrow-circle-o-left"></i>Volver</a>
+    <button type="submit" class="btn btn-outline-primary"><i class="fas fa-check"></i>Cambiar contraseña</button>
+    {{ form_end(form) }}
+
+{% endblock %}

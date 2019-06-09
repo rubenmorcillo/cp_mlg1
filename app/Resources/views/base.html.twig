@@ -16,18 +16,21 @@
 
 
 
+
     {% block stylesheets %}{% endblock %}
 
     <title>{% block title %}CyberTrap TCG{% endblock %}</title>
 
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
-<body style="background: rgba(3,16,35,0.1)">
+<body style="background: #0d0f15">
 {% block body %}{% endblock %}
 <!-- Bootstrap JS y sus dependencias (jQuery y popper.js) -->
 <script src="{{ asset('jquery/jquery-3.3.1.min.js') }}"></script>
 <script src="{{ asset('popper/popper.min.js') }}"></script>
 <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+
+
 {% block javascripts %}{% endblock %}
 
 

@@ -3,35 +3,17 @@
   box-sizing: content-box !important;
   font-family: "Roboto Mono";
 }
-#marcoTrabajo{
-  background: #0d0f15;
-}
-.carta{
-  padding:0.5em;
-  height: 16em;
-  width: 12em;
-  border: 0.5em solid black;
-  display:inline-block;
-}
-.carta:hover{
-  border: 0.5em outset #2ec62a;;
-}
-.carta_imagen{
-  background:black;
-  display:inline-block;
-  height: 80%;
-  width:100%;
 
-}
-.carta_ul_at{
-  display:flex;
-}
-.carta_li_at{
-  font-size: small;
-  width: 25%;
-  background: #1b1e21;
-  color: #2ec62a;
-}
+#cont_general { display: table-cell;background: rgba(255,255,255,0); padding: 30px; width: 260px; }
+
+
+
+.carta-cont { display: flex; text-align: center;  }
+.carta-ic-marco { width: 80px; height: 80px; padding: 10px; border: 2px solid #bbb; }
+.carta-icon {background: #bbb; width: 100%; height: 100%; background-size: 160px 160px; }
+.carta-ic-cover {  height: 100%; background: rgba(122,143,140,0.8); transition: all ease 1s; -moz-transition: all ease 1s;}
+.carta-ic-cover:hover { background: rgba(22,43,79,0.1); }
+
 
 .letra_listas{
 color:#17a2b8;
@@ -76,7 +58,7 @@ a { color: #49576d; transition: all ease 0.5s; -moz-transition: all ease 0.5s; }
 
 
 /*ESTOS DOS ENVOLTORIOS LOS NECESITO PARA DARLE ESTRUCTURA AL ASUNTO, en realidad solo el segundo pero x si las moscas*/
-#wrapper {display: block; height: 100%;  margin: 0px auto; width: 100%; background:rgba(3,16,35,0.1); }
+#wrapper {display: block; height: 100%;  margin: 0px auto; width: 1000px; background:rgba(3,16,35,0.1); }
 #innerwrapper {width: 1000px; height: 100%; position: relative; /*left: 100px;*/  padding: 35px 100px; }
 
 /*PANEL DEL USUARIO*/
@@ -88,11 +70,13 @@ a { color: #49576d; transition: all ease 0.5s; -moz-transition: all ease 0.5s; }
       /*TRANSPARENCIAAA*/
       /*ESTO ES LO Q VA A HACER TRANSPARENTE>>>>*/
       .control-ic-frame { width: 60px; height: 60px; padding: 5px; border: 2px solid #bbb; }
-       .control-icon { background: #bbb; width: 60px; height: 60px; background: url(https://image.ibb.co/hXGZQn/x7lNN.png); background-size: 60px 60px; }
+       .control-icon { background: #bbb; width: 60px; height: 60px;/* background: url(https://image.ibb.co/hXGZQn/x7lNN.png);*/ background-size: 60px 60px; }
          .control-ic-cover { width: 60px; height: 60px; background: rgba(22,43,79,0.5); transition: all ease 1s; -moz-transition: all ease 1s;}
            .control-ic-cover:hover { background: rgba(22,43,79,0.05); }
 
-      /*Nombre del usuario*/
+
+
+/*Nombre del usuario*/
       #control h1 { font-family: "Roboto Mono"; color: #f3f3f3; margin: 0; padding: 0; text-transform: uppercase; border: 2px solid #bbb; font-weight: 400; font-size: 11pt; margin: 8px 0px; padding: 3px 10px 3px 20px; }
 
       /*menú del usuario*/
@@ -158,10 +142,13 @@ a { color: #49576d; transition: all ease 0.5s; -moz-transition: all ease 0.5s; }
   #automata { display: table-cell; vertical-align: middle; background: rgba(255,255,255,0); padding: 30px; width: 260px; }
 
     .staff { display: block; text-align: center; }
-    .staff-ic-frame { border: 2px solid #242935; padding: 4px; width: 45px; height: 45px; display: inline-block; margin-right: 5px; }
+    .staff-ic-frame { border: 2px solid #242935; padding: 4px; width: 45px; height: 45px; display: inline-block; margin-right: 5px;
+      background: rgba(22,43,79,0.5); transition: all ease 1s;
+    }
     .staff-ic-frame:last-child { margin-right: 0px; }
     .staff-icon { font-family: "a-otf-midashi-mi-ma31-pr6n"; width: 45px; height: 45px; background: #0d0f15; background-size: 45px 45px; color: #fff; font-size: 15pt; line-height: 45px; text-shadow: 0px 0px 7px black; transition: all ease 0.5s; -moz-transition: all ease 0.3s; font-weight: bold; }
-    .staff-icon:hover { text-shadow: 0px 0px 0px transparent; color: rgba(255,255,255,0); opacity: 0.35; -moz-opacity: 0.35; }
+    .staff-icon:hover{background: rgba(22,43,79,0.05);}
+    /* .staff-icon:hover { text-shadow: 0px 0px 0px transparent; color: rgba(255,255,255,0); opacity: 0.35; -moz-opacity: 0.35; } */
 
     .ratio { width: 260px; margin: 20px 0px; transition: all ease 1s; -moz-transition: all ease 1s; }
     .ratio h1 { font-family: "Roboto Mono"; color: #f3f3f3; margin: 0; padding: 0; text-transform: lowercase; border: 2px solid #bbb; font-weight: 400; font-size: 11pt; margin: 8px 0px; padding: 3px 20px; width: 70px; text-align: center; }

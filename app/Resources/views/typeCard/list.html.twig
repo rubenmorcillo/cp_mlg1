@@ -1,31 +1,49 @@
 {% extends './layout.html.twig' %}
 
 {% block content %}
-
-
-
-
-
     <div id="cont_general">
+    <div class="row primera_fila">
+    {% set raiz =  'recursos/cardsImages/' %}
 
-        <div class="carta-cont">
-            {% for card in cards %}
-                <div class="carta-ic-marco">
-                    <div class="carta-icon"  style="background:url({{ asset('recursos/cardsImages/adonis.jpg') }}">
-                        <div class="carta-ic-cover"></div>
-                    </div>
+
+    {%  for card in cards %}
+        {% if loop.index == 6 or loop.index == 11 or loop.index == 16 or loop.index == 21%}
+        </div>
+        <div class="row {{ loop.index}}">
+            {% endif %}
+            <div class="carta-ic-marco col-sm-2">
+                <div class="carta-icon " style="background:url({{ asset(raiz~ card.imageRoute~'.jpg') }});background-repeat: no-repeat; background-size:200%; background-position-y: -2.5em;background-position-x:-3em;">
+                    <div class="carta-ic-cover"></div>
                 </div>
+            </div>
+    {% endfor %}
 
 
-            {% endfor %}
+{#    <div id="cont_general">#}
+
+{#        <div class="carta-cont">#}
+{#            {% set i = 1 %}#}
+
+{#            {% for card in cards %}#}
+{#                {% set col= "col-"~i %}#}
+
+{#                <div class="carta-ic-marco col-sm-1">#}
+{#                    <div class="carta-icon " style="background:url({{ asset('recursos/cardsImages/adonis.jpg') }}">#}
+{#                        <div class="carta-ic-cover"></div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                {% if i < 25 %}#}
+{#                    {% set i=i+1 %}#}
+{#                {% else %}#}
+{#                    {% set i = 1 %}#}
+{#                {% endif %}#}
+
+
+{#            {% endfor %}#}
+
+{#        </div>#}
+{#    </div>#}
 
         </div>
-    </div>
-
-
-
-
-
-
 
 {% endblock %}

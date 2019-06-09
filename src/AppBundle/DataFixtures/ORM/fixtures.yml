@@ -15,7 +15,7 @@ AppBundle\Entity\User:
     #signDate: '<dateTimeBetween("-3 months", "now")> '
     signDate: '<dateTime()>'
     login: test
-    nickname (unique): '<es_ES:firstName()>'
+    nickname (unique): tester
     password: test
     esAdmin: false
     credits: '<numberBetween(0,9999)>'
@@ -26,7 +26,7 @@ AppBundle\Entity\User:
   jugador_{1..10}:
     #signDate: '<dateTimeBetween("-3 months", "now")> '
     signDate: '<dateTime()>'
-    login: jugador
+    login: '<es_ES:lastName()>'
     nickname (unique): '<es_ES:firstName()>'
     password: jugador
     esAdmin: false
@@ -51,14 +51,16 @@ AppBundle\Entity\Deck:
 
 AppBundle\Entity\TypeCard:
   tipoPersonaje_1:
-    name: adonis
+    name: Adonis
+    imageRoute: adonis
     atq_a: 44
     atq_b: 4
     atq_c: 8
     atq_d: 88
 
   tipoPersonaje_2:
-    name: akara
+    name: Akara
+    imageRoute: akara
     atq_a: 48
     atq_b: 2
     atq_c: 4
@@ -66,13 +68,15 @@ AppBundle\Entity\TypeCard:
 
   tipoPersonaje_3:
     name: basic
+    imageRoute: akara
     atq_a: 42
     atq_b: 5
     atq_c: 10
     atq_d: 84
 
   tipoPersonaje_4:
-    name: cobra
+    name: Cobra
+    imageRoute: cobra
     atq_a: 10
     atq_b: 21
     atq_c: 42
@@ -80,147 +84,169 @@ AppBundle\Entity\TypeCard:
 
 
   tipoPersonaje_5:
-    name: dakotae
+    name: Dakotae
+    imageRoute: dakotae
     atq_a: 30
     atq_b: 11
     atq_c: 22
     atq_d: 60
 
   tipoPersonaje_6:
-    name: exterminator
+    name: Exterminator
+    imageRoute: exterminator
     atq_a: 40
     atq_b: 6
     atq_c: 12
     atq_d: 80
 
   tipoPersonaje_7:
-    name: falcon
+    name: Falcon
+    imageRoute: falcon
     atq_a: 28
     atq_b: 12
     atq_c: 24
     atq_d: 56
 
   tipoPersonaje_8:
-    name: galaxy
+    name: Galaxy
+    imageRoute: galaxy
     atq_a: 4
     atq_b: 24
     atq_c: 48
     atq_d: 8
 
   tipoPersonaje_9:
-    name: hybrid
+    name: Hybrid
+    imageRoute: hybrid
     atq_a: 34
     atq_b: 9
     atq_c: 18
     atq_d: 68
 
   tipoPersonaje_10:
-    name: inferno
+    name: Inferno
+    imageRoute: inferno
     atq_a: 20
     atq_b: 16
     atq_c: 32
     atq_d: 40
 
   tipoPersonaje_11:
-    name: jericho
+    name: Jericho
+    imageRoute: jericho
     atq_a: 24
     atq_b: 14
     atq_c: 28
     atq_d: 48
 
   tipoPersonaje_12:
-    name: justice
+    name: Justice
+    imageRoute: justice
     atq_a: 38
     atq_b: 7
     atq_c: 14
     atq_d: 76
 
   tipoPersonaje_13:
-    name: katya
+    name: Katya
+    imageRoute: katya
     atq_a: 16
     atq_b: 18
     atq_c: 36
     atq_d: 32
 
   tipoPersonaje_14:
-    name: l2m
+    name: Lzm
+    imageRoute: lzm
     atq_a: 26
     atq_b: 13
     atq_c: 26
     atq_d: 52
 
   tipoPersonaje_15:
-    name: murphy
+    name: Murphy
+    imageRoute: murphy
     atq_a: 32
     atq_b: 10
     atq_c: 20
     atq_d: 64
 
   tipoPersonaje_16:
-    name: neko
+    name: Neko
+    imageRoute: neko
     atq_a: 22
     atq_b: 15
     atq_c: 30
     atq_d: 44
 
   tipoPersonaje_17:
-    name: omega
+    name: Omega
+    imageRoute: omega
     atq_a: 2
     atq_b: 25
     atq_c: 50
     atq_d: 4
 
   tipoPersonaje_18:
-    name: outsider
+    name: Outsider
+    imageRoute: outsider
     atq_a: 36
     atq_b: 8
     atq_c: 16
     atq_d: 72
 
   tipoPersonaje_19:
-    name: rasek
+    name: Rasek
+    imageRoute: rasek
     atq_a: 6
     atq_b: 23
     atq_c: 46
     atq_d: 12
 
   tipoPersonaje_20:
-    name: sarka
+    name: Sarka
+    imageRoute: sarka
     atq_a: 18
     atq_b: 17
     atq_c: 34
     atq_d: 36
 
   tipoPersonaje_21:
-    name: thor
+    name: Thor
+    imageRoute: thor
     atq_a: 14
     atq_b: 19
     atq_c: 38
     atq_d: 28
 
   tipoPersonaje_22:
-    name: viktor
+    name: Viktor
+    imageRoute: viktor
     atq_a: 12
     atq_b: 20
     atq_c: 40
     atq_d: 24
 
   tipoPersonaje_23:
-    name: willow
+    name: Willow
+    imageRoute: akara
+
     atq_a: 8
     atq_b: 22
     atq_c: 44
     atq_d: 16
 
   tipoPersonaje_24:
-    name: yukon
+    name: Yukon
+    imageRoute: yukon
     atq_a: 50
     atq_b: 22
     atq_c: 44
     atq_d: 16
 
   tipoPersonaje_25:
-    name: zeus
+    name: Zeus
+    imageRoute: zeus
     atq_a: 46
     atq_b: 3
     atq_c: 6

@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 
@@ -32,18 +33,24 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", unique=true)
+     * @Assert\Length(min=4, minMessage="Debe tener al menos 4 caracteres")
+     * @Assert\NotBlank()
      * @var String
      */
     private $login;
 
     /**
      * @ORM\Column(type="string", unique=true)
+     * @Assert\Length(min=4, minMessage="Debe tener al menos 4 caracteres")
+     * @Assert\NotBlank()
      * @var String
      */
     private $nickname;
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\Length(min=6, minMessage="Debe tener al menos 6 caracteres")
+     * @Assert\NotBlank()
      * @var String
      */
     private $password;

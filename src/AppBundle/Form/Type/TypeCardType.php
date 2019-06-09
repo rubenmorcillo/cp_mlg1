@@ -16,19 +16,24 @@ class TypeCardType extends AbstractType
     {
        $builder
            ->add('name', null, [
-               'label'=> 'Nombre'
+               'label'=> 'Nombre',
+               'required' => true
            ])
            ->add('atq_a', null, [
-               'label' => 'Ataque'
+               'label' => 'Ataque',
+               'required' => true
            ])
            ->add('atq_b', null, [
-               'label' => 'Inteligencia'
+               'label' => 'Inteligencia',
+               'required' => true
            ])
            ->add('atq_c', null, [
-               'label' => 'Armadura'
+               'label' => 'Armadura',
+               'required' => true
            ])
            ->add('atq_d', null, [
-               'label' => 'Velocidad'
+               'label' => 'Velocidad',
+               'required' => true
            ]);
 
     }

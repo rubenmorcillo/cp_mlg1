@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -21,6 +22,7 @@ class TypeCard
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
      *  @var string
      */
     private $name;
@@ -34,24 +36,28 @@ class TypeCard
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
      * @var int
      */
     private $atq_a;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
      * @var int
      */
     private $atq_b;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
      * @var int
      */
     private $atq_c;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
      * @var int
      */
     private $atq_d;

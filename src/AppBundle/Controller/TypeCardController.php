@@ -18,7 +18,7 @@ class TypeCardController extends Controller
     {
 
         $todasCartas = $typeCardRepository->findAll();
-        return $this->render('typeCard/list.html.twig', [
+        return $this->render('typeCard/list2.html.twig', [
             'cards' => $todasCartas
         ]);
     }

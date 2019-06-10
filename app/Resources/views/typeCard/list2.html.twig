@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+<table class="tabla_cartas table-responsive-lg">
+    {% if app.request.get('_route') ends with 'coleccion' %}
+        {% set cartas = app.user.cards %}
+    {% else %}
+        {% set cartas = cards %}
+    {% endif %}
+    {% set raiz =  'recursos/cardsImages/' %}
+<th>
+    <td></td>
+</th>
+<tr class="fila_tabla primera_fila_tabla">
+    {%  for carta in cartas %}
+
+    {% if loop.index == 6 or loop.index == 11 or loop.index == 16 or loop.index == 21%}
+</tr>
+    <tr class="fila_tabla {{ loop.index}}" >
+        {% endif %}
+
+
+            <td class="">
+                <img class="img_carta_lista img-fluid" style="height: 140px; z-index:3;" src="{{ asset(raiz~carta.imageRoute~'.jpg') }}" alt="{{ carta.name }}">
+            </td>
+
+    {% endfor %}
+</table>
+{% endblock %}

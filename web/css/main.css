@@ -2,8 +2,17 @@
 *{
   box-sizing: content-box !important;
   font-family: "Roboto Mono";
+
 }
-.tabla_cartas {
+body{
+  overflow-y:scroll !important;
+  overflow-x:scroll !important;
+}
+.tabla_cartas{
+  margin-right: 0.5em;
+  float:right;
+}
+.grid_cartas {
   position:fixed;
   right:4em;
   box-sizing: border-box;
@@ -38,7 +47,11 @@
   display: table;
 }
 
+.carta_activa{-webkit-filter:grayscale(0);filter:grayscale(0); }
+.carta_inactiva{-webkit-filter:grayscale(100%);filter:grayscale(100%);cursor:default; }
 
+.img_carta_lista{transition:1.2s;  -webkit-filter:grayscale(95%);filter:grayscale(95%);padding:0.2em}
+.img_carta_lista:hover{-webkit-filter:grayscale(0);filter:grayscale(0);cursor:pointer}
 
 .carta-cont { display: flex; text-align: center;  }
 .carta-ic-marco {height: 4em; border: 2px solid #bbb; padding: 0.5rem; }
@@ -90,7 +103,7 @@ a { color: #49576d; transition: all ease 0.5s; -moz-transition: all ease 0.5s; }
 
 
 /*ESTOS DOS ENVOLTORIOS LOS NECESITO PARA DARLE ESTRUCTURA AL ASUNTO, en realidad solo el segundo pero x si las moscas*/
-#wrapper {display: block; height: 100%;  margin: 0px -1%; width: 1000px;background: #4f6a7d; /*background:rgba(3,16,35,0.1);*/ }
+#wrapper {display: block; height: 100%;  margin: 0px -1%; width: 1000px; /*background: #4f6a7d;*/ background:rgba(3,16,35,0.1); }
 #innerwrapper {width: 1000px; height: 100%; position: relative; /*left: 100px;*/  padding: 35px 100px; }
 /*PANEL DEL USUARIO*/
 #control { position: fixed;  width: 160px; min-height:600px; background: rgba(19, 31, 40,1); padding: 1em; z-index: 90; }

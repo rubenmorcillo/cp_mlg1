@@ -2,13 +2,12 @@
 
 {% block content %}
 
-<div class="tabla_cartas">
+<div class="grid_cartas">
 
     {% if app.request.get('_route') ends with 'coleccion' %}
         {% set cartas = app.user.cards %}
     {% else %}
         {% set cartas = cards %}
-
     {% endif %}
     {% set raiz =  'recursos/cardsImages/' %}
     <div class="row primera_fila">

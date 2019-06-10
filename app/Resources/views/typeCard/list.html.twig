@@ -1,29 +1,32 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Personajes</h1>
-    <table class="table">
-        <thead>
-        <tr>
-            <th class="letra_listas_cabecera">Id.</th>
-            <th class="letra_listas_cabecera">Nombre</th>
-            <th class="letra_listas_cabecera">Ataque</th>
-            <th class="letra_listas_cabecera">Inteligencia</th>
-            <th class="letra_listas_cabecera">Armadura</th>
-            <th class="letra_listas_cabecera">Velocidad</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for card in cards %}
-            <tr>
-                <td class="letra_listas">{{ card.id }}</td>
-                <td class="letra_listas"><a href="{{ path('card_edit', {'id':card.id}) }}">{{ card.name }}</a></td>
-                <td class="letra_listas">{{ card.atqA }}</td>
-                <td class="letra_listas">{{ card.atqB }}</td>
-                <td class="letra_listas">{{ card.atqC }}</td>
-                <td class="letra_listas">{{ card.atqD }}</td>
-            </tr>
+
+<div class="tabla_cartas">
+
+    {% if app.request.get('_route') ends with 'coleccion' %}
+        {% set cartas = app.user.cards %}
+    {% else %}
+        {% set cartas = cards %}
+
+    {% endif %}
+    {% set raiz =  'recursos/cardsImages/' %}
+    <div class="row primera_fila">
+
+
+
+        {%  for carta in cartas %}
+        {% if loop.index == 6 or loop.index == 11 or loop.index == 16 or loop.index == 21%}
+    </div>
+    <div class="row {{ loop.index}}">
+        {% endif %}
+        <div class="carta-ic-marco  columna">
+            <div class="carta-icon " style="background:url({{ asset(raiz~ carta.imageRoute~'.jpg') }});background-repeat: no-repeat; background-size:200%; background-position-y: -2.5em;background-position-x:-3em;">
+                <div class="carta-ic-cover"></div>
+            </div>
+        </div>
         {% endfor %}
-        </tbody>
-    </table>
-{% endblock %}
+    </div>
+
+
+    {% endblock %}

@@ -3,6 +3,18 @@
   box-sizing: content-box !important;
   font-family: "Roboto Mono";
 }
+.tabla_cartas {
+  position:fixed;
+  right:4em;
+  box-sizing: border-box;
+  display: block;
+  background: rgba(255,255,255,0);
+  padding: 30px;
+  width: 60%;
+  min-width: 650px;
+  max-width: 850px;}
+
+
 .fila{
   width: 100%;
 }
@@ -11,20 +23,20 @@
   clear: both;
   display:table;
 }
+.columna{
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  -ms-flex: 0 0 16.666667%;
+  flex: 0 0 16.666667%;
+  max-width: 16.666667%;
+}
 .row::after{
   content: "";
   clear: both;
   display: table;
 }
-#cont_general {
-  min-width: 450px;
-  position:fixed;
-  right:4em;
-  box-sizing: border-box;
-  display: table-cell;
-  background: rgba(255,255,255,0);
-  padding: 30px;
-  width: 60%; }
 
 
 

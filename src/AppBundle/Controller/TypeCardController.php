@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Controller;
+use AppBundle\Entity\Card;
 use AppBundle\Entity\TypeCard;
 use AppBundle\Form\Type\TypeCardType;
 use AppBundle\Repository\TypeCardRepository;
@@ -19,9 +20,25 @@ class TypeCardController extends Controller
 
         $todasCartas = $typeCardRepository->findAll();
         return $this->render('typeCard/list2.html.twig', [
-            'cards' => $todasCartas
+            'cards' => $todasCartas,
+            'usuario' => null
         ]);
     }
+//
+//    /**
+//     * @Route("/cdetail/{id}", name="card_detail")
+//     */
+//    public function typeCardDetailAction(Card $carta)
+//    {
+//
+//
+//        return $this->render('typeCard/list2.html.twig', [
+//            'carta' => $carta,
+//            'usuario' => null
+//        ]);
+//    }
+
+
     /**
      * @Route("/card/{id}", name="card_edit", requirements={"id":"\d+"})
      * @Security("is_granted('ROLE_ADMIN')")

@@ -9,7 +9,6 @@
             <th class="letra_listas_cabecera">NickName</th>
             <th class="letra_listas_cabecera">Créditos</th>
             <th class="letra_listas_cabecera">Rep.</th>
-            <th class="letra_listas_cabecera">V/D</th>
             <th class="letra_listas_cabecera">¿Es admin?</th>
         </tr>
         </thead>
@@ -20,7 +19,6 @@
                 <td class="letra_listas">{{ user.nickname }}</td>
                 <td class="letra_listas">{{ user.credits }}</td>
                 <td class="letra_listas">{{ user.reputation }}</td>
-                <td class="letra_listas">{{ user.battleWin }} / {{ user.battlePlayed - user.battleWin }} </td>
                 <td class="letra_listas">{% if user.esadmin %}Sí{% else %}No{% endif %}</td>
             </tr>
         {% endfor %}

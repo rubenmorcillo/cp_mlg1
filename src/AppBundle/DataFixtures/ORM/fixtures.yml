@@ -14,7 +14,7 @@ AppBundle\Entity\User:
     #signDate: '<dateTimeBetween("-3 months", "now")> '
     signDate: '<dateTime()>'
     login: test
-    nickname (unique): '<es_ES:firstName()>'
+    nickname (unique): Tester
     password: test
     esAdmin: false
     credits: '<numberBetween(0,9999)>'

@@ -83,7 +83,11 @@ use Doctrine\ORM\Mapping as ORM;
         return $this;
     }
 
+        public function __toString()
+        {
+
+            return $this->typeCard->getName();
+        }
 
 
-
-}
+    }

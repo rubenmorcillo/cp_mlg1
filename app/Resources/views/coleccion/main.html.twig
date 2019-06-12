@@ -1,25 +1,26 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+    {% if usuario %}
     <div id="control">
         <div class="control_inner">
-            {% if usuario %}
+        {% set raiz =  'recursos/cardsImages/' %}
                 <h1>Escuadrones</h1>
 
                 <div class="control-links">
                     <div class="control-logged">
     {#                    <a href="#"><span><i class="far fa-bell fa-fw"></i></span> 5 new alert(s)</a>#}
                         {% for deck in usuario.decks %}
-                            <a href="#"><span><i class= "fas fa-user-shield "></i></span> {{ deck.deckName }} </a>
-                            <ul>
+                            <a href="{{ path('deck_editar', {'id':deck.id}) }}"><span><i class= "fas fa-user-shield "></i></span> {{ deck.deckName }} </a>
+                            <ul class="-ul -list-ul">
                             {% for card in deck.cardsContained %}
 
-                                <li>{{ card.id }}</li>
+                                <li class="list-inline-item">{{ card.typeCard.name }}</li>
 
                             {% endfor %}
                             </ul>
                         {% endfor %}
-                        <a href="#"><span><i class= "fas fa-plus "></i></span> Nuevo Escuadrón </a>
+                        <a href="{{ path('deck_nuevo') }}"><span><i class= "fas fa-plus "></i></span> Nuevo Escuadrón </a>
                     </div>
                     {% if is_granted('ROLE_ADMIN') %}
                         <div class="control-staff">

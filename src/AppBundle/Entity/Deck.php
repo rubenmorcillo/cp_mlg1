@@ -30,7 +30,6 @@ class Deck
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="decks")
-     * @ORM\JoinColumn(unique=true)
      * @var User
      */
     private $deckOwner;

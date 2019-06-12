@@ -396,4 +396,10 @@ class User implements UserInterface
         return $this->login;
     }
 
+    public function __toString()
+    {
+        return $this->getNickname();
+    }
+
+
 }

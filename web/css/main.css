@@ -73,6 +73,242 @@ body{
 
   /*FIN CLASES ESPECÍFICAS*/
 
+/*FORM LOGIN CYBERPUNK */
+
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,700");
+html,
+body {
+  font-family: "IBM Plex Sans", linkMacSystemFont, San Francisco, Roboto, Helvetica Neue, Segoe UI, sans-serif;
+  text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.contenedor_form_login_cp {
+  background: #101010;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url(https://res.cloudinary.com/dokf7npvg/image/upload/v1540355245/0jbUKoX.jpg);
+  background-position: center;
+  background-size: cover;
+  padding: 0 30px;
+  margin-left: -5%;
+  min-height: 100vh;
+  height: 100%;
+  width: 100vw;
+  overflow-y: auto;
+}
+.contenedor_form_login_cp:before {
+  content: "";
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(16, 16, 16, 0.4);
+}
+
+@keyframes form-open {
+  0% {
+    clip-path: polygon(0 20px, 20px 0, 20px 0, 20px 0, 0 20px, 0 20px);
+  }
+  50% {
+    clip-path: polygon(0 20px, 20px 0, 20px 0, 20px calc(100% - 20px), 0 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(0 20px, 20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translate3d(-16px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.form_login_cp {
+  display: grid;
+  grid-gap: 36px;
+  align-items: center;
+  justify-content: center;
+  max-width: 400px;
+  width: 100%;
+  padding: 30px;
+  overflow: hidden;
+  clip-path: polygon(0 20px, 20px 0, 20px 0, 20px 0, 0 20px, 0 20px);
+  animation: form-open 1s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.5s;
+}
+.form_login_cp > * {
+  position: relative;
+  opacity: 0;
+  animation: fade-in 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.form_login_cp > *:nth-child(2) {
+  animation-delay: 1.2s;
+}
+.form_login_cp > *:nth-child(3) {
+  animation-delay: 1.3s;
+}
+.form_login_cp > *:nth-child(4) {
+  animation-delay: 1.4s;
+}
+.form_login_cp > *:nth-child(5) {
+  animation-delay: 1.5s;
+}
+.form_login_cp > *:nth-child(6) {
+  animation-delay: 1.6s;
+}
+
+.form_image_login_cp {
+  position: absolute;
+  animation: none;
+  opacity: 1;
+  filter: blur(16px);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(rgba(16, 16, 16, 0.8), rgba(16, 16, 16, 0.8)), url("https://res.cloudinary.com/dokf7npvg/image/upload/v1540355245/0jbUKoX.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.form_logo_login_cp {
+  width: 80%;
+  height: auto;
+  justify-self: center;
+}
+
+.input_login_cp {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input_element_cp {
+  border: 0;
+  margin: 0;
+  width: 100%;
+  box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3);
+  height: 46px;
+  transition: box-shadow 0.4s ease;
+  padding-left: 10px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 16px;
+}
+.input_element_cp:focus {
+  box-shadow: inset 0 -2px 0 0 #fdee06;
+  outline: none;
+}
+
+.input_label_cp {
+  font-size: 16px;
+  position: absolute;
+  left: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input_element_cp:focus + .input__label,
+.input_element_cp:not(:placeholder-shown) + .input_label_cp {
+  top: -16px;
+  left: 0;
+  font-size: 14px;
+  transform: translate3d(0, -5px, 0);
+}
+
+.button_cp {
+  background: #fdee06;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  height: 50px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+  text-transform: uppercase;
+  text-align: left;
+  padding: 0 20px;
+  cursor: pointer;
+}
+.button_cp:focus {
+  outline: none;
+}
+.button_cp:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #22edfc;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.button_cp:hover:before, .button:focus:before {
+  transform-origin: left center;
+  transform: scaleX(1);
+}
+
+.button_cp:hover .button_icon_cp,
+.button_cp:focus .button_icon_cp {
+  transform: translate3d(10px, -50%, 0);
+}
+
+.button_label_cp {
+  position: relative;
+}
+
+.button_icon_cp {
+  position: absolute;
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
+  right: 25px;
+  width: 24px;
+  height: 24px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.button_icon_cp:before {
+  content: "";
+  height: 1px;
+  width: 100%;
+  background: black;
+  position: absolute;
+  left: 0;
+  top: 12px;
+}
+.button_icon_cp:after {
+  content: "";
+  transform: rotate(45deg);
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  right: 0;
+  top: 8px;
+}
+
+/* FIN FORM LOGIN CYBERPUNK*/
+
 body { background:url(https://image.ibb.co/bG1hBS/image.png); background-color: #000000; background-attachment: fixed; padding: 0; margin: 0; }
 
 ::-webkit-scrollbar { width: 7px; }
@@ -104,7 +340,7 @@ a { color: #49576d; transition: all ease 0.5s; -moz-transition: all ease 0.5s; }
 
 /*ESTOS DOS ENVOLTORIOS LOS NECESITO PARA DARLE ESTRUCTURA AL ASUNTO, en realidad solo el segundo pero x si las moscas*/
 #wrapper {display: block; height: 100%;  margin: 0px -1%; width: 1000px; /*background: #4f6a7d;*/ background:rgba(3,16,35,0.1); }
-#innerwrapper {width: 1000px; height: 100%; position: relative; /*left: 100px;*/  padding: 35px 100px; }
+#innerwrapper {width: 1000px; height: 100%; position: relative; left: 100px;  padding: 35px 100px; }
 /*PANEL DEL USUARIO*/
 #control { position: fixed;  width: 160px; min-height:600px; background: rgba(19, 31, 40,1); padding: 1em; z-index: 90; }
 /*panel intenior del usuario*/

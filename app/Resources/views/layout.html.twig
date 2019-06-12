@@ -41,11 +41,17 @@
                 <a href="{{ path('usuario_salir') }}" class="ml-3 btn btn-outline-primary"><i class="fas fa-times"></i> EXIT</a>
 
             {% else %}
+                {% if ruta ends with 'entrar' %}
+                <span></span>
+                {% else %}
                 <a href="{{ path('usuario_entrar') }}" class="btn btn-outline-primary"><i class="fas fa-sign-in-alt"></i> ENTRAR</a>
+                {% endif %}
             {% endif %}
         </div>
     </nav>
     <div class="container">
+        {% block contenidoExt %}
+        {% endblock %}
         <div id="wrapper">
 
 

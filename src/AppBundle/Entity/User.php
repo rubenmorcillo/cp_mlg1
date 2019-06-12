@@ -94,16 +94,25 @@ class User implements UserInterface
     private $decks;
 
     /**
-     * @ORM\Column(type="integer")
-     * @var int
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Battle", mappedBy="Battle")
+     * @ORM\JoinColumn(nullable=true)
+     * @var Battle[]
      */
-    private $battlePlayed;
+    private $ataques;
 
     /**
-     * @ORM\Column(type="integer")
-     * @var int
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Battle", mappedBy="Battle")
+     * @ORM\JoinColumn(nullable=true)
+     * @var Battle[]
      */
-    private $battleWin;
+    private $defensas;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Battle", mappedBy="Battle")
+     * @ORM\JoinColumn(nullable=true)
+     * @var Battle[]
+     */
+    private $win;
 
 
 
@@ -111,6 +120,9 @@ class User implements UserInterface
     {
         $this->decks=new ArrayCollection();
         $this->cards=new ArrayCollection();
+        $this->ataques=new ArrayCollection();
+        $this->defensas=new ArrayCollection();
+        $this->win=new ArrayCollection();
     }
 
     /**
@@ -303,40 +315,59 @@ class User implements UserInterface
     }
 
     /**
-     * @return int
+     * @return Battle[]
      */
-    public function getBattlePlayed()
+    public function getAtaques()
     {
-        return $this->battlePlayed;
+        return $this->ataques;
     }
 
     /**
-     * @param int $battlePlayed
+     * @param Battle[] $ataques
      * @return User
      */
-    public function setBattlePlayed($battlePlayed)
+    public function setAtaques($ataques)
     {
-        $this->battlePlayed = $battlePlayed;
+        $this->ataques = $ataques;
         return $this;
     }
 
     /**
-     * @return int
+     * @return Battle[]
      */
-    public function getBattleWin()
+    public function getDefensas()
     {
-        return $this->battleWin;
+        return $this->defensas;
     }
 
     /**
-     * @param int $battleWin
+     * @param Battle[] $defensas
      * @return User
      */
-    public function setBattleWin($battleWin)
+    public function setDefensas($defensas)
     {
-        $this->battleWin = $battleWin;
+        $this->defensas = $defensas;
         return $this;
     }
+
+    /**
+     * @return Battle[]
+     */
+    public function getWin()
+    {
+        return $this->win;
+    }
+
+    /**
+     * @param Battle[] $win
+     * @return User
+     */
+    public function setWin($win)
+    {
+        $this->win = $win;
+        return $this;
+    }
+
 
 
     public function getRoles()

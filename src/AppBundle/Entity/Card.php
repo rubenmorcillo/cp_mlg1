@@ -23,8 +23,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 
     /**
-     * @ORM\Column(type="integer")
-     * @var int
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\TypeCard", inversedBy="copiaCarta")
+     * @var TypeCard
      */
     private $typeCard;
 
@@ -46,7 +46,7 @@ use Doctrine\ORM\Mapping as ORM;
     }
 
     /**
-     * @return int
+     * @return TypeCard
      */
     public function getTypeCard()
     {
@@ -54,7 +54,7 @@ use Doctrine\ORM\Mapping as ORM;
     }
 
     /**
-     * @param int $typeCard
+     * @param TypeCard $typeCard
      * @return Card
      */
     public function setTypeCard($typeCard)
@@ -62,6 +62,8 @@ use Doctrine\ORM\Mapping as ORM;
         $this->typeCard = $typeCard;
         return $this;
     }
+
+
 
     /**
      * @return User

@@ -8,8 +8,7 @@ AppBundle\Entity\User:
     esAdmin: true
     credits: 99999
     reputation: 99999
-    battlePlayed: 10
-    battleWin: 9
+
 
   jugador_test:
     #signDate: '<dateTimeBetween("-3 months", "now")> '
@@ -20,8 +19,7 @@ AppBundle\Entity\User:
     esAdmin: false
     credits: '<numberBetween(0,9999)>'
     reputation: 0
-    battlePlayed: 0
-    battleWin: 0
+
 
   jugador_{1..10}:
     #signDate: '<dateTimeBetween("-3 months", "now")> '
@@ -32,15 +30,11 @@ AppBundle\Entity\User:
     esAdmin: false
     credits: '<numberBetween(0,9999)>'
     reputation: 0
-    battlePlayed: 0
-    battleWin: 0
 
 
 
-AppBundle\Entity\Card:
-  personaje_{1..60}:
-    typeCard: '<numberBetween(1,25)>'
-    cardOwner: '@jugador_<numberBetween(1,4)>'
+
+
 
 
 AppBundle\Entity\Deck:
@@ -251,9 +245,14 @@ AppBundle\Entity\TypeCard:
     atq_c: 6
     atq_d: 92
 
-AppBundle\Entity\Battle:
-  partida_{1..16}:
-    battleDate: <dateTime('now', 'cet')>
-    killedPlayerOne: '<numberBetween(1,4)>'
-    killedPlayerTwo: '<numberBetween(1,4)>'
+AppBundle\Entity\Card:
+  personaje_{1..60}:
+    typeCard: '@tipoPersonaje_<numberBetween(1,25)>'
+    cardOwner: '@jugador_<numberBetween(1,10)>'
+
+#AppBundle\Entity\Battle:
+#  partida_{1..16}:
+#    battleDate: <dateTime('now', 'cet')>
+#    killedPlayerOne: '<numberBetween(1,4)>'
+#    killedPlayerTwo: '<numberBetween(1,4)>'
 

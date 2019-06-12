@@ -4,6 +4,7 @@
 namespace AppBundle\Entity;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -63,6 +64,18 @@ class TypeCard
     private $atq_d;
 
 
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Card", mappedBy="tipoCarta")
+     * @ORM\JoinColumn(nullable=true)
+     * @var Card[]
+     */
+    private $copiaCarta;
+
+    public function __construct()
+    {
+        $this->copiaCarta=new ArrayCollection();
+
+    }
 
     /**
      * @return int
@@ -177,6 +190,24 @@ class TypeCard
     public function setAtqD($atq_d)
     {
         $this->atq_d = $atq_d;
+        return $this;
+    }
+
+    /**
+     * @return Card[]
+     */
+    public function getCopiaCarta()
+    {
+        return $this->copiaCarta;
+    }
+
+    /**
+     * @param Card[]|null $copiaCarta
+     * @return TypeCard
+     */
+    public function setCopiaCarta($copiaCarta)
+    {
+        $this->copiaCarta = $copiaCarta;
         return $this;
     }
 

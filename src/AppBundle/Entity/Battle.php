@@ -28,16 +28,22 @@ class Battle
 
 
     /**
-     * @ORM\Column(type="integer")
-     * @var int
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="ataques")
+     * @var User
      */
-    private $killedPlayerOne;
+    private $playerAttacker;
 
     /**
-     * @ORM\Column(type="integer")
-     * @var int
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User" , inversedBy="defensas")
+     * @var User
      */
-    private $killedPlayerTwo;
+    private $playerDefender;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="win")
+     * @var User
+     */
+    private $winner;
 
     /**
      * @return int
@@ -67,40 +73,60 @@ class Battle
     }
 
     /**
-     * @return int
+     * @return User
      */
-    public function getKilledPlayerOne()
+    public function getPlayerAttacker()
     {
-        return $this->killedPlayerOne;
+        return $this->playerAttacker;
     }
 
     /**
-     * @param int $killedPlayerOne
+     * @param User $playerAttacker
      * @return Battle
      */
-    public function setKilledPlayerOne($killedPlayerOne)
+    public function setPlayerAttacker($playerAttacker)
     {
-        $this->killedPlayerOne = $killedPlayerOne;
+        $this->playerAttacker = $playerAttacker;
         return $this;
     }
 
     /**
-     * @return int
+     * @return User
      */
-    public function getKilledPlayerTwo()
+    public function getPlayerDefender()
     {
-        return $this->killedPlayerTwo;
+        return $this->playerDefender;
     }
 
     /**
-     * @param int $killedPlayerTwo
+     * @param User $playerDefender
      * @return Battle
      */
-    public function setKilledPlayerTwo($killedPlayerTwo)
+    public function setPlayerDefender($playerDefender)
     {
-        $this->killedPlayerTwo = $killedPlayerTwo;
+        $this->playerDefender = $playerDefender;
         return $this;
     }
+
+    /**
+     * @return User
+     */
+    public function getWinner()
+    {
+        return $this->winner;
+    }
+
+    /**
+     * @param User $winner
+     * @return Battle
+     */
+    public function setWinner($winner)
+    {
+        $this->winner = $winner;
+        return $this;
+    }
+
+
 
 
 

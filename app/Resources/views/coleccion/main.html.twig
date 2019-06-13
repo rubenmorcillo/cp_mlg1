@@ -11,7 +11,7 @@
                     <div class="control-logged">
     {#                    <a href="#"><span><i class="far fa-bell fa-fw"></i></span> 5 new alert(s)</a>#}
                         {% for deck in usuario.decks %}
-                            <a href="{{ path('deck_editar', {'id':deck.id}) }}"><span><i class= "fas fa-user-shield "></i></span> {{ deck.deckName }} </a>
+                            <a href="{{ path('deck_editar', {'idUser':usuario.id, 'id':deck.id}) }}"><span><i class= "fas fa-user-shield "></i></span> {{ deck.deckName }} </a>
                             <ul class="-ul -list-ul">
                             {% for card in deck.cardsContained %}
 
@@ -20,7 +20,7 @@
                             {% endfor %}
                             </ul>
                         {% endfor %}
-                        <a href="{{ path('deck_nuevo') }}"><span><i class= "fas fa-plus "></i></span> Nuevo Escuadrón </a>
+                        <a href="{{ path('deck_nuevo' , {'id':usuario.id}) }}"><span><i class= "fas fa-plus "></i></span> Nuevo Escuadrón </a>
                     </div>
                     {% if is_granted('ROLE_ADMIN') %}
                         <div class="control-staff">

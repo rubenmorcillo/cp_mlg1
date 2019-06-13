@@ -3,9 +3,11 @@
 namespace AppBundle\Form\Type;
 
 use AppBundle\Entity\Deck;
+use AppBundle\Form\Listener\AddStateFieldSubscriber;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
 
 class DeckType extends AbstractType
 {
@@ -15,11 +17,15 @@ class DeckType extends AbstractType
             ->add('deckName', null,[
                'label' => 'Nombre'
             ])
-            ->add('cardsContained', null, [
-                'label' => 'Elige tus cartas',
-                'required'=> false,
-//                'data' => $options['cardsContained']
+            ->add('deckOwner',null,[
+                'label' => 'propietario'
             ]);
+
+
+        //Añadimos un EventListener que actualizará el campo cardsContained para
+        //que sus opciones correspondan con el usuario seleccionado
+        //Este Listener tenemos que crearlo (AppBundle\Form\Listener\AddStateFieldSubsriber)
+        $builder->addEventSubscriber(new AddStateFieldSubscriber());
     }
 
     public function configureOptions(OptionsResolver $resolver)

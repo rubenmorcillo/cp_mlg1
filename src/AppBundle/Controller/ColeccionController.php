@@ -57,12 +57,15 @@ class ColeccionController extends Controller
 //    }
     /**
      *
-     * @Route("/deck/{id}", name="deck_editar",
+     * @Route("user/{idUser}/deck/{id}", name="deck_editar",
      *     requirements={"id":"\d+"})
      * @Security("is_granted('ROLE_PLAYER')")
      */
-    public function formDeckAction(Request $request, Deck $deck,CardRepository $cardRepository)
+    public function formDeckAction(Request $request,CardRepository $cardRepository,User $usuario, Deck $deck)
     {
+        
+        $deck
+            ->setDeckOwner($this->getUser());
         $cartasPropias=$cardRepository->listarCartasUsuario($this->getUser());
         $form = $this->createForm(DeckType::class, $deck);
         $form->handleRequest($request);
@@ -84,18 +87,30 @@ class ColeccionController extends Controller
         ]);
     }
 
-
     /**
-     * @Route("/deck/cr", name="deck_nuevo")
+     * @Route("user/{id}/deck/cr", name="deck_nuevo")
      * @Security("is_granted('ROLE_PLAYER')")
      */
-    public function formNuevoDeckAction(CardRepository $cardRepository,Request $request)
+    public function formNuevoDeckAction(CardRepository $cardRepository,Request $request, User $user)
     {
         $deck = new Deck();
-
         $this->getDoctrine()->getManager()->persist($deck);
-        return $this->formDeckAction($request, $deck, $cardRepository);
+        return $this->formDeckAction($request, $cardRepository,$user,$deck);
     }
+
+
+//
+//    /**
+//     * @Route("user/{id}/deck/cr", name="deck_nuevo")
+//     * @Security("is_granted('ROLE_PLAYER')")
+//     */
+//    public function formNuevoDeckAction(CardRepository $cardRepository,Request $request, User $user)
+//    {
+//        $deck = new Deck();
+//        $nuevo = true;
+//        $this->getDoctrine()->getManager()->persist($deck);
+//        return $this->formDeckAction($request, $deck, $cardRepository, $user);
+//    }
 
 //    /**
 //     * @Route("/equipo/eliminar/{id}", name="equipo_eliminar")

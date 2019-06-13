@@ -15,9 +15,9 @@ class CardRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('c')
             ->select('c')
             ->addSelect('tc')
-            ->join('c.typeCard', 'u')
-            ->where('c.user = :user')
+            ->where('c.cardOwner = :user')
             ->setParameter('user', $usuario)
+            ->join('c.typeCard', 'tc ')
             ->getQuery()
             ->getResult();
 

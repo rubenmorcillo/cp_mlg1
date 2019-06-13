@@ -18,35 +18,52 @@ class ColeccionController extends Controller
     * @Route("/user/{id}", name="coleccion", requirements={"id": "\d+"})
     * @Security("is_granted('ROLE_USER')")
     */
-    public function coleccionAction(UserRepository $userRepository, User $usuario)
+    public function coleccionAction(CardRepository $cardRepository, User $usuario)
     {
-        $cartas = $usuario->getCards();
+        $cartas = $cardRepository->listarCartasUsuario($usuario);
         return $this->render('typeCard/list2.html.twig', [
             'usuario' => $usuario,
             'cards' => $cartas
         ]);
     }
 
+
 //    /**
-//     * @Route("/user/{id}", name="coleccion", requirements={"id": "\d+"})
-//     * @Security("is_granted('ROLE_USER')")
+//     *
+//     * @Route("/deck/{id}", name="deck_editar",
+//     *     requirements={"id":"\d+"})
+//     * @Security("is_granted('ROLE_PLAYER')")
 //     */
-//    public function cartasUsuarioAction(CardRepository $cardRepository, User $usuario){
+//    public function formDeckAction(Request $request, Deck $deck)
+//    {
+//        $form = $this->createForm(DeckType::class, $deck);
+//        $form->handleRequest($request);
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            try {
+//                $deck->setDeckOwner($this->getUser());
+//                $this->getDoctrine()->getManager()->flush();
+////                $this->addFlash('exito', 'Los cambios en el equipo han sido guardados con éxito');
+//                return $this->redirectToRoute('coleccion');
+//            } catch (\Exception $e) {
+////                $this->addFlash('error', 'Ha ocurrido un error al guardar los cambios');
+//            }
+//        }
 //
-//        $cartasUsuario= $cardRepository->findBy(array("owner_id"=>$usuario));
-//        return $this->render('typeCard/list2.html.twig', [
-//            'cartas' => $cartasUsuario
+//        return $this->render('coleccion/crearMazo.html.twig', [
+//            'form' => $form->createView(),
+//            'deck' => $deck,
+//            'es_nueva' => $deck->getId() === null
 //        ]);
 //    }
-
     /**
      *
      * @Route("/deck/{id}", name="deck_editar",
      *     requirements={"id":"\d+"})
      * @Security("is_granted('ROLE_PLAYER')")
      */
-    public function formDeckAction(Request $request, Deck $deck)
+    public function formDeckAction(Request $request, Deck $deck,CardRepository $cardRepository)
     {
+        $cartasPropias=$cardRepository->listarCartasUsuario($this->getUser());
         $form = $this->createForm(DeckType::class, $deck);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -67,16 +84,17 @@ class ColeccionController extends Controller
         ]);
     }
 
+
     /**
      * @Route("/deck/cr", name="deck_nuevo")
      * @Security("is_granted('ROLE_PLAYER')")
      */
-    public function formNuevoDeckAction(Request $request)
+    public function formNuevoDeckAction(CardRepository $cardRepository,Request $request)
     {
         $deck = new Deck();
 
         $this->getDoctrine()->getManager()->persist($deck);
-        return $this->formDeckAction($request, $deck);
+        return $this->formDeckAction($request, $deck, $cardRepository);
     }
 
 //    /**

@@ -17,7 +17,8 @@ class DeckType extends AbstractType
             ])
             ->add('cardsContained', null, [
                 'label' => 'Elige tus cartas',
-                'required'=> false
+                'required'=> false,
+//                'data' => $options['cardsContained']
             ]);
     }
 

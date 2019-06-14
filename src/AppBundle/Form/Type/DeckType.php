@@ -18,7 +18,8 @@ class DeckType extends AbstractType
                'label' => 'Nombre'
             ])
             ->add('deckOwner',null,[
-                'label' => 'propietario'
+                'label' => 'propietario',
+                'disabled' => true
             ]);
 
 

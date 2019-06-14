@@ -16,9 +16,10 @@ class UserType extends AbstractType
     {
        $builder
           ->add('nickname', null, [
-              'label' => 'Nick',
+              'label' => 'Login',
               'required' => true
               ]);
+
 
 
 

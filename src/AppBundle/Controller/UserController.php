@@ -1,11 +1,14 @@
 <?php
 namespace AppBundle\Controller;
+use AppBundle\Entity\User;
 use AppBundle\Form\Type\CambioClaveType;
+use AppBundle\Form\Type\RegistroType;
 use AppBundle\Form\Type\UserType;
 use AppBundle\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class UserController extends Controller
 {
     /**
@@ -72,4 +75,42 @@ class UserController extends Controller
             'usuario' => $usuario
         ]);
     }
+
+    /**
+     * @Route("/signup", name="usuario_nuevo")
+     *
+     */
+    public function formNuevoAction(Request $request)
+    {
+        $usuario = new User();
+
+        $this->getDoctrine()->getManager()->persist($usuario);
+        return $this->editarAction($request, $usuario);
+    }
+    /**
+     * @Route("/edit/u={id}", name="usuario_editar",
+     *     requirements={"id":"\d+"})
+     * @Security("is_granted('ROLE_ADMIN')")
+     */
+    public function editarAction(Request $request, User $user){
+        $form = $this->createForm(RegistroType::class, $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+
+            $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('exito', 'Los cambios en el usuario han sido guardados con éxito');
+            return $this->redirectToRoute('user_list');
+            } catch (\Exception $e) {
+                $this->addFlash('error', 'Ha ocurrido un error al guardar los cambios');
+            }
+        }
+
+        return $this->render('user/registro.html.twig', [
+            'form' => $form->createView(),
+            'usuario' => $user,
+            'es_nueva' => $user->getId() === null
+        ]);
+    }
+
 }

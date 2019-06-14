@@ -5,7 +5,6 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Deck;
 use AppBundle\Entity\User;
 use AppBundle\Form\Type\DeckType;
-use AppBundle\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,7 +13,7 @@ class DeckController extends Controller
 {
 
     /**
-     * @Route("/deck/cr/ow={id}", name="deck_nuevo")
+     * @Route("/deck/cr/ow={id}", name="deck_nuevo",requirements={"id": "\d+"})
      */
     public function deckNuevoAction(User $usuario,Request $request)
     {
@@ -37,7 +36,7 @@ class DeckController extends Controller
             ]);
     }
     /**
-     * @Route("/deck/edit/cr/ow={id}/{deck}", name="deck_editar")
+     * @Route("/deck/edit/ow={id}/{deck}", name="deck_editar",requirements={"id": "\d+", "deck": "\d+"})
      */
     public function deckEditarAction(User $usuario,Request $request, Deck $deck)
     {
@@ -57,6 +56,27 @@ class DeckController extends Controller
         return $this->render('coleccion/crearMazo.html.twig', [
             'es_nueva' => false,
             'form' => $form->createView(),
+        ]);
+    }
+    /**
+     * @Route("/deck/dl/ow={id}/{deck}", name="deck_editar",requirements={"id": "\d+", "deck": "\d+"})
+     */
+    public function deckBorrarAction(Request $request,User $usuario, Deck $deck){
+        if ($request->get('borrar') === ''){
+            try{
+                $this->getDoctrine()->getManager()->remove($deck);
+                $this->getDoctrine()->getManager()->flush();
+                $this->addFlash('exito', 'El escuadrón ha sido borrado');
+                return $this->redirectToRoute('coleccion', ['id'=>$usuario->getId()]);
+
+            }catch(\Exception $e){
+                $this->addFlash('error', 'Ha ocurrido un error al eliminar el escuadrón');
+            }
+        }
+
+        return $this->render('deck/eliminar.html.twig',[
+           'usuario' => $usuario,
+           'deck' => $deck
         ]);
     }
 }

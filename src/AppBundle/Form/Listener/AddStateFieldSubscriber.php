@@ -45,12 +45,15 @@ class AddStateFieldSubscriber implements EventSubscriberInterface
      */
     public function preSubmit(FormEvent $event)
     {
-        $data = $event->getData();
-        //data es un array con los valores establecidos por el usuario en el formulario
-
-        //como $data contiene el usuario propietario al enviar el formulario,
-        //usamos el valor de la posicion $data['deckOwner'] para filtrar el sql de los estados
-        $this->addField($event->getForm(), $data['deckOwner']);
+//        $datos = $event->getData();
+//        //data es un array con los valores establecidos por el usuario en el formulario
+//
+//        //como $data contiene el usuario propietario al enviar el formulario,
+//        //usamos el valor de la posicion $data['deckOwner'] para filtrar el sql de los estados
+//        if (array_key_exists('deckOwner', $datos)){
+//            $this->addField($event->getForm(), $datos['deckOwner']);
+//
+//        }
     }
 
     private function addField(\Symfony\Component\Form\FormInterface $form, $deckOwner)

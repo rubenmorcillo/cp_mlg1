@@ -5,10 +5,13 @@ use AppBundle\Form\Type\CambioClaveType;
 use AppBundle\Form\Type\RegistroType;
 use AppBundle\Form\Type\UserType;
 use AppBundle\Repository\UserRepository;
+use Faker\Provider\cs_CZ\DateTime;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\Validator\Constraints\Date;
+
 class UserController extends Controller
 {
     /**
@@ -98,6 +101,11 @@ class UserController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             try {
 
+                $time = new \DateTime();
+                $user->setSignDate($time);
+                $user->setEsAdmin(false);
+                $user->setCredits(0);
+                $user->setReputation(0);
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('exito', 'Los cambios en el usuario han sido guardados con éxito');
             return $this->redirectToRoute('user_list');

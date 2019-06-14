@@ -39,7 +39,7 @@
                 <div class="button_icon_cp"></div>
             </button>
             {% if not es_nueva %}<a href="{{ path('usuario_nuevo', {'id': usuario.id}) }}" class="btn btn-danger"><i class="fas fa-trash"></i> Eliminar usuario</a>{% endif %}
-        {{ form_row(form._token) }}
+        {{ form_end(form) }}
         </form>
 
 {% endblock %}

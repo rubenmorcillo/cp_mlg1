@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    {{ parent() }}
+
+    <div id="fondo_back" class="alert alert-danger">
+        {% for mensaje in app.session.flashbag.get('exito') %}
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ mensaje }}
+            </div>
+        {% endfor %}
+        {% for mensaje in app.session.flashbag.get('error') %}
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ mensaje }}
+            </div>
+        {% endfor %}
+        <p>¿Está seguro de que desea borrar el usuario?</p>
+    </div>
+
+    <form method="post">
+        <a href="{{ path('usuario_perfil')}}"></a>
+        <button type="submit" class="btn btn-outline-danger" name="borrar"><i class="fa fa-trash-o">Borrar</i></button>
+    </form>
+{% endblock %}

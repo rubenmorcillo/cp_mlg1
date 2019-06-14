@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <a class="navbar-brand" href="{{ path('miMain') }}"> CyberTrap TCG</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Mostrar secciones">
@@ -12,7 +13,7 @@
 
                 {% if is_granted('ROLE_PLAYER') %}
                 <li class="nav-item {% if ruta starts with "" %} active{% endif %}">
-                    <a class="nav-link" href="{{ path('coleccion', {'id':app.user.id}) }}"><i class="fas -solar-panel fa-solar-panel"></i>Colección</a>
+{#                    <a class="nav-link" href="{{ path('coleccion', {'id':app.user.id}) }}"><i class="fas -solar-panel fa-solar-panel"></i>Colección</a>#}
                 </li>
                 {% endif %}
                 <li class="nav-item{% if ruta starts with "user_" %} active{% endif %}">
@@ -54,7 +55,6 @@
         {% block contenidoExt %}
         {% endblock %}
 {#        <div id="wrapper">#}
-
 
         {% block content %}{% endblock %}
 {#        </div>#}

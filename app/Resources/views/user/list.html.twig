@@ -7,7 +7,7 @@
     <table class="table" style="overflow-x: scroll;background: url('{{ asset('recursos/fondos/fondo_ranking.jpg') }}')">
         <thead>
         <tr>
-            <th class="letra_listas_cabecera">Id.</th>
+            <th class="letra_listas_cabecera"></th>
             <th class="letra_listas_cabecera">NickName</th>
             <th class="letra_listas_cabecera">Créditos</th>
             <th class="letra_listas_cabecera">Rep.</th>
@@ -17,8 +17,8 @@
         <tbody>
         {% for user in users %}
             <tr>
-                <td class="letra_listas">{{ user.id }}</td>
-                <td class="letra_listas">{{ user.nickname }}</td>
+                <td class="letra_listas"><a href="{% if is_granted('ROLE_ADMIN') %}{{ path('usuario_editar',{'id':user.id}) }}{% else %}{{ path('coleccion',{'id':user.id}) }}{% endif %}">{{ user.id }}</a></td>
+                <td class="letra_listas"><a href="{% if is_granted('ROLE_ADMIN') %}{{ path('usuario_editar',{'id':user.id}) }}{% else %}{{ path('coleccion',{'id':user.id}) }}{% endif %}">{{ user.nickname }}</a></td>
                 <td class="letra_listas">{{ user.credits }}</td>
                 <td class="letra_listas">{{ user.reputation }}</td>
                 <td class="letra_listas">{% if user.esadmin %}Sí{% else %}No{% endif %}</td>

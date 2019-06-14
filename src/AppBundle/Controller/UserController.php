@@ -1,9 +1,11 @@
 <?php
 namespace AppBundle\Controller;
+use AppBundle\Entity\Card;
 use AppBundle\Entity\User;
 use AppBundle\Form\Type\CambioClaveType;
 use AppBundle\Form\Type\RegistroType;
 use AppBundle\Form\Type\UserType;
+use AppBundle\Repository\CardRepository;
 use AppBundle\Repository\UserRepository;
 use Faker\Provider\cs_CZ\DateTime;
 use Symfony\Component\HttpFoundation\Request;
@@ -91,7 +93,7 @@ class UserController extends Controller
         return $this->editarAction($request, $usuario);
     }
     /**
-     * @Route("/edit/u={id}", name="usuario_editar",
+     * @Route("/am/ed/u={id}", name="usuario_editar",
      *     requirements={"id":"\d+"})
      * @Security("is_granted('ROLE_ADMIN')")
      */
@@ -119,6 +121,46 @@ class UserController extends Controller
             'usuario' => $user,
             'es_nueva' => $user->getId() === null
         ]);
+    }
+
+    /**
+     * @Route("/am/dl/us{id}", name="usuario_eliminar")
+     * @Security("is_granted('ROLE_PLAYER')")
+     */
+    public function eliminarAction(Request $request, User $user)
+    {
+        if ($user != $this->getUser()){
+            $this->redirectToRoute('portada');
+        }
+        if ($request->get('borrar') === '') {
+            try {
+                $this->eliminarRegistrosUser($user);
+                $this->getDoctrine()->getManager()->remove($user);
+                $this->getDoctrine()->getManager()->flush();
+
+
+                $this->addFlash('exito', 'El usuario ha sido borrado');
+                return $this->redirectToRoute('usuario_salir');
+            } catch (\Exception $e) {
+                $this->addFlash('error', 'Ha ocurrido un error al eliminar el usuario');
+            }
+        }
+        return $this->render('user/eliminar.html.twig', [
+            'usuario' => $user
+        ]);
+    }
+
+    public function eliminarRegistrosUser( User $user){
+
+        $decks = $user->getDecks();
+        $cartas = $user->getCards();
+
+        foreach ($cartas as $carta){
+            $this->getDoctrine()->getManager()->remove($carta);
+        }
+        foreach ($decks as $deck){
+            $this->getDoctrine()->getManager()->remove($deck);
+        }
     }
 
 }

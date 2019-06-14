@@ -38,7 +38,6 @@
                 <div class="button_label_cp">Registrarse</div>
                 <div class="button_icon_cp"></div>
             </button>
-            {% if not es_nueva %}<a href="{{ path('usuario_nuevo', {'id': usuario.id}) }}" class="btn btn-danger"><i class="fas fa-trash"></i> Eliminar usuario</a>{% endif %}
         {{ form_end(form) }}
         </form>
 

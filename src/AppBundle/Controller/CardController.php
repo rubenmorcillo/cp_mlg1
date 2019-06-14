@@ -14,7 +14,7 @@ class CardController extends Controller
      */
     public function cardListAction(CardRepository $cardRepository, User $usuario){
         $cartas = $usuario->getCards();
-        return $this->render('typeCard/list2.html.twig', [
+        return $this->render('coleccion/main.html.twig', [
             'usuario' => $usuario,
             'cards' => $cartas
         ]);

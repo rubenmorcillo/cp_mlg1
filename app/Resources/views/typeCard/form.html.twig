@@ -1,11 +1,12 @@
 {% extends 'layout.html.twig' %}
 {% block title %}CyberTrap TCG - ADMIN{% endblock %}
 {% block content %}
+    <div id="fondo_back">
    <h1>Editar Carta</h1>
 
     {{ form_start(form) }}
     {{ form_widget(form) }}
     <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i>Guardar cambios</button>
     {{ form_end(form) }}
-
+    </div>
 {% endblock %}

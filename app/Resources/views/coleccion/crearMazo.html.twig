@@ -1,7 +1,7 @@
 {% extends 'coleccion/main.html.twig' %}
 
 {% block content %}
-
+<div id="fondo_back" style="background: url("{{ asset('recursos/fondos/foto_cp3.jpg') }}")">
 {% set user = app.user %}
        {% if not es_nueva %}
            <h1>Editar escuadrón</h1>
@@ -17,5 +17,5 @@
 
 
        {{ form_end(form) }}
-
+</div>
 {% endblock %}

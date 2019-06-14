@@ -1,6 +1,6 @@
 /*CLASES ESPECÍFICAS*/
 *{
-  box-sizing: content-box !important;
+  /*box-sizing: content-box !important;*/
   font-family: "Roboto Mono";
 
 }
@@ -8,8 +8,16 @@ body{
   overflow-y:scroll !important;
   overflow-x:scroll !important;
 }
+.container{
+  height: 600px;
+  width: 900px;
+  margin: 7.5% 0 1% 1%;
+}
+
+
 .tabla_cartas{
   margin-right: 0.5em;
+  margin-left: 15%;
   float:right;
 }
 .grid_cartas {

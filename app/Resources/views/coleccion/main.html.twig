@@ -1,6 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+
     {% if usuario %}
     <div id="control">
         <div class="control_inner">
@@ -34,7 +35,12 @@
             {% endif %}
         </div>
     </div>
+
 {% endblock %}
 {% block stylesheets %}
-
+<style>
+    #fondo_lab{
+        background: {{ asset('recursos/fondos/fondo_lab2.jpg') }};
+    }
+</style>
 {% endblock %}

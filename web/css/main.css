@@ -12,11 +12,26 @@ body{
 /*  width: 900px;*/
 /*  margin: 7.5% 0 1% 1%;*/
 /*}*/
-
+#cont_tabla_cartas{
+  display: flex;
+  width:70%;
+}
 
 .tabla_cartas{
   margin-bottom:1.4em;
-
+  display: block;
+}
+#lista_decks{
+  background-color: rgba(200,200,200,0.2);
+  width: 100%;
+  height: auto;
+  display: block;
+  flex-direction: column;
+}
+/*<li> */
+.deck{
+margin: auto;
+  padding-bottom: 4vh;
 }
 .grid_cartas {
   position:fixed;

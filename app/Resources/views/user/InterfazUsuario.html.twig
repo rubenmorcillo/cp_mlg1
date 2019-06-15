@@ -5,13 +5,13 @@
     {% set raiz =  'recursos/cardsImages/' %}
     <div id="menu_jugador">
        <div class="menu_jugador_opcion">
-           <a href="">Mis mazos</a>
+           <a href="{{ path('cartas_lista_user',{'id':usuario.id}) }}">Coleccion</a>
        </div>
        <div class="menu_jugador_opcion">
            <a href="">Jugar</a>
        </div>
        <div class="menu_jugador_opcion">
-           <a href="">mi coleccion</a>
+           <a href="{{ path('carta_comprar_una', {'id': usuario.id}) }}">Tienda</a>
        </div>
     </div>
 {% endif %}

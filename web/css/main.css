@@ -1,19 +1,29 @@
-/*CLASES ESPECÍFICAS*/
+/*IMPORTS*/
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,700");
+
+
+/*FIN IMPORTS */
+/* /////////////////////////////////////////////////////////////////// */
+/*ESTILOS GENERALES*/
+
 *{
-  /*box-sizing: content-box !important;*/
   font-family: "Roboto Mono";
+  list-style-type: none !important;
 
 }
 body{
 
 }
-/*.container{*/
-/*  !*height: 600px;*!*/
-/*  width: 900px;*/
-/*  margin: 7.5% 0 1% 1%;*/
-/*}*/
+
+a, a:hover { text-decoration: none; text-underline: none; }
+a { color: #49576d; transition: all ease 0.5s; -moz-transition: all ease 0.5s; }
+
+/*FIN ESTILOS GENERALES*/
+/*///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////*/
+/*MIS CLASES*/
 #cont_tabla_cartas{
-  display: flex;
+  display: table-cell;
   width:70%;
 }
 
@@ -21,51 +31,17 @@ body{
   margin-bottom:1.4em;
   display: block;
 }
-#lista_decks{
+#cont_lista_decks{
   background-color: rgba(200,200,200,0.2);
-  width: 100%;
-  height: auto;
-  display: block;
   flex-direction: column;
+  display:table-cell;
+}
+.lista_decks{
+  margin-top: 0;
 }
 /*<li> */
 .deck{
-margin: auto;
   padding-bottom: 4vh;
-}
-.grid_cartas {
-  position:fixed;
-  right:4em;
-  box-sizing: border-box;
-  display: block;
-  background: rgba(255,255,255,0);
-  padding: 30px;
-  width: 60%;
-  min-width: 650px;
-  max-width: 850px;}
-
-
-.fila{
-  width: 100%;
-}
-.fila::after{
-  content:"";
-  clear: both;
-  display:table;
-}
-.columna{
-  position: relative;
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  -ms-flex: 0 0 16.666667%;
-  flex: 0 0 16.666667%;
-  max-width: 16.666667%;
-}
-.row::after{
-  content: "";
-  clear: both;
-  display: table;
 }
 
 .carta_activa{-webkit-filter:grayscale(0);filter:grayscale(0); }
@@ -74,11 +50,6 @@ margin: auto;
 .img_carta_lista{transition:1.2s;  -webkit-filter:grayscale(95%);filter:grayscale(95%);padding:0.2em}
 .img_carta_lista:hover{-webkit-filter:grayscale(0);filter:grayscale(0);cursor:pointer}
 
-.carta-cont { display: flex; text-align: center;  }
-.carta-ic-marco {height: 4em; border: 2px solid #bbb; padding: 0.5rem; }
-.carta-icon {background: #bbb; width: 100%; height: 100%;background-position: top; background-size:cover;}
-.carta-ic-cover {  height: 100%; background: rgba(122,143,140,0.8); transition: all ease 1s; -moz-transition: all ease 1s;}
-.carta-ic-cover:hover { background: rgba(22,43,79,0.1); }
 
 
 .letra_listas{
@@ -92,11 +63,11 @@ margin: auto;
 }
 .
 
-/*FIN CLASES ESPECÍFICAS*/
-
+/*FIN MIS CLASES*/
+/*///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////*/
 /*FORM LOGIN CYBERPUNK */
 
-@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,700");
 html,
 body {
   font-family: "IBM Plex Sans", linkMacSystemFont, San Francisco, Roboto, Helvetica Neue, Segoe UI, sans-serif;
@@ -331,8 +302,9 @@ body {
 }
 
 /* FIN FORM LOGIN CYBERPUNK*/
-
-/* CONTROL USUARIO*/
+/*///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////*/
+/* INTERFAZ USUARIO*/
 #menu_jugador{
   background-color: red;
 
@@ -352,9 +324,13 @@ body {
   background-color: #fff;
 }
 
-/*FIN CONTROL USUARIO*/
+/*FIN INTERFAZ USUARIO*/
+/*///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////*/
+/*colores de TODOS enlaces de arriba*/
 
 
+/*esto no se si está funcionando*/
 ::-webkit-scrollbar { width: 7px; }
 ::-webkit-scrollbar-track { background: black; }
 ::-webkit-scrollbar-thumb { background-color: #aaa; border: 3px solid black; }
@@ -377,48 +353,13 @@ body {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-/*colores de los enlaces de arriba*/
-a, a:hover { text-decoration: none; text-underline: none; }
-a { color: #49576d; transition: all ease 0.5s; -moz-transition: all ease 0.5s; }
-
-
-/*ESTOS DOS ENVOLTORIOS LOS NECESITO PARA DARLE ESTRUCTURA AL ASUNTO, en realidad solo el segundo pero x si las moscas*/
-/*#wrapper {display: block; height: 100%;  margin: 0px -1%; width: 1000px; !*background: #4f6a7d;*! background:rgba(3,16,35,0.1); }*/
-/*#innerwrapper {width: 1000px; height: 100%; position: relative; left: 100px;  padding: 35px 100px; }*/
-/*PANEL DEL USUARIO*/
-#control { position: fixed;  width: 160px; min-height:600px; background: rgba(19, 31, 40,1); padding: 1em; z-index: 90; }
-/*panel intenior del usuario*/
-.control_inner { position: relative; top: 10%/*calc(50% - 150px)*/; font-family: "Roboto Mono"; color: #f3f3f3; font-size: 8pt }
-/*.control_inner .control-staff, .control-4 .control-logged { display: none; }*/
-
-/*TRANSPARENCIAAA*/
-/*ESTO ES LO Q VA A HACER TRANSPARENTE>>>>*/
-.control-ic-frame { width: 60px; height: 60px; padding: 5px; border: 2px solid #bbb; }
-.control-icon { background: #bbb; width: 60px; height: 60px;/* background: url(https://image.ibb.co/hXGZQn/x7lNN.png);*/ background-size: 60px 60px; }
-.control-ic-cover { width: 60px; height: 60px; background: rgba(22,43,79,0.5); transition: all ease 1s; -moz-transition: all ease 1s;}
-.control-ic-cover:hover { background: rgba(22,43,79,0.05); }
 
 
 
-/*Nombre del usuario*/
-#control h1 { font-family: "Roboto Mono"; color: #f3f3f3; margin: 0; padding: 0; text-transform: uppercase; border: 2px solid #bbb; font-weight: 400; font-size: 11pt; margin: 8px 0px; padding: 3px 10px 3px 20px; }
-
-/*menú del usuario*/
-.control-links { font-size: 8pt; color: #f3f3f3; font-family: "Roboto Mono"; text-align: right; border-bottom: 2px solid #bbb; padding-bottom: 10px; }
-.control-links a { display: block; padding: 6px 8px; color: #f3f3f3; text-transform: capitalize;}
-.control-links a:hover { color: #496799; }
-.control-links span { float: left; }
-.control-staff { border-top: 2px solid #bbb; margin-top: 6px; padding-top: 7px; }
-
-/*BLOQUE INTERIOR DEL CONTENIDO*/
-#gestaltrp { width: 1000px; background: rgba(17,21,30,0.65); }
 
 
-/*efectos de barra de navegacion*/
-.synth { display: block; background: #10110f; padding: 10px; counter-reset: quick-links; text-align: center; }
-.synth a { color:  #4f6a7d ; font-family: "Roboto Mono"; font-size: 7pt; font-weight: 600; margin: 0px 15px; transition: all ease 0.5s; -moz-transition: all ease 0.5s; }
-/*.synth a:after { content: "_" counter(quick-links, decimal-leading-zero);	counter-increment: quick-links; }*/
-.synth a:hover { color:#f5286d; }
+/*////////////////////////////////////////////////////////////////////*/
+/*CSS AUXILIAR*/
 
 /*primer bloque de contenido*/
 #cyberpunk {

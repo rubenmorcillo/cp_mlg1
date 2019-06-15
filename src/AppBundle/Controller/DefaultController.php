@@ -12,7 +12,11 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+        $logeado = $this->getUser();
         // plantilla de la portada
+        if ($logeado <> null){
+            return $this->redirectToRoute('interfazJuego', ['id' =>$logeado->getId()]);
+        }
         return $this->render('default/index.html.twig');
     }
 

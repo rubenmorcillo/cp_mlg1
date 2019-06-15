@@ -28,9 +28,9 @@ class DeckController extends Controller
             $em->persist($deck);
             $em->flush();
 
-            return $this->redirectToRoute('coleccion', ['id' => $usuario->getId()]);
+            return $this->redirectToRoute('interfazJuego', ['id' => $usuario->getId()]);
         }
-        return $this->render('coleccion/crearMazo.html.twig', [
+        return $this->render('deck/crearMazo.html.twig', [
             'es_nueva' => true,
             'form' => $form->createView(),
             ]);
@@ -51,9 +51,9 @@ class DeckController extends Controller
             $em->persist($deck);
             $em->flush();
 
-            return $this->redirectToRoute('coleccion', ['id' => $usuario->getId()]);
+            return $this->redirectToRoute('interfazJuego', ['id' => $usuario->getId()]);
         }
-        return $this->render('coleccion/crearMazo.html.twig', [
+        return $this->render('deck/crearMazo.html.twig', [
             'es_nueva' => false,
             'form' => $form->createView(),
         ]);
@@ -67,7 +67,7 @@ class DeckController extends Controller
                 $this->getDoctrine()->getManager()->remove($deck);
                 $this->getDoctrine()->getManager()->flush();
                 $this->addFlash('exito', 'El escuadrón ha sido borrado');
-                return $this->redirectToRoute('coleccion', ['id'=>$usuario->getId()]);
+                return $this->redirectToRoute('interfazJuego', ['id'=>$usuario->getId()]);
 
             }catch(\Exception $e){
                 $this->addFlash('error', 'Ha ocurrido un error al eliminar el escuadrón');

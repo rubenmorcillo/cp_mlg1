@@ -17,7 +17,7 @@ use Symfony\Component\Validator\Constraints\Date;
 class UserController extends Controller
 {
     /**
-     * @Route("/user", name="user_list")
+     * @Route("/ranking", name="user_list")
      */
     public function usuarioListarAction(UserRepository $usuarioRepository)
     {

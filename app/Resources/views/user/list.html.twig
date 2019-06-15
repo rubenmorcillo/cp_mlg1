@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 
-{% block content %}
+{% block contenidoExt %}
 
     <div id="fondo_ranking" style="width:105%;height: 100%; position: absolute;left: -5%; ;background: url("{{ asset('recursos/fondos/fondo_ranking.jpg') }}")">
     <h1>CyberLords</h1>
@@ -17,8 +17,8 @@
         <tbody>
         {% for user in users %}
             <tr>
-                <td class="letra_listas"><a href="{% if is_granted('ROLE_ADMIN') %}{{ path('usuario_editar',{'id':user.id}) }}{% else %}{{ path('coleccion',{'id':user.id}) }}{% endif %}">{{ user.id }}</a></td>
-                <td class="letra_listas"><a href="{% if is_granted('ROLE_ADMIN') %}{{ path('usuario_editar',{'id':user.id}) }}{% else %}{{ path('coleccion',{'id':user.id}) }}{% endif %}">{{ user.nickname }}</a></td>
+                <td class="letra_listas"><a href="{% if is_granted('ROLE_ADMIN') %}{{ path('usuario_editar',{'id':user.id}) }}{% else %}{{ path('interfazJuego',{'id':user.id}) }}{% endif %}">{{ user.id }}</a></td>
+                <td class="letra_listas"><a href="{% if is_granted('ROLE_ADMIN') %}{{ path('usuario_editar',{'id':user.id}) }}{% else %}{{ path('interfazJuego',{'id':user.id}) }}{% endif %}">{{ user.nickname }}</a></td>
                 <td class="letra_listas">{{ user.credits }}</td>
                 <td class="letra_listas">{{ user.reputation }}</td>
                 <td class="letra_listas">{% if user.esadmin %}Sí{% else %}No{% endif %}</td>

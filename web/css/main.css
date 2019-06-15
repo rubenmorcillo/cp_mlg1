@@ -79,7 +79,7 @@ body{
 }
 .
 
-  /*FIN CLASES ESPECÍFICAS*/
+/*FIN CLASES ESPECÍFICAS*/
 
 /*FORM LOGIN CYBERPUNK */
 
@@ -316,6 +316,57 @@ body {
 }
 
 /* FIN FORM LOGIN CYBERPUNK*/
+
+/* CONTROL USUARIO*/
+#container_control_itf_usuario{
+ font-family: "Roboto Mono";
+  list-style-type: none;
+  margin: 0;
+  padding:0;
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-size: 24px;
+  transition: all .2s;
+}
+.control_itf_main_menu{
+  display:flex;
+  height: 80%;
+  width: 40vh;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background: rgba(3,3,3,0.5);
+  -webkit-box-shadow: 0px 0px 4vh 0px  rgba(219,219,219,0.5);
+  -moz-box-shadow: 0px 0px 4vh 0px rgba(219,219,219,0.5);
+  box-shadow: 0px 0px 4vh 0px rgba(219,219,219,0.5);
+}
+
+.control_itf_main_menu a{
+  padding:3vh;
+  font-size: 3.1vh;
+  text-align: center;
+  display:block;
+
+}
+
+.control_itf_icon{
+  color: cyan;
+  display:block;
+}
+
+a:hover .control_itf_icon{
+  color: mediumvioletred;
+  transform: scale(1.2);
+}
+
+.open{
+  width: 60vh;
+}
+
+
+
+/*FIN CONTROL USUARIO*/
 
 body { background:url(https://image.ibb.co/bG1hBS/image.png); background-color: #000000; background-attachment: fixed; padding: 0; margin: 0; }
 

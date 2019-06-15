@@ -1,46 +1,44 @@
-{% extends 'layout.html.twig' %}
+{#{% extends 'layout.html.twig' %}#}
 
-{% block content %}
+{#{% block content %}#}
 
-    {% if usuario %}
-    <div id="control">
-        <div class="control_inner">
-        {% set raiz =  'recursos/cardsImages/' %}
-                <h1>Escuadrones</h1>
+{#    {% if usuario %}#}
+{#    <div id="control">#}
+{#        <div class="control_inner">#}
+{#        {% set raiz =  'recursos/cardsImages/' %}#}
+{#                <h1>Escuadrones</h1>#}
 
-                <div class="control-links">
-                    <div class="control-logged">
-    {#                    <a href="#"><span><i class="far fa-bell fa-fw"></i></span> 5 new alert(s)</a>#}
-                        {% for deck in usuario.decks %}
-                            <a href="{{ path('deck_editar', {'id':usuario.id, 'deck':deck.id}) }}"><span><i class= "fas fa-user-shield "></i></span> {{ deck.deckName }} </a>
-                            <ul class="-ul -list-ul">
-                            {% for card in deck.cardsContained %}
+{#                <div class="control-links">#}
+{#                    <div class="control-logged">#}
+{#    #}{#                    <a href="#"><span><i class="far fa-bell fa-fw"></i></span> 5 new alert(s)</a>#}
+{#                        {% for deck in usuario.decks %}#}
+{#                            <a href="{{ path('deck_editar', {'id':usuario.id, 'deck':deck.id}) }}"><span><i class= "fas fa-user-shield "></i></span> {{ deck.deckName }} </a>#}
+{#                            <ul class="-ul -list-ul">#}
+{#                            {% for card in deck.cardsContained %}#}
 
-                                <li class="list-inline-item">{{ card.typeCard.name }}</li>
+{#                                <li class="list-inline-item">{{ card.typeCard.name }}</li>#}
 
-                            {% endfor %}
-                            </ul>
-                        {% endfor %}
-                        <a href="{{ path('deck_nuevo' , {'id':usuario.id} )}}"><span><i class= "fas fa-plus "></i></span> Nuevo Escuadrón </a>
-                    </div>
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <div class="control-staff">
-                            <a href="#"><span><i class="far fa-compass fa-fw"></i></span> admin cp</a>
-                            <a href="#"><span><i class="far fa-map fa-fw"></i></span> mod cp</a>
-                        </div>
-                        {% endif %}
+{#                            {% endfor %}#}
+{#                            </ul>#}
+{#                        {% endfor %}#}
+{#                        <a href="{{ path('deck_nuevo' , {'id':usuario.id} )}}"><span><i class= "fas fa-plus "></i></span> Nuevo Escuadrón </a>#}
+{#                    </div>#}
+{#                    {% if is_granted('ROLE_ADMIN') %}#}
+{#                        <div class="control-staff">#}
+{#                            <a href="#"><span><i class="far fa-compass fa-fw"></i></span> admin cp</a>#}
+{#                            <a href="#"><span><i class="far fa-map fa-fw"></i></span> mod cp</a>#}
+{#                        </div>#}
+{#                        {% endif %}#}
+{#            </div>#}
+{#            {% endif %}#}
+{#        </div>#}
+{#    </div>#}
 
-
-            </div>
-            {% endif %}
-        </div>
-    </div>
-
-{% endblock %}
-{% block stylesheets %}
-<style>
-    #fondo_lab{
-        background: {{ asset('recursos/fondos/fondo_lab2.jpg') }};
-    }
-</style>
-{% endblock %}
+{#{% endblock %}#}
+{#{% block stylesheets %}#}
+{#<style>#}
+{#    #fondo_lab{#}
+{#        background: {{ asset('recursos/fondos/fondo_lab2.jpg') }};#}
+{#    }#}
+{#</style>#}
+{#{% endblock %}#}

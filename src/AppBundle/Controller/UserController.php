@@ -110,7 +110,7 @@ class UserController extends Controller
                 $user->setReputation(0);
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('exito', 'Los cambios en el usuario han sido guardados con éxito');
-            return $this->redirectToRoute('user_list');
+            return $this->redirectToRoute('usuario_entrar');
             } catch (\Exception $e) {
                 $this->addFlash('error', 'Ha ocurrido un error al guardar los cambios');
             }

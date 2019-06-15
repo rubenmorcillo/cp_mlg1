@@ -1,64 +1,62 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {% block nav %}
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="{{ path('portada') }}"> CyberTrap TCG</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Mostrar secciones">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                {% set ruta = app.request.get('_route') %}
+                <ul class="navbar-nav mr-auto">
 
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="{{ path('portada') }}"> CyberTrap TCG</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Mostrar secciones">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            {% set ruta = app.request.get('_route') %}
-            <ul class="navbar-nav mr-auto">
-
-                {% if is_granted('ROLE_PLAYER') %}
-                <li class="nav-item {% if ruta starts with "" %} active{% endif %}">
-{#                    <a class="nav-link" href="{{ path('coleccion', {'id':app.user.id}) }}"><i class="fas -solar-panel fa-solar-panel"></i>Colección</a>#}
-                </li>
-                {% endif %}
-                <li class="nav-item{% if ruta starts with "user_" %} active{% endif %}">
-                    <a class="nav-link" href="{{ path('user_list') }}"><i class="fas -jedi fa-jedi"></i> Ranking</a>
-                </li>
-                <li class="nav-item{% if ruta == "portada" %} active{% endif %}">
-                    <a class="nav-link" href="{{ path('portada') }}"><i class="fas fa-vihara"></i> Historia<span class="sr-only">(actual)</span></a>
-                </li>
+                    {% if is_granted('ROLE_PLAYER') %}
+                    <li class="nav-item {% if ruta starts with "" %} active{% endif %}">
+        {#                    <a class="nav-link" href="{{ path('coleccion', {'id':app.user.id}) }}"><i class="fas -solar-panel fa-solar-panel"></i>Colección</a>#}
+                    </li>
+                    {% endif %}
+                    <li class="nav-item{% if ruta starts with "user_" %} active{% endif %}">
+                        <a class="nav-link" href="{{ path('user_list') }}"><i class="fas -jedi fa-jedi"></i> Ranking</a>
+                    </li>
+                    <li class="nav-item{% if ruta == "portada" %} active{% endif %}">
+                        <a class="nav-link" href="{{ path('portada') }}"><i class="fas fa-vihara"></i> Historia<span class="sr-only">(actual)</span></a>
+                    </li>
 
 
 
-                {% if is_granted('ROLE_PLAYER') %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('carta_comprar_una' , {'id':app.user.id} )}}"><i class="fas fa-coins"></i>Mercado</a>
-                </li>
-                    {% else %}
-                        <li class="nav-item {% if ruta starts with "card_" %} active{% endif %}">
-                            <a class="nav-link" href="{{ path('card_list') }}"><i class="fas -solar-panel fa-solar-panel"></i> Personajes</a>
-                        </li>
+                    {% if is_granted('ROLE_PLAYER') %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('carta_comprar_una' , {'id':app.user.id} )}}"><i class="fas fa-coins"></i>Mercado</a>
+                    </li>
+                        {% else %}
+                            <li class="nav-item {% if ruta starts with "card_" %} active{% endif %}">
+                                <a class="nav-link" href="{{ path('card_list') }}"><i class="fas -solar-panel fa-solar-panel"></i> Personajes</a>
+                            </li>
 
-                {% endif %}
+                    {% endif %}
 
-            </ul>
-            {% if app.user %}
-            <span class="navbar-light">!Hola,<a href="{{ path('usuario_perfil') }}">{{ app.user.nickname }}</a>! </span>
-                <a href="{{ path('usuario_salir') }}" class="ml-3 btn btn-outline-primary"><i class="fas fa-times"></i> EXIT</a>
-
-            {% else %}
-                <span> <a href="{{ path('usuario_nuevo') }}">registro</a></span>
-                {% if ruta ends with 'entrar' %}
+                </ul>
+                {% if app.user %}
+                <span class="navbar-light">!Hola,<a href="{{ path('usuario_perfil') }}">{{ app.user.nickname }}</a>! </span>
+                    <a href="{{ path('usuario_salir') }}" class="ml-3 btn btn-outline-primary"><i class="fas fa-times"></i> EXIT</a>
 
                 {% else %}
-                    <a href="{{ path('usuario_entrar') }}" class="btn btn-outline-primary"><i class="fas fa-sign-in-alt"></i> ENTRAR</a>
+                    <span> <a href="{{ path('usuario_nuevo') }}">registro</a></span>
+                    {% if ruta ends with 'entrar' %}
+
+                    {% else %}
+                        <a href="{{ path('usuario_entrar') }}" class="btn btn-outline-primary"><i class="fas fa-sign-in-alt"></i> ENTRAR</a>
+                    {% endif %}
                 {% endif %}
-            {% endif %}
-        </div>
-    </nav>
+            </div>
+        </nav>
+    {% endblock %}
+
     <div class="container">
         {% block contenidoExt %}
         {% endblock %}
 
-
-{#        <div id="wrapper">#}
-
         {% block content %}{% endblock %}
-{#        </div>#}
     </div>
 {% endblock %}

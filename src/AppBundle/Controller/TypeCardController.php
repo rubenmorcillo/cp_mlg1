@@ -57,16 +57,7 @@ class TypeCardController extends Controller
         ]);
     }
 
- #   /**
-#     * @Route("/card/nueva", name="card_nueva")
-#     */
- #   public function formNuevoTypeCardAction(Request $request){
-  #     $typeCard = new TypeCard();
-#
- #       $this->getDoctrine()->getManager()->persist($typeCard);
-#
- #       return $this->formTypeCardAction($request, $typeCard);
-  #  }
+
 
 }
 

@@ -1,6 +1,5 @@
-{% extends 'user/controlInterfazUsuario.html.twig' %}
+{% extends 'layout.html.twig' %}
 {% block content %}
-    {{ parent() }}
     {% if usuario %}
 
         <h1>Coleccion de {{ usuario.nickname }}</h1>

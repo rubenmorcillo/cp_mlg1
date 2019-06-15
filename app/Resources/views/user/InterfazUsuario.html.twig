@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+{% block controlUsuario %}
+{% if usuario %}
+    {% set raiz =  'recursos/cardsImages/' %}
+    <div id="menu_jugador">
+       <div class="menu_jugador_opcion">
+           <a href="">Mis mazos</a>
+       </div>
+       <div class="menu_jugador_opcion">
+           <a href="">Jugar</a>
+       </div>
+       <div class="menu_jugador_opcion">
+           <a href="">mi coleccion</a>
+       </div>
+    </div>
+{% endif %}
+{% endblock %}
+{% block mainMenu %}
+
+{% endblock %}
+
+{% block listaCartas %}{% endblock %}
+{% endblock %}

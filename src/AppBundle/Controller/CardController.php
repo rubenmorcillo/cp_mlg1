@@ -43,13 +43,12 @@ class CardController extends Controller
         $logeado = $this->getUser();
         $logeado = $ur->findOneBy(['id' => $logeado]);
         if($user->getNickname() <> $logeado->getNickname()){
-            $this->addFlash('exito', 'redirigido a tu tienda, brivón ;)');
+            $this->addFlash('exito', 'redirigido a tu tienda, bribón ;)');
             return $this->redirectToRoute('carta_comprar_una', ['id' => $logeado->getId()]);
         }
 //          $this->addFlash('exito', 'entrando a la tienda');
+
         if($request->get('one') === ''){
-
-
             $tc = $tcr->find(['id' => mt_rand(1,25)]);
             $carta = new Card();
             $carta->setCardOwner($user);
@@ -58,7 +57,7 @@ class CardController extends Controller
                 $this->getDoctrine()->getManager()->persist($carta);
                 $this->getDoctrine()->getManager()->flush();
                 $this->addFlash('exito', 'has adquirido una nueva carta');
-                return $this->redirectToRoute('interfazJuego',['id' => $user->getId()]);
+                return $this->redirectToRoute('carta_comprar_una',['id' => $user->getId()]);
             }catch(\Exception $e){
                 $this->addFlash('error', 'no se ha podido completar la compra');
             }

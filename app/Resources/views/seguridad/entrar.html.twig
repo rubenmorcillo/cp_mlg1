@@ -6,18 +6,7 @@
         <form class="form_login_cp"action="{{ path('usuario_entrar') }}" method="post">
             <div class="form_image_login_cp"></div>
 {#         #}
-            {% for mensaje in app.session.flashbag.get('exito') %}
-                <div class="alert alert-success alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    {{ mensaje }}
-                </div>
-            {% endfor %}
-            {% for mensaje in app.session.flashbag.get('error') %}
-                <div class="alert alert-success alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    {{ mensaje }}
-                </div>
-            {% endfor %}
+
             <div class="input_login_cp">
 
                 <input class="input_element_cp" type="text" name="_username" placeholder=" " value="{{ ultimo_usuario }}"{% if not ultimo_usuario %} autofocus="autofocus"{% endif %}>

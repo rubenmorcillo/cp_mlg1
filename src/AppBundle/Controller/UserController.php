@@ -1,18 +1,14 @@
 <?php
 namespace AppBundle\Controller;
-use AppBundle\Entity\Card;
 use AppBundle\Entity\User;
 use AppBundle\Form\Type\CambioClaveType;
 use AppBundle\Form\Type\RegistroType;
 use AppBundle\Form\Type\UserType;
-use AppBundle\Repository\CardRepository;
 use AppBundle\Repository\UserRepository;
-use Faker\Provider\cs_CZ\DateTime;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Symfony\Component\Validator\Constraints\Date;
 
 class UserController extends Controller
 {
@@ -93,7 +89,7 @@ class UserController extends Controller
         return $this->editarAction($request, $usuario);
     }
     /**
-     * @Route("/am/ed/u={id}", name="usuario_editar",
+     * @Route("/am/ed/u={id}", name="usuario_registro",
      *     requirements={"id":"\d+"})
      * @Security("is_granted('ROLE_ADMIN')")
      */

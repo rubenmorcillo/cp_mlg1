@@ -3,6 +3,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\User;
 use AppBundle\Form\Type\CambioClaveType;
 use AppBundle\Form\Type\RegistroType;
+use AppBundle\Form\Type\UserAdminType;
 use AppBundle\Form\Type\UserType;
 use AppBundle\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -89,7 +90,7 @@ class UserController extends Controller
         return $this->editarAction($request, $usuario);
     }
     /**
-     * @Route("/am/ed/u={id}", name="usuario_registro",
+     * @Route("/endsingup/u={id}", name="usuario_registro",
      *     requirements={"id":"\d+"})
      * @Security("is_granted('ROLE_ADMIN')")
      */
@@ -118,16 +119,15 @@ class UserController extends Controller
             'es_nueva' => $user->getId() === null
         ]);
     }
-
     /**
      * @Route("/am/dl/us{id}", name="usuario_eliminar")
      * @Security("is_granted('ROLE_PLAYER')")
      */
     public function eliminarAction(Request $request, User $user)
     {
-        if ($user != $this->getUser()){
-            $this->redirectToRoute('portada');
-        }
+//        if ($user != $this->getUser()){
+//            $this->redirectToRoute('portada');
+//        }
         if ($request->get('borrar') === '') {
             try {
                 $this->eliminarRegistrosUser($user);
@@ -136,6 +136,9 @@ class UserController extends Controller
 
 
                 $this->addFlash('exito', 'El usuario ha sido borrado');
+                if ($this->isGranted('ROLE_ADMIN')){
+                    return $this->redirectToRoute('portada');
+                }
                 return $this->redirectToRoute('usuario_salir');
             } catch (\Exception $e) {
                 $this->addFlash('error', 'Ha ocurrido un error al eliminar el usuario');
@@ -158,5 +161,62 @@ class UserController extends Controller
             $this->getDoctrine()->getManager()->remove($deck);
         }
     }
+
+    /**
+     * @Route("/adminMode/dl&u={id}", name="admin_usuario_eliminar")
+     * @Security("is_granted('ROLE_ADMIN')")
+     */
+    public function eliminarAdminAction(Request $request, User $usuario)
+    {
+        if ($request->get('borrar') === '') {
+            try {
+                $this->eliminarRegistrosUser($usuario);
+                $this->getDoctrine()->getManager()->remove($usuario);
+                $this->getDoctrine()->getManager()->flush();
+
+
+                $this->addFlash('exito', 'El usuario ha sido borrado');
+                return $this->redirectToRoute('usuario_salir');
+            } catch (\Exception $e) {
+                $this->addFlash('error', 'Ha ocurrido un error al eliminar el usuario');
+            }
+        }
+        return $this->render('user/eliminar.html.twig', [
+            'usuario' => $usuario
+        ]);
+    }
+
+    /**
+     * @Route("/adminMode/edit&u={id}", name="admin_usuario_editar")
+     * @Security("is_granted('ROLE_ADMIN')")
+     */
+    public function editarAdmin(Request $request, User $usuario){
+
+            $form = $this->createForm(UserAdminType::class, $usuario);
+            $form->handleRequest($request);
+            if ($request->get('eliminar') === ''){
+                try {
+                    $this->eliminarRegistrosUser($usuario);
+                    $this->getDoctrine()->getManager()->remove($usuario);
+                    $this->getDoctrine()->getManager()->flush();
+
+
+                    $this->addFlash('exito', 'El usuario ha sido eliminado por el Admin');
+                    return $this->redirectToRoute('usuario_salir');
+                } catch (\Exception $e) {
+                    $this->addFlash('error', 'Ha ocurrido un error al eliminar el usuario por el Admin');
+                }
+            }else{
+                $this->getDoctrine()->getManager()->persist($usuario);
+                $this->getDoctrine()->getManager()->flush();
+            }
+
+            return $this->render('user/editarAdmin.html.twig', [
+                'form' => $form->createView(),
+                'usuario' => $usuario,
+                'es_nueva' => $usuario->getId() === null
+            ]);
+        }
+
 
 }

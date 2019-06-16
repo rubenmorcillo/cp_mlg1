@@ -7,8 +7,9 @@
     {{ form_widget(form) }}
     <button type="submit" class="btn btn-outline-primary"><i class="fas fa-check"></i>Guardar cambios</button>
     <a href="{{ path('cambio_clave') }}" class="btn btn-info"><i class="fas fa-lock">Cambiar contraseña</i></a>
+ {% if is_granted('ROLE_ADMIN') %}{% else %}
  <a href="{{ path('usuario_eliminar', {'id': app.user.id}) }}" class="btn btn-danger"><i class="fas fa-trash"></i> Eliminar usuario</a>
-
+ {% endif %}
  {{ form_end(form) }}
 
 {% endblock %}

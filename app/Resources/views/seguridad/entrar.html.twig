@@ -19,6 +19,7 @@
 
                 <label class="input_label_cp" for="password">Contraseña</label>
             </div>
+            {% if error %} <p>Nombre de usuario o contraseña no válidos</p>  {% endif %}
             <button type="submit" class="button_cp">
                 <div class="button_label_cp">Continuar</div>
                 <div class="button_icon_cp"></div>

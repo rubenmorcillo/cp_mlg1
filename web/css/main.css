@@ -16,7 +16,7 @@ body{
 }
 
 a, a:hover { text-decoration: none; text-underline: none; }
-a { color: #49576d; transition: all ease 0.5s; -moz-transition: all ease 0.5s; }
+a { color: chartreuse; transition: all ease 0.5s; -moz-transition: all ease 0.5s; }
 
 /*FIN ESTILOS GENERALES*/
 /*///////////////////////////////////////////////////////////////////////
@@ -43,6 +43,10 @@ a { color: #49576d; transition: all ease 0.5s; -moz-transition: all ease 0.5s; }
 .deck{
   padding-bottom: 4vh;
 }
+/*en el fondo no va la imagen */
+#fondo_ranking{
+  background-color: red;
+}
 
 .carta_activa{-webkit-filter:grayscale(0);filter:grayscale(0); }
 .carta_inactiva{-webkit-filter:grayscale(100%);filter:grayscale(100%);cursor:default; }
@@ -61,24 +65,19 @@ a { color: #49576d; transition: all ease 0.5s; -moz-transition: all ease 0.5s; }
 .letra_listas_cabecera{
   color:#007bff;
 }
-.
+
 
 /*FIN MIS CLASES*/
 /*///////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////*/
 /*FORM LOGIN CYBERPUNK */
 
-html,
 body {
   font-family: "IBM Plex Sans", linkMacSystemFont, San Francisco, Roboto, Helvetica Neue, Segoe UI, sans-serif;
   text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  overflow-y:scroll !important;
-  overflow-x:scroll !important;
+  overflow-x:hidden;
 }
 
 *,
@@ -97,10 +96,11 @@ body {
   background-size: cover;
   padding: 0 30px;
   margin-left: -5%;
+  margin-top: -5%;
   min-height: 100vh;
-  height: 100%;
+  max-height: 100vh;
   width: 100vw;
-  overflow-y: auto;
+
 }
 .contenedor_form_login_cp:before {
   content: "";
@@ -306,22 +306,33 @@ body {
 /////////////////////////////////////////////////////////////////////////////*/
 /* INTERFAZ USUARIO*/
 #menu_jugador{
-  background-color: red;
 
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: space-between;
 }
-#menu_jugador:first-child{
-}
-#menu_jugador:last-child{
 
-}
 
 .menu_jugador_opcion{
-  display: inline-block;
-  margin-left: 2em;
-  margin-right: 2em;
-  width: 20%;
-  height: 70%;
-  background-color: #fff;
+  flex-basis: 30%;
+  background: url(http://78.media.tumblr.com/1704bfe2f37d151ecb62a30b714f1b8a/tumblr_o0i7d582pQ1rnbw6mo1_540.gif);
+  background-size: 10vw;
+  height: 10vh;
+
+}
+
+/* TIENDA comparte el div superior #menu_jugador*/
+
+.elemento_menu_tienda{
+  flex-basis: 40%;
+  height: 10vh;
+  max-width: 30vw;
+  /*background-color: yellow;*/
+  text-align: center;
+}
+
+.producto{
+
 }
 
 /*FIN INTERFAZ USUARIO*/

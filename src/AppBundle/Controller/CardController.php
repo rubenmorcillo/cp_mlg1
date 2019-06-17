@@ -37,6 +37,16 @@ class CardController extends Controller
     }
 
     /**
+     * @Route("/tienda&u={id}", name="tienda", requirements={"id": "\d+"})
+     */
+    public function tiendaAction(CardRepository $cardRepository, User $usuario){
+        return $this->render('market/tienda.html.twig', [
+            'usuario' => $usuario,
+        ]);
+
+    }
+
+    /**
      * @Route("/tienda/cc&u={id}", name="carta_comprar_una", requirements={"id": "\d+"})
      */
     public function comprarCarta(Request $request,TypeCardRepository $tcr,UserRepository $ur, User $user){

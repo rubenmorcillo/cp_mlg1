@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <div id="fondo_tienda" style="background: url({{ asset('recursos/fondos/fondo_tienda2.jpg') }}">
+    <div id="fondo_comprar_carta" style="background: url({{ asset('recursos/fondos/fondo_tienda2.jpg') }}">
         <form action="{{ path('carta_comprar_una',{'id':usuario.id} ) }}" method="post">
             <p><button type="submit" name="one" class="btn btn-outline-primary">Adquirir carta</button></p>
 

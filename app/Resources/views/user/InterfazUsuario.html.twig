@@ -4,26 +4,14 @@
 {% if usuario %}
     {% set raiz =  'recursos/cardsImages/' %}
     <div id="menu_jugador">
-       <div id="cyberpunk" /*class="menu_jugador_opcion"*/>
-           <div id="cont_title">
-               <div id="cont_title_inner">
-           <a href="{{ path('cartas_lista_user',{'id':usuario.id}) }}">Coleccion</a>
-               </div>
-           </div>
+       <div id="div_coleccion" class="menu_jugador_opcion">
+            <a href="{{ path('cartas_lista_user',{'id':usuario.id}) }}">Coleccion</a>
        </div>
-       <div id="automata" /*class="menu_jugador_opcion"*/>
-            <div id="cont_title">
-                <div id="cont_title_inner">
-                    <a href="#">Jugar</a>
-                </div>
-            </div>
+       <div id="div_coleccion" class="menu_jugador_opcion">
+            <a href="#">Jugar</a>
        </div>
-       <div id="replicant" /*class="menu_jugador_opcion"*/>
-            <div id="cont_title">
-                <div id="cont_title_inner" >
-                     <a href="{{ path('carta_comprar_una', {'id': usuario.id}) }}">Tienda</a>
-                </div>
-            </div>
+       <div id="div_tienda" class="menu_jugador_opcion">
+            <a href="{{ path('tienda', {'id': usuario.id}) }}">Tienda</a>
        </div>
     </div>
 {% endif %}

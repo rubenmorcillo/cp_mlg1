@@ -2,33 +2,34 @@
 {% block content %}
     {% block listaCartas %}
 
+
             <h1>Coleccion de {{ usuario.nickname }}</h1>
-        <div id="cont_tabla_cartas">
-            <table class="tabla_cartas table-responsive-lg panel_fondo_transparente">
+            <div id="cont_tabla_cartas">
+                <table class="tabla_cartas table-responsive-lg panel_fondo_transparente">
 
-                {% set raiz =  'recursos/cardsImages/' %}
+                    {% set raiz =  'recursos/cardsImages/' %}
 
-                <tr class="fila_tabla primera_fila_tabla">
-                    {%  for carta in cards %}
-                    {% if usuario %}
-                        {% set imageRoute = carta.typeCard.imageRoute %}
-                    {% else %}
-                        {% set imageRoute = carta.imageRoute %}
-                    {% endif %}
-                    {% if loop.index == 6 or loop.index == 11 or loop.index == 16 or loop.index == 21%}
-                </tr>
-                <tr class="fila_tabla {{ loop.index}}" >
-                    {% endif %}
+                    <tr class="fila_tabla primera_fila_tabla">
+                        {%  for carta in cards %}
+                        {% if usuario %}
+                            {% set imageRoute = carta.typeCard.imageRoute %}
+                        {% else %}
+                            {% set imageRoute = carta.imageRoute %}
+                        {% endif %}
+                        {% if loop.index == 6 or loop.index == 11 or loop.index == 16 or loop.index == 21%}
+                    </tr>
+                    <tr class="fila_tabla {{ loop.index}}" >
+                        {% endif %}
 
 
-                    <td class=""><a href="#">
-                            <img class="img_carta_lista img-fluid" style="height: 140px;width: 135px;" src="{{ asset(raiz~imageRoute~'.jpg') }}" alt="{% if usuario == null %}{{ carta.name }}{% endif %}">
-                        </a>
-                    </td>
+                        <td class=""><a href="#">
+                                <img class="img_carta_lista img-fluid" style="height: 140px;width: 135px;" src="{{ asset(raiz~imageRoute~'.jpg') }}" alt="{% if usuario == null %}{{ carta.name }}{% endif %}">
+                            </a>
+                        </td>
 
-                    {% endfor %}
-            </table>
-        </div>
+                        {% endfor %}
+                </table>
+            </div>
     {% endblock %}
 
     {% block listaDecks %}
@@ -45,4 +46,5 @@
             </ul>
         </div>
     {% endblock %}
+
 {% endblock %}

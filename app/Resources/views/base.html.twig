@@ -20,10 +20,25 @@
     {% block stylesheets %}{% endblock %}
 
     <title>{% block title %}CyberTrap TCG{% endblock %}</title>
+    {% set ruta = app.request.get('_route') %}
 
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
-<body id="fondo_general" /*style="background: url('{{ asset('recursos/fondos/foto_cp5.jpg') }}')" */>
+<body id="fondo_general"
+      {% if ruta starts with('tienda') %}
+        class="body_tienda"
+      {% else %}
+      {% if ruta starts with ('cu') %}
+          class="body_coleccion"
+      {% else %}
+      {% if is_granted ('ROLE_ADMIN') %} class="body_admin" {% else %}
+            {% if is_granted('ROLE_PLAYER') %}class="body_jugador"
+            {% else %} class="body_invitado"
+            {% endif %}
+      {% endif %}
+      {% endif %}
+      {% endif %}
+/>
 {% block body %}
 {% block controlUsuario %} {% endblock %}
 {% endblock %}
@@ -40,8 +55,26 @@
 
 </body>
 <style>
-    #fondo_general{
+    .body_admin {
         background: url('{{ asset('recursos/fondos/fondo_lab.jpg') }}');
+        background-size: cover;
+    }
+    .body_jugador{
+        background: url('{{ asset('recursos/fondos/foto_cp1.jpg') }}');
+        background-size: cover;
+
+    }
+    .body_invitado{
+        background: url('{{ asset('recursos/fondos/fondo_login3.jpg') }}');
+        background-size: cover;
+    }
+    .body_tienda{
+        background: url('{{ asset('recursos/fondos/fondo_tienda2.jpg') }}');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .body_coleccion{
+        background: url('{{ asset('recursos/fondos/fondo_tienda.jpg') }}');
         background-size: cover;
 
     }

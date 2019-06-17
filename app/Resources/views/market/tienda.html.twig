@@ -1,18 +1,19 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <div id="menu_jugador panel_fondo_transparente" >
-        <div class="elemento_menu_tienda">
+    <div id="menu_tienda">
+        <div class="elemento_menu_tienda panel_fondo_transparente">
 
 
                 <p><a href="{{ path('carta_comprar_una', {'id': usuario.id}) }}">Adquirir carta </a></p>
 
 
         </div>
-        <div class="elemento_menu_tienda">
+        <div class="elemento_menu_tienda panel_fondo_transparente">
 
                     <p><button type="submit" name="one" class="btn btn-outline-primary">Adquirir pack</button></p>
 
         </div>
     </div>
+
 {% endblock %}

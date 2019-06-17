@@ -1,7 +1,9 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-   <h1>Editar Perfil</h1>
+ <div class="panel_fondo_transparente">
+
+ <h1>Editar Perfil</h1>
 
     {{ form_start(form) }}
     {{ form_widget(form) }}
@@ -11,5 +13,5 @@
  <a href="{{ path('usuario_eliminar', {'id': app.user.id}) }}" class="btn btn-danger"><i class="fas fa-trash"></i> Eliminar usuario</a>
  {% endif %}
  {{ form_end(form) }}
-
+ </div>
 {% endblock %}

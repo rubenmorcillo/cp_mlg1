@@ -3,14 +3,14 @@
 {% block controlUsuario %}
 {% if usuario %}
     {% set raiz =  'recursos/cardsImages/' %}
-    <div id="menu_jugador">
-       <div id="div_coleccion" class="menu_jugador_opcion">
+    <div id="menu_jugador" >
+       <div id="div_coleccion" class="menu_jugador_opcion panel_fondo_transparente">
             <a href="{{ path('cartas_lista_user',{'id':usuario.id}) }}">Coleccion</a>
        </div>
-       <div id="div_coleccion" class="menu_jugador_opcion">
+       <div id="div_coleccion" class="menu_jugador_opcion panel_fondo_transparente">
             <a href="#">Jugar</a>
        </div>
-       <div id="div_tienda" class="menu_jugador_opcion">
+       <div id="div_tienda" class="menu_jugador_opcion panel_fondo_transparente">
             <a href="{{ path('tienda', {'id': usuario.id}) }}">Tienda</a>
        </div>
     </div>

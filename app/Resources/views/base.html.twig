@@ -23,7 +23,7 @@
 
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
-<body style="background: #0d0f15">
+<body id="fondo_general" /*style="background: url('{{ asset('recursos/fondos/foto_cp5.jpg') }}')" */>
 {% block body %}
 {% block controlUsuario %} {% endblock %}
 {% endblock %}
@@ -39,4 +39,11 @@
 
 
 </body>
+<style>
+    #fondo_general{
+        background: url('{{ asset('recursos/fondos/fondo_lab.jpg') }}');
+        background-size: cover;
+
+    }
+</style>
 </html>

@@ -1,12 +1,12 @@
 {% extends 'layout.html.twig' %}
 {% block contenidoExt %}
-
+<div
     {% if usuario %}
 
     <h1>Coleccion de {{ usuario.nickname }}</h1>
 
     {% endif %}
-<table class="tabla_cartas table-responsive-lg">
+<table class="tabla_cartas table-responsive-lg panel_fondo_transparente">
 
     {% set raiz =  'recursos/cardsImages/' %}
 
@@ -24,11 +24,11 @@
 
 
             <td class=""><a href="#">
-                <img class="img_carta_lista img-fluid" style="height: 140px; z-index:3;" src="{{ asset(raiz~imageRoute~'.jpg') }}" alt="{% if usuario == null %}{{ carta.name }}{% endif %}">
+                <img class="img_carta_lista" style="height: 140px; width: 135px;" src="{{ asset(raiz~imageRoute~'.jpg') }}" alt="{% if usuario == null %}{{ carta.name }}{% endif %}">
                 </a>
             </td>
 
     {% endfor %}
 </table>
-
+</div>
 {% endblock %}

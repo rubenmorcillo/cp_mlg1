@@ -1,15 +1,13 @@
 {% extends 'layout.html.twig' %}
-
 {% block contenidoExt %}
 
-    <div id="fondo_ranking" >
     <h1>CyberLords</h1>
-    <table class="table" {% if is_granted('ROLE_ADMIN') %}{% else %} style="overflow-x: scroll;background: url('{{ asset('recursos/fondos/fondo_ranking.jpg') }}')"{% endif %}>
+    <table class="table panel_fondo_transparente" >
         <thead>
         <tr>
             <th class="letra_listas_cabecera">NickName</th>
-            <th class="letra_listas_cabecera"><i class="fas fa-yen-sign -yen-sign"></i>Créditos</th>
-            <th class="letra_listas_cabecera"><i class="fas fa-yen-sign -yen-sign"></i>Rep.</th>
+            <th class="letra_listas_cabecera"><i class="fas fa-yen-sign -yen-sign"></i> Créditos</th>
+            <th class="letra_listas_cabecera"><i class="fas -crown fa-crown"></i> Rep.</th>
             {% if is_granted('ROLE_ADMIN') %}
             <th class="letra_listas_cabecera"><i class="fas fa-yen-sign -yen-sign"></i>¿Es admin?</th>
             {% endif %}
@@ -29,5 +27,6 @@
         {% endfor %}
         </tbody>
     </table>
-    </div>
+
+
 {% endblock %}

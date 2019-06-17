@@ -1,7 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-<div id="fondo_back" style="background: url("{{ asset('recursos/fondos/foto_cp3.jpg') }}")">
+<div id="fondo_back" class="panel_fondo_transparente">
 {% set user = app.user %}
        {% if not es_nueva %}
            <h1>Editar escuadrón</h1>
@@ -13,7 +13,6 @@
        {{ form_widget(form) }}
        <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Guardar cambios</button>
        {% if not es_nueva %}<a href="#" class="btn btn-danger"><i class="fas fa-trash"></i> No funciona</a>{% endif %}
-    //la ruta para eliminar es ¿deck_editar?
 
        {{ form_end(form) }}
 </div>

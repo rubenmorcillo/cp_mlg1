@@ -4,7 +4,7 @@
 
             <h1>Coleccion de {{ usuario.nickname }}</h1>
         <div id="cont_tabla_cartas">
-            <table class="tabla_cartas table-responsive-lg">
+            <table class="tabla_cartas table-responsive-lg panel_fondo_transparente">
 
                 {% set raiz =  'recursos/cardsImages/' %}
 
@@ -22,7 +22,7 @@
 
 
                     <td class=""><a href="#">
-                            <img class="img_carta_lista img-fluid" style="height: 140px; z-index:3;" src="{{ asset(raiz~imageRoute~'.jpg') }}" alt="{% if usuario == null %}{{ carta.name }}{% endif %}">
+                            <img class="img_carta_lista img-fluid" style="height: 140px;width: 135px;" src="{{ asset(raiz~imageRoute~'.jpg') }}" alt="{% if usuario == null %}{{ carta.name }}{% endif %}">
                         </a>
                     </td>
 
@@ -32,8 +32,9 @@
     {% endblock %}
 
     {% block listaDecks %}
-        <div id="cont_lista_decks">
-           <h3>Equipos</h3>
+        <h3>Equipos</h3>
+        <div id="cont_lista_decks" class="panel_fondo_transparente">
+
             <ul class="lista_decks">
                 {% for escuadron in usuario.decks %}
                     <li class="deck"><a href="{{ path('deck_editar', {'deck': escuadron.id, 'id': usuario.id}) }}"><i class="fa fa-biohazard"></i>{{ escuadron.deckname }}</a></li>

@@ -1,21 +1,17 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <div id="menu_jugador" >
+    <div id="menu_jugador panel_fondo_transparente" >
         <div class="elemento_menu_tienda">
 
-            <img src="{{ asset('recursos/fondos/fondo_tienda2.jpg') }}" alt="" >
-            <figcaption>
+
                 <p><a href="{{ path('carta_comprar_una', {'id': usuario.id}) }}">Adquirir carta </a></p>
-            </figcaption>
+
 
         </div>
         <div class="elemento_menu_tienda">
 
-            <img src="{{ asset('recursos/fondos/fondo_tienda2.jpg') }}" alt="">
-            <figcaption>
                     <p><button type="submit" name="one" class="btn btn-outline-primary">Adquirir pack</button></p>
-            </figcaption>
 
         </div>
     </div>

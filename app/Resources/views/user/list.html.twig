@@ -4,24 +4,27 @@
 
     <div id="fondo_ranking" >
     <h1>CyberLords</h1>
-    <table class="table" style="overflow-x: scroll;background: url('{{ asset('recursos/fondos/fondo_ranking.jpg') }}')">
+    <table class="table" {% if is_granted('ROLE_ADMIN') %}{% else %} style="overflow-x: scroll;background: url('{{ asset('recursos/fondos/fondo_ranking.jpg') }}')"{% endif %}>
         <thead>
         <tr>
-            <th class="letra_listas_cabecera"></th>
             <th class="letra_listas_cabecera">NickName</th>
-            <th class="letra_listas_cabecera">Créditos</th>
-            <th class="letra_listas_cabecera">Rep.</th>
-            <th class="letra_listas_cabecera">¿Es admin?</th>
+            <th class="letra_listas_cabecera"><i class="fas fa-yen-sign -yen-sign"></i>Créditos</th>
+            <th class="letra_listas_cabecera"><i class="fas fa-yen-sign -yen-sign"></i>Rep.</th>
+            {% if is_granted('ROLE_ADMIN') %}
+            <th class="letra_listas_cabecera"><i class="fas fa-yen-sign -yen-sign"></i>¿Es admin?</th>
+            {% endif %}
         </tr>
         </thead>
         <tbody>
         {% for user in users %}
             <tr>
-                <td class="letra_listas"><a href="{% if is_granted('ROLE_ADMIN') %}{{ path('admin_usuario_editar',{'id':user.id}) }}{% else %}{{ path('cartas_lista_user',{'id':user.id}) }}{% endif %}">{{ user.id }}</a></td>
                 <td class="letra_listas"><a href="{% if is_granted('ROLE_ADMIN') %}{{ path('admin_usuario_editar',{'id':user.id}) }}{% else %}{{ path('cartas_lista_user',{'id':user.id}) }}{% endif %}">{{ user.nickname }}</a></td>
                 <td class="letra_listas">{{ user.credits }}</td>
                 <td class="letra_listas">{{ user.reputation }}</td>
+                {% if is_granted('ROLE_ADMIN') %}
                 <td class="letra_listas">{% if user.esadmin %}Sí{% else %}No{% endif %}</td>
+                {% endif %}
+
             </tr>
         {% endfor %}
         </tbody>

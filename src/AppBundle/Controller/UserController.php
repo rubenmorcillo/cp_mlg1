@@ -125,9 +125,7 @@ class UserController extends Controller
      */
     public function eliminarAction(Request $request, User $user)
     {
-//        if ($user != $this->getUser()){
-//            $this->redirectToRoute('portada');
-//        }
+//
         if ($request->get('borrar') === '') {
             try {
                 $this->eliminarRegistrosUser($user);
@@ -218,5 +216,12 @@ class UserController extends Controller
             ]);
         }
 
+    /**
+     * @Route("/adminMode/panel", name="admin_panel")
+     * @Security("is_granted('ROLE_ADMIN')")
+     */
+    public function adminPanelAction(){
 
+        return $this->render('user/adminMenu.html.twig', []);
+    }
 }

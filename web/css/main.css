@@ -22,6 +22,10 @@ a { color: chartreuse; transition: all ease 0.5s; -moz-transition: all ease 0.5s
 /*///////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////*/
 /*MIS CLASES*/
+#panel_admin{
+  background-color: rgba(100,100,100,0.3);
+}
+
 #cont_tabla_cartas{
   display: table-cell;
   width:70%;
@@ -45,7 +49,7 @@ a { color: chartreuse; transition: all ease 0.5s; -moz-transition: all ease 0.5s
 }
 /*en el fondo no va la imagen */
 #fondo_ranking{
-  background-color: red;
+  background-color: rgba(100,100,100,0.5);
 }
 
 .carta_activa{-webkit-filter:grayscale(0);filter:grayscale(0); }
@@ -95,7 +99,7 @@ body {
   background-position: center;
   background-size: cover;
   padding: 0 30px;
-  margin-left: -5%;
+  margin-left: -8%;
   margin-top: -5%;
   min-height: 100vh;
   max-height: 100vh;

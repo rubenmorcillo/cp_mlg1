@@ -1,0 +1,11 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div id="panel_admin">
+        <ul class="lista_admin">
+            <li><a href="{{ path('user_list') }}" class="opcion_admin">Mostrar todos los usuarios</a></li>
+            <li><a href=""  class="opcion_admin">Solicitudes de borrado</a></li>
+            <li><a href="{{ path('admin_card_list') }}" class="opcion_admin">Editar Personajes</a></li>
+        </ul>
+    </div>
+{% endblock %}

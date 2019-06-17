@@ -24,19 +24,19 @@ class TypeCardController extends Controller
             'usuario' => null
         ]);
     }
-//
-//    /**
-//     * @Route("/cdetail/{id}", name="card_detail")
-//     */
-//    public function typeCardDetailAction(Card $carta)
-//    {
-//
-//
-//        return $this->render('typeCard/list2.html.twig', [
-//            'carta' => $carta,
-//            'usuario' => null
-//        ]);
-//    }
+
+    /**
+     * @Route("/adminMode/card", name="admin_card_list")
+     */
+    public function typeCardAdminListarAction(TypeCardRepository $typeCardRepository)
+    {
+
+        $todasCartas = $typeCardRepository->findAll();
+        return $this->render('typeCard/listaAdmin.html.twig', [
+            'cards' => $todasCartas,
+            'usuario' => null
+        ]);
+    }
 
 
     /**

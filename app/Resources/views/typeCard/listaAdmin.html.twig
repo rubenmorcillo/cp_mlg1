@@ -1,0 +1,47 @@
+{% extends 'layout.html.twig' %}
+
+{% block contenidoExt %}
+
+    <div id="fondo_ranking" >
+        <h1>Cartas</h1>
+        <table class="table" >
+            <thead>
+            <tr>
+                <th class="letra_listas_cabecera">ID</th>
+                <th class="letra_listas_cabecera">Nombre</th>
+                <th class="letra_listas_cabecera"><i class="fas -dumbbell fa-dumbbell"></i>Ataque</th>
+                <th class="letra_listas_cabecera"><i class="fas -ethereum fa-ethereum"></i>Inteligencia</th>
+                <th class="letra_listas_cabecera"><i class="fas fa-yen-sign -yen-sign"></i>Defensa</th>
+                <th class="letra_listas_cabecera"><i class="fas fa-yen-sign -yen-sign"></i>Velocidad</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for card in cards %}
+                <tr class="fila" >
+
+                    <td class="letra_listas"><a href="{{ path('card_edit', {'id':card.id}) }}" >{{ card.id }} </a></td>
+                    <td class="letra_listas"><a href="{{ path('card_edit', {'id':card.id}) }}" >{{ card.name }} </a></td>
+                    <td class="letra_listas"><a href="{{ path('card_edit', {'id':card.id}) }}" >{{ card.atqA }} </a></td>
+                    <td class="letra_listas"><a href="{{ path('card_edit', {'id':card.id}) }}" >{{ card.atqB }} </a></td>
+                    <td class="letra_listas"><a href="{{ path('card_edit', {'id':card.id}) }}" >{{ card.atqC }} </a></td>
+                    <td class="letra_listas"><a href="{{ path('card_edit', {'id':card.id}) }}" >{{ card.atqD }} </a></td>
+
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            var filas = document.querySelectorAll('.fila');
+            var fin_filas = filas.length;
+            for(let i=0; i<fin_filas;i++){
+                filas.addEventListener('click', function(){
+                 console.log("click en fila");
+                });
+            }
+        });
+    </script>
+{% endblock %}

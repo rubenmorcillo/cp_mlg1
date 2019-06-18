@@ -105,7 +105,7 @@ class UserController extends Controller
                 $time = new \DateTime();
                 $user->setSignDate($time);
                 $user->setEsAdmin(false);
-                $user->setCredits(0);
+                $user->setCredits(1000);
                 $user->setReputation(0);
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('exito', 'Los cambios en el usuario han sido guardados con éxito');

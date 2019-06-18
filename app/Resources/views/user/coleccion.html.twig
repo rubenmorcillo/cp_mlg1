@@ -3,7 +3,7 @@
     {% block listaCartas %}
 
 
-            <h1>Coleccion de {{ usuario.nickname }}</h1>
+            <h1>Coleccion de {{ usuario.nickname }} <a href="{{ path('tienda', {'id': usuario.id}) }}"><i class="fas fa-arrow-circle-o-right"></i>    Ir a la tienda</a></h1>
             <div id="cont_tabla_cartas">
                 <table class="tabla_cartas table-responsive-lg panel_fondo_transparente">
 

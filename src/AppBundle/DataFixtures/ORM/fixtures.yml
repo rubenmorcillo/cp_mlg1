@@ -17,11 +17,11 @@ AppBundle\Entity\User:
     nickname (unique): Tester
     password: test
     esAdmin: false
-    credits: '<numberBetween(0,9999)>'
-    reputation: 0
+    credits: 9999
+    reputation: 5
 
 
-  jugador_{1..10}:
+  jugador_{1..20}:
     #signDate: '<dateTimeBetween("-3 months", "now")> '
     signDate: '<dateTime()>'
     login (unique): '<es_ES:lastName()>'
@@ -38,7 +38,7 @@ AppBundle\Entity\User:
 
 
 AppBundle\Entity\Deck:
-  equipo_{1..4}:
+  equipo_{1..20}:
     deckName: '<es_ES:word()>'
     deckOwner: '@jugador_<current()>'
     cardsContained: '2x @personaje_*'
@@ -246,9 +246,9 @@ AppBundle\Entity\TypeCard:
     atq_d: 92
 
 AppBundle\Entity\Card:
-  personaje_{1..60}:
+  personaje_{1..200}:
     typeCard: '@tipoPersonaje_<numberBetween(1,25)>'
-    cardOwner: '@jugador_<numberBetween(1,10)>'
+    cardOwner: '@jugador_<numberBetween(1,20)>'
 
 #AppBundle\Entity\Battle:
 #  partida_{1..16}:

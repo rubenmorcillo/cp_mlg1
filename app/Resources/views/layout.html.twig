@@ -36,6 +36,7 @@
                 </ul>
 
                 {% if app.user %}
+                    <span class="navbar-light"><i class="fas fa-dollar-sign"></i>{{ app.user.credits }}</span>
                 <span class="navbar-light">!Hola,<a href="{{ path('usuario_perfil') }}">{{ app.user.nickname }}</a>! </span>
                     <a href="{{ path('usuario_salir') }}" class="ml-3 btn btn-outline-primary"><i class="fas fa-times"></i> EXIT</a>
 
@@ -75,7 +76,7 @@
 
     <style>
         .elnav{
-            background: url("{{ asset('recursos/fondos/foto_cp3.jpg') }}");
+            background: url("{{ asset('recursos/fondos/fondo_nav1.jpg') }}");
             border-bottom:1vh outset #0d0f15;
         }
     </style>

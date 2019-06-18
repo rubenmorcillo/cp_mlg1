@@ -11,17 +11,16 @@
   list-style-type: none !important;
   color: white;
 }
-body{
 
-}
-
-a, a:hover { text-decoration: none; text-underline: none; }
-a { color: chartreuse; transition: all ease 0.5s; -moz-transition: all ease 0.5s; }
+/*a, a:hover { text-decoration: none; text-underline: none; }*/
+/*a { color: chartreuse; transition: all ease 0.5s; -moz-transition: all ease 0.5s; }*/
 
 /*FIN ESTILOS GENERALES*/
 /*///////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////*/
 /*MIS CLASES*/
+
+
 
 .panel_fondo_transparente{
   background-color: rgba(3,3,3,0.9);
@@ -74,6 +73,71 @@ a { color: chartreuse; transition: all ease 0.5s; -moz-transition: all ease 0.5s
 
 
 /*FIN MIS CLASES*/
+/*///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////*/
+/* COMBATE */
+#cont_juego{
+  margin-top:-5.5%;
+  align-content: center;
+  width: 100%;
+  height: 100%;
+  position:center;
+}
+
+#centro_batalla{
+  min-height: 7vw;
+  background-color: rgba(100,100,100,0.4);
+  display: block;
+  width: 100vw;
+  border: 1px solid darkcyan;
+
+}
+
+.div_cartas {
+  display: flex;
+  margin: auto;
+  background-color: rgba(20, 20, 20, 1);
+  width: 100vw;
+}
+.carta_batalla{
+  border:2px solid white;
+}
+.img_carta_batalla{
+  display: block;
+  width: 180px;
+  height: 180px;
+  padding: 10px;
+  border-bottom:2px solid white;
+}
+.carta_jugador:hover{
+  background-color: darkcyan;
+}
+.skills{
+  display: flex;
+}
+.txt_carta_batalla{
+  flex-basis: 25%;
+  text-align: center;
+  border: 1px solid darkcyan;
+}
+
+#jugador{
+  /*    position: absolute;*/
+  bottom: 0;
+  margin: auto;
+}
+#oponente{
+  /*    position: absolute;*/
+  top: 0px;
+  margin: auto;
+}
+.seleccionada{
+  background-color: darkcyan;
+}
+.noSeleccionada{
+  background-color: black;
+}
+/* FIN COMBATE */
 /*///////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////*/
 /*FORM LOGIN CYBERPUNK */

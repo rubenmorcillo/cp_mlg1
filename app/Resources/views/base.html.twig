@@ -28,11 +28,12 @@
       {% if ruta starts with('tienda') %}
         class="body_tienda"
       {% else %}
-      {% if ruta starts with ('cu') %}
+      {% if ruta starts with('cartas_lista_user') or ruta starts with('deck_nuevo')%}
           class="body_coleccion"
       {% else %}
       {% if is_granted ('ROLE_ADMIN') %} class="body_admin" {% else %}
             {% if is_granted('ROLE_PLAYER') %}class="body_jugador"
+
             {% else %} class="body_invitado"
             {% endif %}
       {% endif %}

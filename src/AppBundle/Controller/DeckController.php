@@ -56,10 +56,12 @@ class DeckController extends Controller
         return $this->render('deck/crearMazo.html.twig', [
             'es_nueva' => false,
             'form' => $form->createView(),
+            'deck' => $deck,
+            'usuario' => $usuario
         ]);
     }
     /**
-     * @Route("/deck/dl/ow={id}/{deck}", name="deck_editar",requirements={"id": "\d+", "deck": "\d+"})
+     * @Route("/deck/dl/ow={id}/{deck}", name="deck_eliminar",requirements={"id": "\d+", "deck": "\d+"})
      */
     public function deckBorrarAction(Request $request,User $usuario, Deck $deck){
         if ($request->get('borrar') === ''){

@@ -4,7 +4,7 @@
 {% set precio = 'X' %}
     <div id="fondo_comprar_carta" class="alert alert-dark">
         <p>¿Estás seguro de que quieres comprar una carta aleatoria por {{ precio }} créditos?</p>
-        <form action="{{ path('carta_comprar_una',{'id':usuario.id} ) }}" method="post">
+        <form action="{{ path('tienda_carta_comprar_una',{'id':usuario.id} ) }}" method="post">
             <p><button type="submit" name="one" class="btn btn-outline-primary">Sí</button>
                 <a href="{{ path('tienda', {'id': usuario.id}) }}" class="btn btn-outline-danger">No</a>
             </p>

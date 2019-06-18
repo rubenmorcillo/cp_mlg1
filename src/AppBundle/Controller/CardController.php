@@ -47,7 +47,7 @@ class CardController extends Controller
     }
 
     /**
-     * @Route("/tienda/cc&u={id}", name="carta_comprar_una", requirements={"id": "\d+"})
+     * @Route("/tienda/cc&u={id}", name="tienda_carta_comprar_una", requirements={"id": "\d+"})
      */
     public function comprarCarta(Request $request,TypeCardRepository $tcr,UserRepository $ur, User $user){
         $logeado = $this->getUser();
@@ -56,7 +56,6 @@ class CardController extends Controller
             $this->addFlash('exito', 'redirigido a tu tienda, bribón ;)');
             return $this->redirectToRoute('carta_comprar_una', ['id' => $logeado->getId()]);
         }
-//          $this->addFlash('exito', 'entrando a la tienda');
 
         if($request->get('one') === ''){
             $tc = $tcr->find(['id' => mt_rand(1,25)]);
@@ -67,7 +66,7 @@ class CardController extends Controller
                 $this->getDoctrine()->getManager()->persist($carta);
                 $this->getDoctrine()->getManager()->flush();
                 $this->addFlash('exito', 'has adquirido una nueva carta');
-                return $this->redirectToRoute('carta_comprar_una',['id' => $user->getId()]);
+                return $this->redirectToRoute('tienda',['id' => $user->getId()]);
             }catch(\Exception $e){
                 $this->addFlash('error', 'no se ha podido completar la compra');
             }
@@ -77,7 +76,7 @@ class CardController extends Controller
         ]);
     }
     /**
-     * @Route("/redireccion", name="carta_comprar_pack", requirements={"id": "\d+"})
+     * @Route("/redireccion", name="tienda_carta_comprar_pack", requirements={"id": "\d+"})
      */
     public function comprarPack(User $user){
         return $this->render('default/index.html.twig');

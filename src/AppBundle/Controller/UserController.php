@@ -8,8 +8,10 @@ use AppBundle\Form\Type\UserType;
 use AppBundle\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class UserController extends Controller
 {
@@ -123,7 +125,7 @@ class UserController extends Controller
      * @Route("/am/dl/us{id}", name="usuario_eliminar")
      * @Security("is_granted('ROLE_PLAYER')")
      */
-    public function eliminarAction(Request $request, User $user)
+    public function eliminarAction(Request $request,TokenStorageInterface $tokenStorage, Session $session, User $user)
     {
 //
         if ($request->get('borrar') === '') {
@@ -137,6 +139,8 @@ class UserController extends Controller
                 if ($this->isGranted('ROLE_ADMIN')){
                     return $this->redirectToRoute('portada');
                 }
+                $tokenStorage->setToken(null);
+                $session->invalidate();
                 return $this->redirectToRoute('usuario_salir');
             } catch (\Exception $e) {
                 $this->addFlash('error', 'Ha ocurrido un error al eliminar el usuario');

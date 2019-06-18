@@ -1,18 +1,18 @@
 /*IMPORTS*/
 @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,700");
-
+@import url('https://fonts.googleapis.com/css?family=Krona+One');
 
 /*FIN IMPORTS */
 /* /////////////////////////////////////////////////////////////////// */
 /*ESTILOS GENERALES*/
 
 *{
-  font-family: "Roboto Mono";
+  /*font-family: 'Roboto', 'IBM Plex Sans', 'Krona One';*/
   list-style-type: none !important;
   color: white;
 }
+a, a:hover { text-decoration: none; text-underline: none; font-family: "IBM Plex Sans", linkMacSystemFont, San Francisco, Roboto, Helvetica Neue, Segoe UI, sans-serif; font-weight: bold;}
 
-/*a, a:hover { text-decoration: none; text-underline: none; }*/
 /*a { color: chartreuse; transition: all ease 0.5s; -moz-transition: all ease 0.5s; }*/
 
 /*FIN ESTILOS GENERALES*/
@@ -21,6 +21,35 @@
 /*MIS CLASES*/
 
 
+/* Letras */
+
+
+.neon {
+  color: rgba(255, 255, 255, 0);
+  text-shadow: 0 0 2px #ffffff, 0 0 15px #70ffff, 0 0 20px #46fdff, 0 0 40px #46fdff;
+}
+.neon:hover {
+  color: #fff;
+  text-shadow: 0 0 10px #fff, 0 0 30px #fff, 0 0 50px #e3e98e, 0 0 70px #e3e98e, 0 0 90px #e3e98e;
+}
+
+
+.retro {
+  color: #facd94;
+  text-shadow: 2px 2px 0 #333333, 4px 4px 0 #868686;
+}
+
+.golden {
+  background: -webkit-linear-gradient(top, #f9d400 15%, #f89b00 35%, #f9d400 70%);
+  /* Chrome10+,Safari5.1+ */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+
+
+/* FIN LETRAS */
 
 .panel_fondo_transparente{
   background-color: rgba(3,3,3,0.9);

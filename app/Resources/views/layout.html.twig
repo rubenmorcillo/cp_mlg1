@@ -6,11 +6,11 @@
 
     {% block nav %}
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark elnav">
-            <a class="navbar-brand" href="{{ path('portada') }}"> CyberTrap TCG</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Mostrar secciones">
+            <a class="navbar-brand neon" href="{{ path('portada') }}"> CyberTrap TCG</a>
+            <button class="btn-outline-primary navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Mostrar secciones">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="collapse navbar-collapse " id="navbarCollapse">
                 {% set ruta = app.request.get('_route') %}
                 <ul class="navbar-nav mr-auto">
 
@@ -36,12 +36,13 @@
                 </ul>
 
                 {% if app.user %}
-                    <span class="navbar-light"><i class="fas fa-dollar-sign"></i>{{ app.user.credits }}</span>
-                <span class="navbar-light">!Hola,<a href="{{ path('usuario_perfil') }}">{{ app.user.nickname }}</a>! </span>
-                    <a href="{{ path('usuario_salir') }}" class="ml-3 btn btn-outline-primary"><i class="fas fa-times"></i> EXIT</a>
+                    <span class="navbar-light"><i class="fas crown fa-crown"></i>{{ app.user.reputation }}&nbsp&nbsp</span>
+                    <span class="golden navbar-light"><i class="fas fa-dollar-sign"></i>{{ app.user.credits }}&nbsp&nbsp</span>
+                <span class="navbar-light">!Hola, <a class="retro" href="{{ path('usuario_perfil') }}">{{ app.user.nickname|capitalize }}</a>! </span>
+                    <a href="{{ path('usuario_salir') }}" class="ml-3 btn btn-outline-primary"><i class="fas fa-power-off"></i> EXIT</a>
 
                 {% else %}
-                    <span> <a href="{{ path('usuario_nuevo') }}">registro</a></span>
+                    <span> <a href="{{ path('usuario_nuevo') }}">Registro&nbsp&nbsp</a></span>
                     {% if ruta ends with 'entrar' %}
 
                     {% else %}

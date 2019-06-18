@@ -10,5 +10,14 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
+    public function buscarTodosMenosLogeado(User $usuario){
+        return $this->createQueryBuilder('u')
+            ->select('u')
+            ->where('u.id <> :user')
+            ->setParameter('user', $usuario)
+            ->getQuery()
+            ->getResult();
+    }
+
 
 }

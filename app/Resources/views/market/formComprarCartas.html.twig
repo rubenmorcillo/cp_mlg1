@@ -1,7 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    {% set precio = 'X' %}
+    {% set precio = '10' %}
     <div id="fondo_comprar_carta" class="alert alert-dark">
         <p>¿Estás seguro de que quieres comprar una carta aleatoria por {{ precio }} créditos?</p>
         <form action="{{ path('tienda_carta_comprar_una',{'id':usuario.id} ) }}" method="post">

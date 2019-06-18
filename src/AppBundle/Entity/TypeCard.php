@@ -65,7 +65,7 @@ class TypeCard
 
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Card", mappedBy="tipoCarta")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Card", mappedBy="typeCard")
      * @ORM\JoinColumn(nullable=true)
      * @var Card[]
      */

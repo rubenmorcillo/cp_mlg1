@@ -94,21 +94,21 @@ class User implements UserInterface
     private $decks;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Battle", mappedBy="Battle")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Battle", mappedBy="playerAttacker")
      * @ORM\JoinColumn(nullable=true)
      * @var Battle[]
      */
     private $ataques;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Battle", mappedBy="Battle")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Battle", mappedBy="playerDefender")
      * @ORM\JoinColumn(nullable=true)
      * @var Battle[]
      */
     private $defensas;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Battle", mappedBy="Battle")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Battle", mappedBy="winner")
      * @ORM\JoinColumn(nullable=true)
      * @var Battle[]
      */

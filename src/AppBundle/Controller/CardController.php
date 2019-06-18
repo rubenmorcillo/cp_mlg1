@@ -50,18 +50,29 @@ class CardController extends Controller
      * @Route("/tienda/cc&u={id}", name="tienda_carta_comprar_una", requirements={"id": "\d+"})
      */
     public function comprarCarta(Request $request,TypeCardRepository $tcr,UserRepository $ur, User $user){
+        $precio = null;
         $logeado = $this->getUser();
         $logeado = $ur->findOneBy(['id' => $logeado]);
         if($user->getNickname() <> $logeado->getNickname()){
             $this->addFlash('exito', 'redirigido a tu tienda, bribón ;)');
-            return $this->redirectToRoute('carta_comprar_una', ['id' => $logeado->getId()]);
+            return $this->redirectToRoute('tienda_carta_comprar_una', ['id' => $logeado->getId()]);
         }
 
-        if($request->get('one') === ''){
+        if($request->get('c10') === ''){
+            /*Comprobar si el usuario tiene dinero suficiente*/
+            $precio = 10;
+            $dinero_user = $user -> getCredits();
+            if ( $dinero_user < $precio){
+                $this->addFlash('error', 'No tienes créditos suficientes :(');
+
+                return $this->redirectToRoute('tienda',['id' => $user->getId()]);
+            }
+
             $tc = $tcr->find(['id' => mt_rand(1,25)]);
             $carta = new Card();
             $carta->setCardOwner($user);
             $carta->setTypeCard($tc);
+            $user->setCredits($dinero_user - $precio);
             try{
                 $this->getDoctrine()->getManager()->persist($carta);
                 $this->getDoctrine()->getManager()->flush();
@@ -72,7 +83,8 @@ class CardController extends Controller
             }
         }
         return $this->render('market/formComprarCartas.html.twig',[
-            'usuario' => $user
+            'usuario' => $user,
+            'precio' => $precio
         ]);
     }
     /**

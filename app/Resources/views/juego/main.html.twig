@@ -1,5 +1,15 @@
-{% extends 'base' %}
+{% extends 'layout.html.twig' %}
 
-{% block body %}
-
+{% block content %}
+    <div id="menu_juego" class="panel_fondo_transparente">
+        <h2>Prepárate para el combate</h2>
+        <form action="{{ path('game_prepara', {'id':usuario.id}) }}">
+            <select name="select">
+                {% for deck in usuario.decks %}
+                    <option value="{{ deck.id }}">{{ deck.deckName }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit" value="buscar_oponente">Buscar Oponente Aleatorio</button>
+        </form>
+    </div>
 {% endblock %}

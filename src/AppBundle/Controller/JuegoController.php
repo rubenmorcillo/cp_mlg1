@@ -18,26 +18,12 @@ class JuegoController extends Controller
     public function preparaAction(Request $request,DeckRepository $dr, UserRepository $ur, User $user)
     {
         if ($request->get('ok') === 'buscar_oponente'){
-//            $this->addFlash('error', 'nadie ha lanzado el formulario');
 
-//            $this->addFlash('exito', 'formulario lanzado');
-//            $oponente = $this->buscarOponenteAleatorio($user);
              $oponente = $this->buscarOponenteAleatorio($ur, $user);
              $sudeck = $this->crearMazoTemporal($oponente);
              $mideck = $request->get('deck_select');
              $mideck = $dr->unDeck($mideck)[0];
-//            for ($i=0;$i< count($cartas_oponente); $i++) {
-//                $this->addFlash('exito', $oponente->getNickname() .':' . $cartas_oponente[$i]);
-//            }
-
-
-//            $this->addFlash('exito', 'mazo:'.$miEscuad->getDeckName());
-
-//            $miEscuad = $dr->findOneBy(['id'=> $miEscuad]);
-//            for ($i=0;$i< count($misCartas); $i++){
-//                $this->addFlash('exito', 'yo-c:'.$misCartas[$i]);
-                 return $this->combateAction($user,$mideck, $oponente, $sudeck);
-//            }
+             return $this->combateAction($request, $user,$mideck, $oponente, $sudeck);
 
 
         }
@@ -53,19 +39,18 @@ class JuegoController extends Controller
         foreach ($oponentes as $oponente){
         array_push($posibles_id, $oponente);
         }
-        $max_op = count($posibles_id);
-        $oponente_rnd = $posibles_id[mt_rand(1, $max_op)];
-//        $oponente_rnd = 14;
+        $max_op = count($posibles_id)-1;
+        $oponente_rnd = $posibles_id[mt_rand(0, $max_op)];
         $oponente = $userRepository->find($oponente_rnd);
         return $oponente;
     }
 
-    //le doy un User y me devuelve un array con 4 cartas aleatorias (pueden repetirse)
+    //le doy un User y me devuelve un array con 4 de sus cartas aleatorias (SIN REPETIDOS)
     public function buscar4CartasRnd(User $oponente){
         $cartas = $oponente->getCards();
         $cartas_enemigo = [];
         for ($i = 0; count($cartas_enemigo)<4;$i++){
-            $cartaRnd = $cartas[mt_rand(1,count($cartas))];
+            $cartaRnd = $cartas[mt_rand(0,count($cartas))];
             if ($cartaRnd <> ''){
                 if (!in_array($cartaRnd, $cartas_enemigo)){
                     array_push($cartas_enemigo, $cartaRnd);
@@ -78,16 +63,65 @@ class JuegoController extends Controller
     /**
      * @Route("/Combat/{jugador}/{mideck}/{oponente}/{sudeck}", name="game_combate")
      */
-    public function combateAction( User $jugador,Deck $mideck, User $oponente, Deck $sudeck){
-//        if( $_REQUEST->get('cartasJugador' === '' )){
-//            $this->addFlash('exito', 'has pulsado validar');
-//        }
-//        $cartasJugador = [];
-//        $miEscuad = $_REQUEST->get('deck_select');
-//        $miEscuad = $dr->unDeck($miEscuad)[0];
-//        $misCartas = $miEscuad->getCardsContained();
+    public function combateAction(Request $request, User $jugador,Deck $mideck, User $oponente, Deck $sudeck){
         $cartasOponente = $sudeck->getCardsContained();
         $cartasJugador = $mideck->getCardsContained();
+        $cartasJugador_vivas = [];
+        $cartasOponente_vivas = [];
+
+        //convirtiendo a array normal para que no falle método "in_array"
+        $cartasJugador_array = [];
+        for($i=0;$i<count($cartasJugador);$i++){
+            $elId = $cartasJugador[$i]->getId();
+            array_push($cartasJugador_array, $elId);
+        }
+//        $cartasOponente_array = [];
+
+        $trampas = false;
+
+
+        if($request->get('atacar')=== ''){
+
+            //Compruebo que ha elegido
+            if ($request->get('seleccionada') === ''){
+
+            }else{
+                //el jugador ha seleccionado una carta
+                $cJug = $request->get('seleccionada'); //recojo eleccion jugador
+                if ($cJug <> null){
+                    //compruebo q ha elegido una de su mazo activo
+                    for($i=0;$i<count($cartasJugador);$i++){
+                        if(!in_array($cJug,$cartasJugador_array)){
+                            $trampas = true;
+                        }
+                    }
+                }else{
+                    return $this->render('juego/combate.html.twig', [
+                        'jugador' => $jugador,
+                        'oponente' => $oponente,
+                        'cartasJugador' => $cartasJugador,
+                        'cartasOponente' => $cartasOponente,
+                        'deckJugador' => $mideck,
+                        'deckOponente' => $sudeck
+                    ]);
+                }
+
+                $cOp = $cartasOponente[mt_rand(0,count($cartasOponente)-1)]; //eleccion aleatoria del oponente
+
+                $this->addFlash('exito', 'atacando con '.$cJug.'...');
+                $this->addFlash('exito', 'el oponente ha elegido'.$cOp);
+            }
+
+
+        }
+        else{
+            $cartasJugador_vivas = $cartasJugador;
+            $cartasOponente_vivas = $cartasOponente;
+        }
+        if ($trampas){
+            $this->addFlash('error', '¡Vaya! Parece que estás intentando hacer trampas :_(');
+            return $this->redirectToRoute('portada');
+        }
 
 
         return $this->render('juego/combate.html.twig', [
@@ -100,13 +134,13 @@ class JuegoController extends Controller
         ]);
     }
 
-    public function validarCombateAction(Request $request){
-        if($request->get('validar')=== ''){
-            $this->addFlash('exito', 'has pulsado validar');
-        }
+    public function enfrentarCartasAction($cJug, $cOp){
+        //elijo un stat random
+        $sr = mt_rand(0,3);
+
 
     }
-
+    //crea un mazo "default" para el oponente con 4 cartas suyas aleatorias
     public function crearMazoTemporal(User $propietario){
 
         $cartasOponente = $this->buscar4CartasRnd($propietario);

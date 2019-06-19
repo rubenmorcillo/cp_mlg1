@@ -92,7 +92,7 @@ class UserController extends Controller
         return $this->editarAction($request, $usuario);
     }
     /**
-     * @Route("/endsingup/u={id}", name="usuario_registro",
+     * @Route("/endsingup/{id}", name="usuario_registro",
      *     requirements={"id":"\d+"})
      * @Security("is_granted('ROLE_ADMIN')")
      */
@@ -122,7 +122,7 @@ class UserController extends Controller
         ]);
     }
     /**
-     * @Route("/am/dl/us{id}", name="usuario_eliminar")
+     * @Route("/am/dl/{id}", name="usuario_eliminar")
      * @Security("is_granted('ROLE_PLAYER')")
      */
     public function eliminarAction(Request $request,TokenStorageInterface $tokenStorage, Session $session, User $user)
@@ -165,7 +165,7 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/adminMode/dl&u={id}", name="admin_usuario_eliminar")
+     * @Route("/adminMode/dl/{id}", name="admin_usuario_eliminar")
      * @Security("is_granted('ROLE_ADMIN')")
      */
     public function eliminarAdminAction(Request $request, User $usuario)
@@ -189,7 +189,7 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/adminMode/edit&u={id}", name="admin_usuario_editar")
+     * @Route("/adminMode/edit/{id}", name="admin_usuario_editar")
      * @Security("is_granted('ROLE_ADMIN')")
      */
     public function editarAdmin(Request $request, User $usuario){

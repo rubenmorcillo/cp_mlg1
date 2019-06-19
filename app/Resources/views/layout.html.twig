@@ -37,7 +37,7 @@
 
                 {% if app.user %}
                     <span class="navbar-light"><i class="fas crown fa-crown"></i>{{ app.user.reputation }}&nbsp&nbsp</span>
-                    <span class="golden navbar-light"><i class="fas fa-dollar-sign"></i>{{ app.user.credits }}&nbsp&nbsp</span>
+                    <span class="golden navbar-light"><i class="golden fas fa-dollar-sign"></i>{{ app.user.credits }}&nbsp&nbsp</span>
                 <span class="navbar-light">!Hola, <a class="retro" href="{{ path('usuario_perfil') }}">{{ app.user.nickname|capitalize }}</a>! </span>
                     <a href="{{ path('usuario_salir') }}" class="ml-3 btn btn-outline-primary"><i class="fas fa-power-off"></i> EXIT</a>
 

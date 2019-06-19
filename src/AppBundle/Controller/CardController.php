@@ -14,7 +14,7 @@ class CardController extends Controller
 {
 
     /**
-     * @Route("/mui&u={id}", name="interfazJuego", requirements={"id": "\d+"})
+     * @Route("/mui/{id}", name="interfazJuego", requirements={"id": "\d+"})
      */
     public function cardListAction(CardRepository $cardRepository, User $usuario){
         $cartas = $usuario->getCards();
@@ -37,7 +37,7 @@ class CardController extends Controller
     }
 
     /**
-     * @Route("/tienda&u={id}", name="tienda", requirements={"id": "\d+"})
+     * @Route("/tienda/{id}", name="tienda", requirements={"id": "\d+"})
      */
     public function tiendaAction(CardRepository $cardRepository, User $usuario){
         return $this->render('market/tienda.html.twig', [
@@ -47,7 +47,7 @@ class CardController extends Controller
     }
 
     /**
-     * @Route("/tienda/cc&u={id}", name="tienda_carta_comprar_una", requirements={"id": "\d+"})
+     * @Route("/tienda/cc/{id}", name="tienda_carta_comprar_una", requirements={"id": "\d+"})
      */
     public function comprarCarta(Request $request,TypeCardRepository $tcr,UserRepository $ur, User $user){
         $precio = null;

@@ -13,7 +13,7 @@ class DeckController extends Controller
 {
 
     /**
-     * @Route("/deck/cr/ow={id}", name="deck_nuevo",requirements={"id": "\d+"})
+     * @Route("/deck/cr/{id}", name="deck_nuevo",requirements={"id": "\d+"})
      */
     public function deckNuevoAction(User $usuario,Request $request)
     {
@@ -36,7 +36,7 @@ class DeckController extends Controller
             ]);
     }
     /**
-     * @Route("/deck/edit/ow={id}/{deck}", name="deck_editar",requirements={"id": "\d+", "deck": "\d+"})
+     * @Route("/deck/edit/{id}/{deck}", name="deck_editar",requirements={"id": "\d+", "deck": "\d+"})
      */
     public function deckEditarAction(User $usuario,Request $request, Deck $deck)
     {
@@ -61,7 +61,7 @@ class DeckController extends Controller
         ]);
     }
     /**
-     * @Route("/deck/dl/ow={id}/{deck}", name="deck_eliminar",requirements={"id": "\d+", "deck": "\d+"})
+     * @Route("/deck/dl/{id}/{deck}", name="deck_eliminar",requirements={"id": "\d+", "deck": "\d+"})
      */
     public function deckBorrarAction(Request $request,User $usuario, Deck $deck){
         if ($request->get('borrar') === ''){

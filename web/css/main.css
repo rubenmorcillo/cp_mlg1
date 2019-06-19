@@ -137,8 +137,10 @@ a, a:hover { text-decoration: none; text-underline: none; font-family: "IBM Plex
   height: 180px;
   padding: 10px;
   border-bottom:2px solid white;
+  cursor:pointer;
 }
 .carta_jugador:hover{
+
   background-color: darkcyan;
 }
 .skills{
@@ -151,7 +153,7 @@ a, a:hover { text-decoration: none; text-underline: none; font-family: "IBM Plex
 }
 
 #jugador{
-  /*    position: absolute;*/
+      position: absolute;
   bottom: 0;
   margin: auto;
 }

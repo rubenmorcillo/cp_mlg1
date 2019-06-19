@@ -7,7 +7,7 @@
             <p>Necesitas crear al menos un escuadrón para mandarlo al ataque</p>
             <a href="{{ path('deck_nuevo', {'id': usuario.id}) }}">Crear Escuadrón</a>
         {% else %}
-        <form action="{{ path('game_prepara', {'id':usuario.id}) }}">
+        <form action="{{ path('game_prepara', {'id':usuario.id}) }}" method="post">
             <label for="deck_select">Escoge tu escuadrón:</label>
             <select name="deck_select">
                 {% for deck in usuario.decks %}

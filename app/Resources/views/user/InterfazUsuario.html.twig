@@ -3,21 +3,49 @@
 {% block controlUsuario %}
 {% if usuario %}
     {% set raiz =  'recursos/cardsImages/' %}
-    <div id="menu_jugador" >
-       <div id="div_coleccion" class="menu_jugador_opcion panel_fondo_transparente">
-            <a href="{{ path('cartas_lista_user',{'id':usuario.id}) }}">Coleccion</a>
-       </div>
-       <div id="div_coleccion" class="menu_jugador_opcion panel_fondo_transparente">
-            <a href="{{ path('game_prepara', {'id':usuario.id}) }}">Jugar</a>
-       </div>
-       <div id="div_tienda" class="menu_jugador_opcion panel_fondo_transparente">
-            <a href="{{ path('tienda', {'id': usuario.id}) }}">Tienda</a>
-       </div>
-    </div>
+{#    <div id="menu_jugador" >#}
+{#       <div id="div_coleccion" class="menu_jugador_opcion panel_fondo_transparente">#}
+{#            <a href="{{ path('cartas_lista_user',{'id':usuario.id}) }}">Coleccion</a>#}
+{#       </div>#}
+{#       <div id="div_coleccion" class="menu_jugador_opcion panel_fondo_transparente">#}
+{#            <a href="{{ path('game_prepara', {'id':usuario.id}) }}">Jugar</a>#}
+{#       </div>#}
+{#       <div id="div_tienda" class="menu_jugador_opcion panel_fondo_transparente">#}
+{#            <a href="{{ path('tienda', {'id': usuario.id}) }}">Tienda</a>#}
+{#       </div>#}
+{#    </div>#}
 {% endif %}
 {% endblock %}
 {% block mainMenu %}
+    <div class="menu_wrapper">
+        <div class=menu_interfaz>
+            <ul>
+                <li><a href="{{ path('game_prepara', {'id':usuario.id}) }}">Jugar</a></li>
+                <li><a href="{{ path('cartas_lista_user',{'id':usuario.id}) }}">Colección</a>
+                    <ul>
+                        <li>
+                            <a href="{{ path('cartas_lista_user',{'id':usuario.id}) }}"><h3>Mis Cartas</h3></a>
+                        </li>
 
+                        <li>
+                            <a href="{{ path('tienda', {'id': usuario.id}) }}"><h3>Tienda</h3></a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li><a href="#">Night City</a>
+                    <ul>
+                        <li>
+                            <a href="{{ path('user_list') }}"><h3>Ranking</h3></a>
+                        </li>
+                        <li>
+                            <a href="#"><h3>Reglas</h3></a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
 {% endblock %}
 
 {% block listaCartas %}{% endblock %}

@@ -441,10 +441,177 @@ body {
   background-color: rgba(10,10,10,0.5);
   text-align: center;
 }
+/*INTERFAZ V2 (menu)*/
 
 
 
+.menu_wrapper {
+  padding: 1em;
+  perspective: 500px;
+}
+.menu_interfaz {
+  width: 230px;
+  max-width: 360px;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+  /*transform: rotateY(20deg) rotateX(36deg) rotateZ(-6deg);*/
+  transition: transform 1s;
+  position:fixed;
+  left:0;
+}
+.menu_interfaz > ul {
+  list-style: none;
+  padding: 1em;
+  /*transform: translateZ(-100px);*/
+  /*transform-style: preserve-3d;*/
+  transition: all 0.2s;
+}
+.menu_interfaz > ul > li {
+  margin: 0 0 0.5em 0;
+  position: relative;
+  color: #222222;
+  font-family:"Oswald", "Arial Narrow", sans-serif;
+  transition: all 0.2s;
+  /*transform-style: preserve-3d;*/
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.7);
+  border-radius: 6px;
+  background-color: rgba(144,14,50,1);
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFFFAC05', endColorstr='#FFD96404');
+  background-image: -moz-linear-gradient(top,rgba(144,14,50,0.4) 0%, rgba(144,14,80,0.8) 100%);
+  background-image: -o-linear-gradient(top,rgba(144,14,50,0.4) 0%, rgba(144,14,80,0.8) 100%);
+  background-image: -webkit-linear-gradient(top,rgba(144,14,50,0.4) 0%, rgba(144,14,80,0.8) 100%);
+  background-image: linear-gradient(top,rgba(144,14,50,0.4) 0%, rgba(144,14,80,0.8) 100%);
+}
+.menu_interfaz > ul > li:hover {
+  background: darkcyan;
+  transform: translateZ(16px) rotateY(4deg);
+}
+.menu_interfaz > ul > li:hover a {
+  color: #222222;
+}
+.menu_interfaz > ul > li:hover ul {
+  opacity: 1;
+  visibility: visible;
+  transform: translateZ(60px) rotateY(-25deg);
+}
+.menu_interfaz > ul > li:hover ul li {
+  margin-left: 0.325em;
+  transition: all 0.4s;
+}
+.menu_interfaz > ul > li a {
+  display: block;
+  padding: 0.5em;
+  min-height: 2.5em;
+  line-height: 2.5em;
+  color: white;
+  font-size: 1.5em;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.menu_interfaz > ul > li a:hover {
+  color: #222222;
+}
+.menu_interfaz > ul > li ul {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  left: 83%;
+  top: 0;
+  padding-left: 2em;
+  min-width: 300px;
+  transition: all 0.2s;
+  transform: translateZ(-2px) rotateY(-5deg);
+}
+.menu_interfaz > ul > li ul li {
+  display: inline-block;
+  width: 45%;
+  margin: 0 0 0.325em -3em;
+  background: #1f1f1f;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.7);
+  transform-style: preserve-3d;
+}
+.menu_interfaz > ul > li ul li a {
+  color: black;
+  font-size: 1.325em;
+  line-height: 120%;
+  background: darkcyan;
+  border-radius: 6px;
+}
+.menu_interfaz > ul > li ul li a:hover {
+  background: rgba(144,14,50,1);
+}
+.menu_interfaz > ul > li ul div {
+  font-family:"Source Sans Pro", sans-serif;
+  color: white;
+}
+
+
+/*FIN INTERFAZ V2(menu)*/
 /*FIN INTERFAZ USUARIO*/
+/*PORTADA*/
+
+
+.banner {
+  margin: auto;
+  padding: 14vmin;
+  border-radius: 4vmin;
+  position: relative;
+  text-align: center;
+}
+.banner:after, .banner:before {
+  position: absolute;
+  left: 5%;
+  top: 5%;
+  width: 90%;
+  height: 90%;
+  content: "";
+  opacity: 0.5;
+  animation-name: opacity;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+  border: 1vmin dotted;
+  border-radius: 4vmin;
+}
+.banner:after {
+  border-color: #f5286d;
+  box-shadow: 0 0 5px #f5286d, 0 0 6px #f5286d, 0 0 9px #f5286d, 0 0 15px #f5286d, 0 0 25px #f5286d, 0 0 35px #f5286d, 0 0 75px #f5286d, 0 0 100px #f5286d;
+}
+.banner:before {
+  border-color: #52a7f7;
+  animation-delay: 4s;
+  box-shadow: 0 0 5px #52a7f7, 0 0 6px #52a7f7, 0 0 9px #52a7f7, 0 0 15px #52a7f7, 0 0 25px #52a7f7, 0 0 35px #52a7f7, 0 0 75px #52a7f7, 0 0 100px #52a7f7;
+}
+
+.neon_portada {
+  font-size: 10vmin;
+  font-family: monospace;
+}
+.neon--blue {
+  color: #52a7f7;
+  margin-bottom: 2vmin;
+  text-shadow: 0 0 5px #52a7f7, 0 0 6px #52a7f7, 0 0 9px #52a7f7, 0 0 15px #52a7f7, 0 0 25px #52a7f7, 0 0 35px #52a7f7, 0 0 75px #52a7f7, 0 0 100px #52a7f7;
+}
+.neon--pink {
+  color: #f5286d;
+  text-shadow: 0 0 5px #f5286d, 0 0 6px #f5286d, 0 0 9px #f5286d, 0 0 15px #f5286d, 0 0 25px #f5286d, 0 0 35px #f5286d, 0 0 75px #f5286d, 0 0 100px #f5286d;
+  font-size:0.8em;
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+/*FIN PORTADA*/
+
 /*///////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////*/
 /*colores de TODOS enlaces de arriba*/

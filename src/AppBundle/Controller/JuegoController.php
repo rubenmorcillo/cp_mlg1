@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Battle;
 use AppBundle\Entity\Deck;
 use AppBundle\Entity\User;
 use AppBundle\Repository\DeckRepository;
@@ -61,7 +62,7 @@ class JuegoController extends Controller
 
     }
     /**
-     * @Route("/Combat/{jugador}/{mideck}/{oponente}/{sudeck}", name="game_combate")
+     * @Route("/Combat/{jugador}/{mideck}/{oponente}/{sudeck}", name="game_combate", methods="post")
      */
     public function combateAction(Request $request, User $jugador,Deck $mideck, User $oponente, Deck $sudeck){
         $cartasOponente = $sudeck->getCardsContained();
@@ -69,54 +70,25 @@ class JuegoController extends Controller
         $cartasJugador_vivas = [];
         $cartasOponente_vivas = [];
 
-        //convirtiendo a array normal para que no falle método "in_array"
-        $cartasJugador_array = [];
-        for($i=0;$i<count($cartasJugador);$i++){
-            $elId = $cartasJugador[$i]->getId();
-            array_push($cartasJugador_array, $elId);
-        }
 //        $cartasOponente_array = [];
 
         $trampas = false;
 
-
         if($request->get('atacar')=== ''){
 
-            //Compruebo que ha elegido
-            if ($request->get('seleccionada') === ''){
-
+            $this->addFlash('exito', 'viene de vuelta');
+            $ganador = $this->enfrentarDeckAction($mideck, $sudeck);
+            $this->addFlash('exito' , 'el ganador es '.$ganador->getNickname());
+            $batalla = $this->insertBatalla($jugador, $oponente, $ganador);
+            if ($ganador === $jugador){
+                $this->actualizarResultados($jugador, $oponente, $ganador, $batalla);
+                $this->borrarMazoTemporal($sudeck);
+                return $this->redirectToRoute('resultado_combate_victoria');
             }else{
-                //el jugador ha seleccionado una carta
-                $cJug = $request->get('seleccionada'); //recojo eleccion jugador
-                if ($cJug <> null){
-                    //compruebo q ha elegido una de su mazo activo
-                    for($i=0;$i<count($cartasJugador);$i++){
-                        if(!in_array($cJug,$cartasJugador_array)){
-                            $trampas = true;
-                        }
-                    }
-                }else{
-                    return $this->render('juego/combate.html.twig', [
-                        'jugador' => $jugador,
-                        'oponente' => $oponente,
-                        'cartasJugador' => $cartasJugador,
-                        'cartasOponente' => $cartasOponente,
-                        'deckJugador' => $mideck,
-                        'deckOponente' => $sudeck
-                    ]);
-                }
 
-                $cOp = $cartasOponente[mt_rand(0,count($cartasOponente)-1)]; //eleccion aleatoria del oponente
-
-                $this->addFlash('exito', 'atacando con '.$cJug.'...');
-                $this->addFlash('exito', 'el oponente ha elegido'.$cOp);
+               return  $this->redirectToRoute('resultado_combate_derrota');
             }
 
-
-        }
-        else{
-            $cartasJugador_vivas = $cartasJugador;
-            $cartasOponente_vivas = $cartasOponente;
         }
         if ($trampas){
             $this->addFlash('error', '¡Vaya! Parece que estás intentando hacer trampas :_(');
@@ -133,12 +105,89 @@ class JuegoController extends Controller
             'deckOponente' => $sudeck
         ]);
     }
+    //calcula un stat aleatorio, suma los valores de cada Deck en ese stat y los compara
+    public function enfrentarDeckAction(Deck $mideck,Deck $sudeck){
 
-    public function enfrentarCartasAction($cJug, $cOp){
+        $winner = null;
+
         //elijo un stat random
+        $stat = '';
         $sr = mt_rand(0,3);
+        switch ($sr){
+            case 0:
+                $stat = 'Fuerza';
+                $this->addFlash('exito', 'han competido en Fuerza');
+                $miFuerza = 0;
+                $suFuerza = 0;
+                $misCartas = $mideck->getCardsContained();
+                $susCartas = $sudeck->getCardsContained();
+                foreach($misCartas as $carta){
+                    $miFuerza = $miFuerza + $carta->getTypeCard()->getAtqA();
+                }
+                foreach($susCartas as $carta){
+                    $suFuerza = $suFuerza + $carta->getTypeCard()->getAtqA();
+                }
+                break;
+
+            case 1:
+                $stat = "Hacking";
+                $this->addFlash('exito', 'han competido en Hacking');
+
+                $miFuerza = 0;
+                $suFuerza = 0;
+                $misCartas = $mideck->getCardsContained();
+                $susCartas = $sudeck->getCardsContained();
+                foreach($misCartas as $carta){
+                    $miFuerza = $miFuerza + $carta->getTypeCard()->getAtqB();
+                }
+                foreach($susCartas as $carta){
+                    $suFuerza = $suFuerza + $carta->getTypeCard()->getAtqB();
+                }
+                break;
+
+            case 2:
+                $stat = "Bioshock";
+
+                $this->addFlash('exito', 'han competido en Bioshock');
+
+                $miFuerza = 0;
+                $suFuerza = 0;
+                $misCartas = $mideck->getCardsContained();
+                $susCartas = $sudeck->getCardsContained();
+                foreach($misCartas as $carta){
+                    $miFuerza = $miFuerza + $carta->getTypeCard()->getAtqC();
+                }
+                foreach($susCartas as $carta){
+                    $suFuerza = $suFuerza + $carta->getTypeCard()->getAtqC();
+                }
+                break;
+
+            case 3:
+                $stat = "Agilidad";
+
+                $this->addFlash('exito', 'han competido en Agilidad');
+
+                $miFuerza = 0;
+                $suFuerza = 0;
+                $misCartas = $mideck->getCardsContained();
+                $susCartas = $sudeck->getCardsContained();
+                foreach($misCartas as $carta){
+                    $miFuerza = $miFuerza + $carta->getTypeCard()->getAtqD();
+                }
+                foreach($susCartas as $carta){
+                    $suFuerza = $suFuerza + $carta->getTypeCard()->getAtqD();
+                }
+                break;
 
 
+        }
+        if ($miFuerza > $suFuerza){
+            $winner = $mideck->getDeckOwner();
+        }else{
+            $winner = $sudeck->getDeckOwner();
+        }
+
+        return $winner;
     }
     //crea un mazo "default" para el oponente con 4 cartas suyas aleatorias
     public function crearMazoTemporal(User $propietario){
@@ -155,6 +204,49 @@ class JuegoController extends Controller
         return $mazo;
     }
 
+    public function borrarMazoTemporal(Deck $deck){
+        $this->getDoctrine()->getManager()->remove($deck);
+        $this->getDoctrine()->getManager()->flush();
+    }
+
+    public function insertBatalla(User $jugador, User $oponente, User $ganador){
+        $batalla = new Battle();
+        $batalla->setBattleDate(new \DateTime());
+        $batalla->setPlayerAttacker($jugador);
+        $batalla->setPlayerDefender($oponente);
+        $batalla->setWinner($ganador);
+        $this->getDoctrine()->getManager()->persist($batalla);
+        $this->getDoctrine()->getManager()->flush();
+
+        return $batalla;
+    }
+
+    public function actualizarResultados(User $jugador, User $oponente, User $ganador, Battle $batalla){
+        $dineroActual = $ganador->getCredits();
+        $ganador->setCredits($dineroActual+10);
+        $ganador->setReputation($ganador->getReputation()+5);
+        $ataques = $jugador->getAtaques();
+        $defensas = $oponente->getDefensas();
+        $victorias = $ganador->getWin();
+//        array_push($defensas, $batalla->getId());
+//        array_push($ataques, $batalla->getId());
+//        array_push($victorias, $batalla->getId());
+        $this->getDoctrine()->getManager()->flush();
+    }
+
+    /**
+     * @Route("/resultado/victoria", name="resultado_combate_victoria")
+     */
+    public function victoriaAction(){
+        return $this->render('juego/victoria.html.twig');
+    }
+
+    /**
+     * @Route("/resultado/derrota", name="resultado_combate_derrota")
+     */
+    public function derrotaAction(){
+        return $this->render('juego/derrota.html.twig');
+    }
 
 
 }

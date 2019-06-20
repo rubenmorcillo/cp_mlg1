@@ -47,11 +47,6 @@
             <div class="interfaz_batalla"><h4>{{ jugador.nickname }}</h4>
                 <form method="post" action="{{ path('game_combate', {'jugador':jugador.id, 'mideck': deckJugador.id, 'oponente':oponente.id , 'sudeck':deckOponente.id}) }}">
 
-                    <p>
-                    {% for carta in cartasJugador %}
-                    <input id="check{{ carta.id }}" name="seleccionada" value="{{ carta.id }}" type="radio">
-                    {% endfor %}
-                    </p>
                     <button type="submit" name="atacar" >Atacar</button>
                 </form>
             </div>

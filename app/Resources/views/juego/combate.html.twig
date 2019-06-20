@@ -37,7 +37,7 @@
         <div id="jugador"  class="div_cartas">
             {% for carta in cartasJugador %}
                 <figure class="carta_batalla">
-                    <img name="name" value="{{ carta.id }}" class="img_carta_batalla carta_jugador" src="{{ asset(raiz~carta.typeCard.imageRoute~'.jpg') }}"  alt="">
+                    <img id="carta{{ carta.id }}" name="name" value="{{ carta.id }}" class="img_carta_batalla carta_jugador" src="{{ asset(raiz~carta.typeCard.imageRoute~'.jpg') }}"  alt="">
                     <figcaption>
                         <p class="skills"> <span class="txt_carta_batalla"><i class="fas -dumbbell fa-dumbbell"></i></span><span class="txt_carta_batalla"><i class="fas fa-microchip"></i></span><span class="txt_carta_batalla"><i class="fas fa-biohazard"></i></span> <span class="txt_carta_batalla"><i class="fas fa-running"></i></span> </p>
                         <p class="skills"> <span class="txt_carta_batalla">{{ carta.typeCard.atqA}}</span><span class="txt_carta_batalla">{{ carta.typeCard.atqB}}</span><span class="txt_carta_batalla">{{ carta.typeCard.atqC}}</span> <span class="txt_carta_batalla">{{ carta.typeCard.atqD}}</span> </p>
@@ -45,10 +45,32 @@
                 </figure>
             {% endfor %}
             <div class="interfaz_batalla"><h4>{{ jugador.nickname }}</h4>
-                <form action="{{ path('game_combate', {'jugador':jugador.id, 'mideck': deckJugador.id, 'oponente':oponente.id , 'sudeck':deckOponente.id}) }}">
-                    <button type="submit" name="validar" value="validar" >Validar</button>
+                <form method="post" action="{{ path('game_combate', {'jugador':jugador.id, 'mideck': deckJugador.id, 'oponente':oponente.id , 'sudeck':deckOponente.id}) }}">
+
+                    <p>
+                    {% for carta in cartasJugador %}
+                    <input id="check{{ carta.id }}" name="seleccionada" value="{{ carta.id }}" type="radio">
+                    {% endfor %}
+                    </p>
+                    <button type="submit" name="atacar" >Atacar</button>
                 </form>
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            var radios = document.querySelectorAll('input[type="radio"]');
+
+           var cartasJugador = document.querySelectorAll('.carta_jugador');
+           for (let i=0; i<cartasJugador.length;i++){
+               cartasJugador[i].addEventListener('click', function(e){
+              console.log(e.target);
+
+               });
+           }
+           console.log(radios);
+
+        });
+    </script>
 {% endblock %}

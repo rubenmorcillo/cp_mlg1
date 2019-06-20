@@ -76,10 +76,11 @@ class CardController extends Controller
             $carta->setCardOwner($user);
             $carta->setTypeCard($tc);
             $user->setCredits($dinero_user - $precio);
+            $nombreCarta = $carta->getTypeCard()->getName();
             try{
                 $this->getDoctrine()->getManager()->persist($carta);
                 $this->getDoctrine()->getManager()->flush();
-                $this->addFlash('exito', 'has adquirido una nueva carta');
+                $this->addFlash('exito', 'has adquirido una copia de '.$nombreCarta);
                 return $this->redirectToRoute('tienda',['id' => $user->getId()]);
             }catch(\Exception $e){
                 $this->addFlash('error', 'no se ha podido completar la compra');

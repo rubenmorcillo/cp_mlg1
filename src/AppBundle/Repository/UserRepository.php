@@ -9,12 +9,21 @@ class UserRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, User::class);
     }
+    public function buscarRanking(){
+        return $this->createQueryBuilder('u')
+            ->select('u')
+            ->orderBy('u.reputation', 'desc')
+            ->getQuery()
+            ->getResult();
+
+    }
 
     public function buscarTodosMenosLogeado(User $usuario){
         return $this->createQueryBuilder('u')
             ->select('u')
             ->where('u.id <> :user')
             ->setParameter('user', $usuario)
+            ->orderBy('u.reputation')
             ->getQuery()
             ->getResult();
     }

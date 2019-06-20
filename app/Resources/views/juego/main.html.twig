@@ -2,19 +2,20 @@
 
 {% block content %}
     <div id="menu_juego" class="panel_fondo_transparente">
-        <h2>Prepárate para el combate</h2>
+        <h2 class="neon--pink2">Prepárate para el combate</h2>
         {% if decks is empty %}
             <p>Necesitas crear al menos un escuadrón para mandarlo al ataque</p>
             <a href="{{ path('deck_nuevo', {'id': usuario.id}) }}">Crear Escuadrón</a>
         {% else %}
         <form action="{{ path('game_prepara', {'id':usuario.id}) }}" method="post">
-            <label for="deck_select">Escoge tu escuadrón:</label>
-            <select name="deck_select">
+            <p><label class="neon--blue" for="deck_select">Escoge tu escuadrón:</label></p>
+            <select style="color:black;" name="deck_select">
                 {% for deck in usuario.decks %}
-                    <option value="{{ deck.id }}">{{ deck.deckName }}</option>
+                    <option  value="{{ deck.id }}">{{ deck.deckName }}</option>
                 {% endfor %}
             </select>
-           <p><button type="submit" name="ok" value="buscar_oponente">Buscar Oponente Aleatorio</button>
+            <hr style="color:darkcyan">
+           <p><button class="btn-outline-danger" type="submit" name="ok" value="buscar_oponente">Buscar Oponente Aleatorio</button>
            </p>
         </form>
         {% endif %}

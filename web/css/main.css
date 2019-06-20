@@ -595,7 +595,12 @@ body {
 .neon--pink {
   color: #f5286d;
   text-shadow: 0 0 5px #f5286d, 0 0 6px #f5286d, 0 0 9px #f5286d, 0 0 15px #f5286d, 0 0 25px #f5286d, 0 0 35px #f5286d, 0 0 75px #f5286d, 0 0 100px #f5286d;
-  font-size:0.8em;
+  font-size:0.95em;
+}
+.neon--pink2 {
+  color: #f5286d;
+  text-shadow: 0 0 5px #f5286d, 0 0 6px #f5286d, 0 0 9px #f5286d, 0 0 15px #f5286d, 0 0 25px #f5286d, 0 0 35px #f5286d, 0 0 75px #f5286d, 0 0 100px #f5286d;
+  font-size:2em;
 }
 
 @keyframes opacity {

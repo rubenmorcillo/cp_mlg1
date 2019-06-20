@@ -6,6 +6,8 @@
 
         {{ form_start(form) }}
         {{ form_widget(form) }}
+        <a class="golden btn btn-outline-danger " href="{{ path('user_list') }}">Salir sin guardar</a>
+
         <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Guardar cambios</button>
         {% if usuario.esAdmin == false or usuario.id != app.user.id%}
         <a href="{{ path('usuario_eliminar', {'id': usuario.id}) }}" class="btn btn-outline-danger" name="eliminar"><i class="fas fa-trash"></i>Eliminar usuario</a>

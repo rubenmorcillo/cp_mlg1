@@ -44,6 +44,7 @@ class TypeCardController extends Controller
      * @Security("is_granted('ROLE_ADMIN')")
      */
     public function formTypeCardAction(Request $request, TypeCard $typeCard){
+        $user = $this->getUser();
         $form = $this->createForm(TypeCardType::class, $typeCard);
 
         $form->handleRequest($request);
@@ -53,7 +54,8 @@ class TypeCardController extends Controller
         }
 
         return $this->render('typeCard/form.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'user' => $user
         ]);
     }
 

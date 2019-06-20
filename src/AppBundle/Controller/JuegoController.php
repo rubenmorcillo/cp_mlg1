@@ -78,18 +78,35 @@ class JuegoController extends Controller
         $trampas = false;
 
         if($request->get('atacar')=== ''){
+            $stat = $this->statAleatorio();
+            $miFuerza = $this->sumaStatDeckAction($mideck, $stat);
+            $suFuerza = $this->sumaStatDeckAction($sudeck, $stat);
+            if($miFuerza > $suFuerza) {
+                $ganador = $jugador;
 
-            $this->addFlash('exito', 'viene de vuelta');
-            $ganador = $this->enfrentarDeckAction($mideck, $sudeck);
-            $this->addFlash('exito' , 'el ganador es '.$ganador->getNickname());
+            }else{
+                $ganador = $oponente;
+            }
             $batalla = $this->insertBatalla($jugador, $oponente, $ganador);
             if ($ganador === $jugador){
                 $this->actualizarResultados($jugador, $oponente, $ganador, $batalla);
                 $this->borrarMazoTemporal($sudeck);
-                return $this->redirectToRoute('resultado_combate_victoria');
+                return $this->render('juego/victoria.html.twig',['jugador' => $jugador,
+                    'oponente' => $oponente,
+                    'cartasJugador' => $cartasJugador,
+                    'cartasOponente' => $cartasOponente,
+                    'stat' =>$stat,
+                    'suValor' =>$suFuerza,
+                    'miValor' =>$miFuerza]);
             }else{
 
-               return  $this->redirectToRoute('resultado_combate_derrota');
+                return $this->render('juego/derrota.html.twig',['jugador' => $jugador,
+                    'oponente' => $oponente,
+                    'cartasJugador' => $cartasJugador,
+                    'cartasOponente' => $cartasOponente,
+                    'stat' =>$stat,
+                    'suValor' =>$suFuerza,
+                    'miValor' =>$miFuerza]);
             }
 
         }
@@ -108,90 +125,79 @@ class JuegoController extends Controller
             'deckOponente' => $sudeck
         ]);
     }
-    //calcula un stat aleatorio, suma los valores de cada Deck en ese stat y los compara
-    public function enfrentarDeckAction(Deck $mideck,Deck $sudeck){
+    //calcula un stat aleatorio
+    public function statAleatorio(){
+        $sr = mt_rand(0,3);
+        return $sr;
+    }
+    // //suma los valores de un Deck en un stat
+    public function sumaStatDeckAction(Deck $deck, $stat){
 
         $winner = null;
 
-        //elijo un stat random
-        $stat = '';
-        $sr = mt_rand(0,3);
-        switch ($sr){
+
+
+        switch ($stat){
             case 0:
-                $stat = 'Fuerza';
-                $this->addFlash('exito', 'han competido en Fuerza');
                 $miFuerza = 0;
                 $suFuerza = 0;
-                $misCartas = $mideck->getCardsContained();
-                $susCartas = $sudeck->getCardsContained();
+                $misCartas = $deck->getCardsContained();
                 foreach($misCartas as $carta){
                     $miFuerza = $miFuerza + $carta->getTypeCard()->getAtqA();
                 }
-                foreach($susCartas as $carta){
-                    $suFuerza = $suFuerza + $carta->getTypeCard()->getAtqA();
-                }
+
                 break;
 
             case 1:
-                $stat = "Hacking";
-                $this->addFlash('exito', 'han competido en Hacking');
 
                 $miFuerza = 0;
                 $suFuerza = 0;
-                $misCartas = $mideck->getCardsContained();
-                $susCartas = $sudeck->getCardsContained();
+                $misCartas = $deck->getCardsContained();
                 foreach($misCartas as $carta){
                     $miFuerza = $miFuerza + $carta->getTypeCard()->getAtqB();
                 }
-                foreach($susCartas as $carta){
-                    $suFuerza = $suFuerza + $carta->getTypeCard()->getAtqB();
-                }
+
                 break;
 
             case 2:
-                $stat = "Bioshock";
 
-                $this->addFlash('exito', 'han competido en Bioshock');
 
                 $miFuerza = 0;
                 $suFuerza = 0;
-                $misCartas = $mideck->getCardsContained();
-                $susCartas = $sudeck->getCardsContained();
+                $misCartas = $deck->getCardsContained();
                 foreach($misCartas as $carta){
                     $miFuerza = $miFuerza + $carta->getTypeCard()->getAtqC();
                 }
-                foreach($susCartas as $carta){
-                    $suFuerza = $suFuerza + $carta->getTypeCard()->getAtqC();
-                }
-                break;
+
 
             case 3:
-                $stat = "Agilidad";
 
-                $this->addFlash('exito', 'han competido en Agilidad');
 
                 $miFuerza = 0;
                 $suFuerza = 0;
-                $misCartas = $mideck->getCardsContained();
-                $susCartas = $sudeck->getCardsContained();
+                $misCartas = $deck->getCardsContained();
                 foreach($misCartas as $carta){
                     $miFuerza = $miFuerza + $carta->getTypeCard()->getAtqD();
                 }
-                foreach($susCartas as $carta){
-                    $suFuerza = $suFuerza + $carta->getTypeCard()->getAtqD();
-                }
+
                 break;
 
 
         }
-        if ($miFuerza > $suFuerza){
-            $winner = $mideck->getDeckOwner();
-        }else{
-            $winner = $sudeck->getDeckOwner();
-        }
 
-        return $winner;
+        return $miFuerza;
+//
     }
+    public function compararFuerzasDecks($f1, $f2){
+//        if ($f1 > $f2){
+////            $winner = $mideck->getDeckOwner();
+////        }else{
+////            $winner = $sudeck->getDeckOwner();
+////        }
+//
+////        return $winner;
+    }
+
     //crea un mazo "default" para el oponente con 4 cartas suyas aleatorias
     public function crearMazoTemporal(User $propietario){
 

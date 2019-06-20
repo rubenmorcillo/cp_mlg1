@@ -1,7 +1,64 @@
-{% extends 'layout.html.twig' %}
+{% extends 'base.html.twig' %}
 
+{% block body %}
+    {% set raiz =  'recursos/cardsImages/' %}
+    <div id='cont_juego'>
+        <div id="oponente" class="div_cartas">
+            {% for carta in cartasOponente %}
+                <figure class="carta_batalla">
+                    <img name="cartasOponente[]" value="{{ carta.id }}" class="img_carta_batalla" src="{{ asset(raiz~carta.typeCard.imageRoute~'.jpg') }}"  alt="">
+                    <figcaption>
+                        <p class="skills"> <span class="{% if stat == 0 %}neon {% endif %}txt_carta_batalla"><i class="fas -dumbbell fa-dumbbell"></i></span><span class="{% if stat == 1 %}neon {% endif %}txt_carta_batalla"><i class="fas fa-microchip"></i></span><span class="{% if stat == 2 %}neon {% endif %}txt_carta_batalla"><i class="fas fa-biohazard"></i></span> <span class="{% if stat == 3 %}neon {% endif %}txt_carta_batalla"><i class="fas fa-running"></i></span> </p>
 
-{% block content %}
-    <div id="panel_resultado" class="panel_fondo_transparente"></div>
-{% block resultado %}{% endblock %}
+                        <p class="skills"> <span class="{% if stat == 0 %}neon {% endif %}txt_carta_batalla">{{ carta.typeCard.atqA}}</span><span class="{% if stat == 1 %}neon {% endif %}txt_carta_batalla">{{ carta.typeCard.atqB}}</span><span class="{% if stat == 2 %}neon {% endif %}txt_carta_batalla">{{ carta.typeCard.atqC}}</span> <span class="{% if stat == 3 %}neon {% endif %}txt_carta_batalla">{{ carta.typeCard.atqD}}</span> </p>
+                    </figcaption>
+                </figure>
+            {% endfor %}
+
+            <div><h4>{{ oponente.nickname }} -> {{ suValor }}</h4></div>
+        </div>
+
+        <div id="centro_batalla">
+            <div id="consola_mensajes">
+                {% for mensaje in app.session.flashbag.get('exito') %}
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ mensaje }}
+                    </div>
+                {% endfor %}
+                {% for mensaje in app.session.flashbag.get('error') %}
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ mensaje }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div id="jugador"  class="div_cartas">
+            {% for carta in cartasJugador %}
+                <figure class="carta_batalla">
+                    <img id="carta{{ carta.id }}" name="name" value="{{ carta.id }}" class="img_carta_batalla carta_jugador" src="{{ asset(raiz~carta.typeCard.imageRoute~'.jpg') }}"  alt="">
+                    <figcaption>
+                        <p class="skills"> <span class="{% if stat == 0 %}neon {% endif %}txt_carta_batalla"><i class="fas -dumbbell fa-dumbbell"></i></span><span class="{% if stat == 1 %}neon {% endif %}txt_carta_batalla"><i class="fas fa-microchip"></i></span><span class="{% if stat == 2 %}neon {% endif %}txt_carta_batalla"><i class="fas fa-biohazard"></i></span> <span class="{% if stat == 3 %}neon {% endif %}txt_carta_batalla"><i class="fas fa-running"></i></span> </p>
+                        <p class="skills"> <span class="{% if stat == 0 %}neon {% endif %}txt_carta_batalla">{{ carta.typeCard.atqA}}</span><span class="{% if stat == 1 %}neon {% endif %}txt_carta_batalla">{{ carta.typeCard.atqB}}</span><span class="{% if stat == 2 %}neon {% endif %}txt_carta_batalla">{{ carta.typeCard.atqC}}</span> <span class="{% if stat == 3 %}neon {% endif %}txt_carta_batalla">{{ carta.typeCard.atqD}}</span> </p>
+                    </figcaption>
+                </figure>
+            {% endfor %}
+            <div class="interfaz_batalla"><h4>{{ jugador.nickname }} -> {{ miValor }}</h4>
+                {% block resultado %}{% endblock %}
+
+                <form method="post" action="{{ path('interfazJuego', {'id': jugador.id}) }}">
+
+                        <button type="submit" name="atacar" >Continuar</button>
+                    </form>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .stat_on{
+            color:darkcyan;
+        }
+    </style>
 {% endblock %}

@@ -23,10 +23,13 @@
                         <a class="nav-link" href="{{ path('portada') }}"><i class="fas fa-vihara"></i> Night City<span class="sr-only">(actual)</span></a>
                     </li>
                     <li class="nav-item{% if ruta starts with "user_" %} active{% endif %}">
-                        <a class="nav-link" href="{{ path('user_list') }}"><i class="fas -jedi fa-jedi"></i> Ranking</a>
+                        <a class="nav-link" href="{{ path('user_list') }}"><i class="fas -crown fa-crown"></i> Ranking</a>
                     </li>
 
                        {% if is_granted('ROLE_PLAYER') %}
+                           <li class="nav-item{% if ruta starts with "user_" %} active{% endif %}">
+                               <a class="nav-link" href="{{ path('game_prepara', {'id':usuario.id}) }}"><i class="fas -jedi fa-jedi"></i>Jugar</a>
+                           </li>
                            {% else %}
                                <li class="nav-item {% if ruta starts with "card_" %} active{% endif %}">
                                    <a class="nav-link" href="{{ path('card_list') }}"><i class="fas -solar-panel fa-solar-panel"></i> Personajes</a>

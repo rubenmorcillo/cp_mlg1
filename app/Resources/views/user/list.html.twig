@@ -5,18 +5,18 @@
     <table class="table panel_fondo_transparente" >
         <thead>
         <tr>
-            <th class="letra_listas_cabecera">NickName</th>
-            <th class="letra_listas_cabecera"><i class="fas fa-dollar-sign"></i> Créditos</th>
-            <th class="letra_listas_cabecera"><i class="fas -crown fa-crown"></i> Rep.</th>
+            <th class="neon">NickName</th>
+            <th class="neon"><i class="fas fa-dollar-sign"></i> Créditos</th>
+            <th class="neon"><i class="fas -crown fa-crown"></i> Rep.</th>
             {% if is_granted('ROLE_ADMIN') %}
-            <th class="letra_listas_cabecera"><i class="fas fa-microchip"></i>¿Es admin?</th>
+            <th class="neon"><i class="fas fa-microchip"></i>¿Es admin?</th>
             {% endif %}
         </tr>
         </thead>
         <tbody>
         {% for user in users %}
             <tr>
-                <td class="letra_listas"><a href="{% if is_granted('ROLE_ADMIN') %}{{ path('admin_usuario_editar',{'id':user.id}) }}{% else %}{{ path('cartas_lista_user',{'id':user.id}) }}{% endif %}">{{ user.nickname }}</a></td>
+                <td class="letra_listas">{% if is_granted('ROLE_ADMIN') %}<a href="{{ path('admin_usuario_editar',{'id':user.id}) }}">{% endif %}{{ user.nickname }}</a></td>
                 <td class="letra_listas">{{ user.credits }}</td>
                 <td class="letra_listas">{{ user.reputation }}</td>
                 {% if is_granted('ROLE_ADMIN') %}

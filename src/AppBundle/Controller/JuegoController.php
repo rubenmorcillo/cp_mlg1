@@ -18,6 +18,9 @@ class JuegoController extends Controller
      */
     public function preparaAction(Request $request,DeckRepository $dr, UserRepository $ur, User $user)
     {
+        if($user <> $this->getUser()){
+            $user = $this->getUser();
+        }
         if ($request->get('ok') === 'buscar_oponente'){
 
              $oponente = $this->buscarOponenteAleatorio($ur, $user);

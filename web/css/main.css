@@ -15,6 +15,10 @@ a, a:hover { text-decoration: none; text-underline: none; font-family: "IBM Plex
 
 /*a { color: chartreuse; transition: all ease 0.5s; -moz-transition: all ease 0.5s; }*/
 
+.form-control option{
+  color:black;
+}
+
 /*FIN ESTILOS GENERALES*/
 /*///////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////*/

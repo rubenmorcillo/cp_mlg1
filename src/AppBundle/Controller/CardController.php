@@ -28,6 +28,9 @@ class CardController extends Controller
      * @Route("/cu/{id}", name="cartas_lista_user", requirements={"id": "\d+"})
      */
     public function cardListUserAction(CardRepository $cr, User $usuario){
+        if($usuario <> $this->getUser()){
+          $usuario = $this->getUser();
+        }
         $cartas = $usuario->getCards();
         return $this->render('user/coleccion.html.twig', [
             'usuario' => $usuario,

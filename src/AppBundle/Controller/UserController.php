@@ -68,9 +68,10 @@ class UserController extends Controller
                 $usuario->setPassword($form->get('nuevaClave')->getData());
 
                 $this->getDoctrine()->getManager()->flush();
-
+                $this->addFlash('exito', 'Clave cambiada con éxito');
                 return $this->redirectToRoute('usuario_perfil');
             }catch (\Exception $e){
+                $this->addFlash('error', 'No se pudo cambiar la clave');
 
             }
         }

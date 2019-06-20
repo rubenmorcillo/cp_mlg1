@@ -1,20 +1,34 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+<h1>Mercado</h1>
+    <div class="menu_wrapper">
+        <div class=menu_interfaz>
+            <ul>
+                <li><a href="{{ path('cartas_lista_user',{'id':usuario.id}) }}">Cartas</a>
+                    <ul>
+                        <li>
+                            <a href="{{ path('tienda_carta_comprar_una', {'id': usuario.id}) }}"><h3>1 Carta <span class="golden">10 $</span></h3></a>
+                        </li>
 
-    <div id="menu_tienda">
-        <h1>Mercado Negro  <a href="{{ path('cartas_lista_user',{'id':usuario.id}) }}">Volver a la colección</a></h1>
-        <div class="elemento_menu_tienda panel_fondo_transparente">
+                        <li>
+                            <a href="{{ path('tienda_carta_comprar_una', {'id': usuario.id}) }}"><h3>1 Carta <span class="golden">10 $</span></h3></a>
+                        </li>
 
-                <p>10 $</p>
-                <p><a href="{{ path('tienda_carta_comprar_una', {'id': usuario.id}) }}">Adquirir carta </a></p>
+                    </ul>
+                </li>
+                <li><a href="#">Packs</a>
+                    <ul>
+                        <li>
+                            <a href="#"><h3>Sin productos </h3></a>
+                        </li>
 
 
-        </div>
-        <div class="elemento_menu_tienda panel_fondo_transparente">
 
-                    <p><button type="submit" name="one" class="btn btn-outline-primary">Adquirir pack</button></p>
+                    </ul></li>
+                <li><a href="{{ path('cartas_lista_user',{'id':usuario.id}) }}">Colección</a></li>
 
+            </ul>
         </div>
     </div>
 

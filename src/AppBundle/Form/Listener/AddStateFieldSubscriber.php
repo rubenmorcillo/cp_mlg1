@@ -61,6 +61,7 @@ class AddStateFieldSubscriber implements EventSubscriberInterface
 
         //actualizamos el campo state, pasándole el country al queryBuilder para filtrar
         $form->add('cardsContained', null, [
+            'label' => 'Escoge 4 cartas',
             'query_builder' => function(EntityRepository $cardRepository) use ($deckOwner){
             return $cardRepository->createQueryBuilder('c')
                 ->where('c.cardOwner = :usuario')

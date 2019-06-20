@@ -30,6 +30,10 @@
                            <li class="nav-item{% if ruta starts with "user_" %} active{% endif %}">
                                <a class="nav-link" href="{{ path('game_prepara', {'id':usuario.id}) }}"><i class="fas -jedi fa-jedi"></i>Jugar</a>
                            </li>
+
+                           <li class="nav-item{% if ruta starts with "user_" %} active{% endif %}">
+                               <a class="nav-link" href="{{ path('tienda', {'id': usuario.id}) }}"><i class="fas fa-mosque -mosque"></i>Mercado</a>
+                           </li>
                            {% else %}
                                <li class="nav-item {% if ruta starts with "card_" %} active{% endif %}">
                                    <a class="nav-link" href="{{ path('card_list') }}"><i class="fas -solar-panel fa-solar-panel"></i> Personajes</a>

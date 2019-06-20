@@ -7,6 +7,7 @@
 
     {{ form_start(form) }}
     {{ form_widget(form) }}
+     <a class="golden btn btn-outline-info" href="{{ path('cartas_lista_user', {'id':app.user.id}) }}">Volver</a>
     <button type="submit" class="btn btn-outline-primary"><i class="fas fa-check"></i>Guardar cambios</button>
     <a href="{{ path('cambio_clave') }}" class="btn btn-info"><i class="fas fa-lock">Cambiar contraseña</i></a>
  {% if is_granted('ROLE_ADMIN') %}{% else %}

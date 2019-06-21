@@ -28,11 +28,11 @@
 
                        {% if is_granted('ROLE_PLAYER') %}
                            <li class="nav-item{% if ruta starts with "user_" %} active{% endif %}">
-                               <a class="nav-link" href="{{ path('game_prepara', {'id':usuario.id}) }}"><i class="fas -jedi fa-jedi"></i>Jugar</a>
+                               <a class="nav-link" href="{{ path('game_prepara', {'id':app.user.id}) }}"><i class="fas -jedi fa-jedi"></i>Jugar</a>
                            </li>
 
                            <li class="nav-item{% if ruta starts with "user_" %} active{% endif %}">
-                               <a class="nav-link" href="{{ path('tienda', {'id': usuario.id}) }}"><i class="fas fa-mosque -mosque"></i>Mercado</a>
+                               <a class="nav-link" href="{{ path('tienda', {'id': app.user.id}) }}"><i class="fas fa-mosque -mosque"></i>Mercado</a>
                            </li>
                            {% else %}
                                <li class="nav-item {% if ruta starts with "card_" %} active{% endif %}">

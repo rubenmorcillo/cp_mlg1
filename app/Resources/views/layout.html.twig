@@ -16,11 +16,11 @@
 
                    {% if is_granted('ROLE_ADMIN') %}
                        <li class="nav-item ">
-                           <a class="nav-link" href="{{ path('admin_panel') }}"><i class="fas fa-cog"></i> Admin Panel</a>
+                           <a class="nav-link" href="{{ path('admin_panel') }}"><i class="fas fa-cog"></i> Admin Panel </a>
                        </li>
                     {% else %}
                     <li class="nav-item{% if ruta == "portada" %} active{% endif %}">
-                        <a class="nav-link" href="{{ path('portada') }}"><i class="fas fa-vihara"></i> Night City<span class="sr-only">(actual)</span></a>
+                        <a class="nav-link" href="{{ path('portada') }}"><i class="fas fa-vihara"></i>Night City<span class="sr-only">(actual)</span></a>
                     </li>
                     <li class="nav-item{% if ruta starts with "user_" %} active{% endif %}">
                         <a class="nav-link" href="{{ path('user_list') }}"><i class="fas -crown fa-crown"></i> Ranking</a>
